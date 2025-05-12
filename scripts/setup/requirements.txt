@@ -247,7 +247,7 @@ keras==3.3.2
 keyring @ file:///croot/keyring_1678999217139/work
 kiwisolver @ file:///work/ci_py311/kiwisolver_1676827230232/work
 langchain==0.2.5
-langchain-core==0.2.9
+langchain-core==0.2.43
 langchain-text-splitters==0.2.1
 langcodes @ file:///opt/conda/conda-bld/langcodes_1643477751144/work
 langsmith==0.1.82
