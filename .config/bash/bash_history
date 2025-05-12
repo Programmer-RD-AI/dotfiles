@@ -1,0 +1,99 @@
+cd /home/ranuga/dotfiles && echo "1. Creating proper XDG structure:" && mkdir -p .config/{bash,nvim,kitty,tmux} && echo "2. Moving configs to proper locations:" && mv bash/.config/bash/bashrc .config/bash/ && mv nvim/.config/nvim/* .config/nvim/ && mv kitty/.config/kitty/kitty.conf .config/kitty/ && mv tmux/.config/tmux/tmux.conf .config/tmux/ && rm -rf {bash,nvim,kitty,tmux} && echo -e "\n3. Verifying new structure:" && tree && echo -e "\n4. Setting up symlinks:" && cd /home/ranuga && rm -f .bashrc && rm -rf .config/{bash,nvim,kitty,tmux} && ln -s dotfiles/.config/bash/bashrc .bashrc && ln -s ../dotfiles/.config/{bash,nvim,kitty,tmux} .config/
+cd /home/ranuga/dotfiles && echo "1. Verifying .config structure:" && ls -la .config/ && echo -e "\n2. Contents of config directories:" && echo "bash:" && ls -la .config/bash/ && echo -e "\nnvim:" && ls -la .config/nvim/ && echo -e "\nkitty:" && ls -la .config/kitty/ && echo -e "\ntmux:" && ls -la .config/tmux/ && echo -e "\n3. Setting up symlinks:" && cd /home/ranuga && rm -f .bashrc && rm -rf .config/{bash,nvim,kitty,tmux} && ln -sf dotfiles/.config/bash/bashrc .bashrc && cd .config && ln -sf ../dotfiles/.config/{bash,nvim,kitty,tmux} . && echo -e "\n4. Verifying symlinks:" && ls -la ~/.bashrc ~/.config/{bash,nvim,kitty,tmux}
+cd /home/ranuga/dotfiles && cat > README.md << 'EOF'
+# Dotfiles
+
+My personal dotfiles managed using Git and symlinks.
+
+## Structure
+
+All configurations follow the XDG Base Directory specification:
+
+```
+dotfiles/
+└── .config/
+    ├── bash/
+    │   └── bashrc
+    ├── nvim/
+    │   ├── init.lua
+    │   ├── lazy-lock.json
+    │   └── lua/
+    ├── kitty/
+    │   └── kitty.conf
+    └── tmux/
+        └── tmux.conf
+```
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+```
+
+2. Create symlinks:
+```bash
+# For bash
+ln -sf ~/.dotfiles/.config/bash/bashrc ~/.bashrc
+
+# For other configs
+ln -sf ~/.dotfiles/.config/{nvim,kitty,tmux} ~/.config/
+```
+
+## Configurations
+
+### Bash
+- Shell configuration and aliases
+- Custom prompt settings
+
+### Neovim
+- Modern Neovim configuration with Lua
+- Plugins managed with lazy.nvim
+- Custom keymaps and settings
+
+### Kitty
+- Terminal configuration
+- Font and appearance settings
+- Key bindings
+
+### Tmux
+- Terminal multiplexer configuration
+- Custom key bindings
+- Status line customization
+
+## Maintenance
+
+To update configurations:
+1. Make changes in the respective config files
+2. Changes will automatically apply due to symlinks
+3. Commit and push changes to keep the repository updated
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+EOF
+
+cat README.md
+cd /home/ranuga/dotfiles && echo "1. Verifying symlinks:" && ls -la ~/.bashrc ~/.config/{bash,nvim,kitty,tmux} && echo -e "\n2. Checking git status:" && git status && echo -e "\n3. Testing bashrc:" && source ~/.bashrc
+swaymsg reload
+mv ~/.gitconfig ~/dotfiles/git/
+mv ~/.docker/config.json ~/dotfiles/docker/
+mv ~/.config/lazygit/config.yml ~/dotfiles/lazygit/
+mv ~/.config/htop/htoprc ~/dotfiles/htop/
+clear
+git co
+clear
+cd dotfiles/
+exa --color=always
+clear
+ls -la
+ls -la .config/
+ls -la .config/bash/
+chmod +x refresh-dotfiles.sh
+l
+exa --color=always
+clear
+exa --color=always
+refresh-dotfiles.sh
+source refresh-dotfiles.sh

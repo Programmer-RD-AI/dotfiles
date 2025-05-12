@@ -1,0 +1,30 @@
+gui:
+  nerdFontsVersion: "3"
+  showFileIcons: true
+  theme:
+    activeBorderColor:
+      - "#00ff00"
+      - bold
+    inactiveBorderColor:
+      - "#ffffff"
+    optionsTextColor:
+      - "#00ff00"
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+
+os:
+  edit: "nvim"
+  open: "xdg-open"
+
+customCommands:
+  - key: "C"
+    context: "files"
+    description: "Create commit with message"
+    prompts:
+      - type: "input"
+        title: "Commit message"
+        key: "message"
+    command: "git commit -m '{{.Form.message}}'"
