@@ -222,7 +222,7 @@ jaraco.classes @ file:///tmp/build/80754af9/jaraco.classes_1620983179379/work
 jedi @ file:///work/ci_py311_2/jedi_1679336495545/work
 jeepney @ file:///tmp/build/80754af9/jeepney_1627537048313/work
 jellyfish @ file:///croot/jellyfish_1695193535278/work
-Jinja2==3.1.2
+Jinja2==3.1.6
 jiter==0.7.1
 jmespath @ file:///croot/jmespath_1700144569655/work
 joblib @ file:///croot/joblib_1718217211762/work
