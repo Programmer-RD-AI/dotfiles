@@ -541,7 +541,7 @@ tokenizers==0.20.3
 toml @ file:///tmp/build/80754af9/toml_1616166611790/work
 tomlkit @ file:///work/ci_py311/tomlkit_1676823218885/work
 toolz @ file:///work/ci_py311/toolz_1676827522705/work
-torch==2.5.1
+torch==2.7.0
 torchaudio==2.5.1
 torchinfo==1.8.0
 torchvision==0.20.1
