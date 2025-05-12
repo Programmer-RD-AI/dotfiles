@@ -1,0 +1,18 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[user]
+	name = Ranuga
+	email = 79456372+Programmer-RD-AI@users.noreply.github.com
+[credential]
+	helper = store
+[core]
+	fsmonitor = true
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  lg = log --oneline --graph --decorate
