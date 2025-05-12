@@ -259,7 +259,7 @@ liac-arff==2.5.0
 libarchive-c @ file:///tmp/build/80754af9/python-libarchive-c_1617780486945/work
 libclang==18.1.1
 libmambapy @ file:///croot/mamba-split_1704219408234/work/libmambapy
-lightgbm==4.3.0
+lightgbm==4.6.0
 linkify-it-py @ file:///work/ci_py311/linkify-it-py_1676837069144/work
 llvmlite @ file:///croot/llvmlite_1706910704562/work
 lmdb @ file:///croot/python-lmdb_1682522346377/work
