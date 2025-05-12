@@ -243,7 +243,7 @@ jupyterlab @ file:///croot/jupyterlab_1706802623017/work
 jupyterlab-pygments @ file:///tmp/build/80754af9/jupyterlab_pygments_1601490720602/work
 jupyterlab_server @ file:///croot/jupyterlab_server_1699555425460/work
 jupyterlab_widgets==3.0.10
-keras==3.3.2
+keras==3.9.0
 keyring @ file:///croot/keyring_1678999217139/work
 kiwisolver @ file:///work/ci_py311/kiwisolver_1676827230232/work
 langchain==0.2.5
