@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: refresh-dotfiles
+        name: Refresh Dotfiles
+        entry: scripts/refresh-dotfiles.sh
+        language: script
+        pass_filenames: false
