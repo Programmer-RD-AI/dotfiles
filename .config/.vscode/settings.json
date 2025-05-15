@@ -1,0 +1,86 @@
+{
+  // — Vim extension basics —
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+
+  // — Neovim integration (if you use vscode-neovim) —
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.vimrc.enable": false, // you can disable loading .vimrc if you prefer pure settings.json
+
+  // — Leader-based Normal-mode mappings —
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Save
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+
+    // Explorer toggle (↔ NvimTreeToggle)
+    {
+      "before": ["<leader>", "e", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<leader>", "e", "f"],
+      "commands": ["workbench.files.action.showActiveFileInExplorer"]
+    },
+
+    // System-clipboard paste
+    { "before": ["<leader>", "p"], "after": ["\"", "*", "p"] },
+    { "before": ["<leader>", "P"], "after": ["\"", "+", "p"] },
+
+    // System-clipboard yank
+    { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
+    { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
+
+    // LazyGit (if you have a LazyGit command/extension)
+    { "before": ["<leader>", "l", "g"], "commands": ["lazygit.open"] },
+
+    // Comment toggle
+    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+
+    // Telescope-style searching
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "g"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "f", "b"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+    {
+      "before": ["<leader>", "f", "h"],
+      "commands": ["workbench.action.showCommands"]
+    }
+  ],
+
+  // — Leader-based Visual-mode mappings —
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // Paste & yank with registers
+    { "before": ["<leader>", "p"], "after": ["\"", "*", "p"] },
+    { "before": ["<leader>", "P"], "after": ["\"", "+", "p"] },
+    { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
+    { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
+
+    // Comment toggle
+    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] }
+  ],
+
+  // — Let VSCode handle these natively (avoid conflicts) —
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-e>": false
+  },
+
+  // — Editor styling to match your Neovim options —
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.autoIndent": "full",
+  "editor.formatOnSave": true
+}
