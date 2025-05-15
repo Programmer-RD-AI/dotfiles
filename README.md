@@ -130,3 +130,32 @@ dotfiles/
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+# General Dotfiles Overview
+
+This repository contains all of your personal configuration files (dotfiles), organized for clarity and easy reference. Each `.config/` subfolder now includes a `README.md` that explains its purpose, key features, and—where relevant—keymaps and shortcuts.
+
+## Quick Reference to Keymaps & Shortcuts
+
+- **Bash**: Add custom keymaps in `bashrc` using `bind` or `bind -x` (see `.config/bash/README.md`).
+- **Neovim**: All keymaps are in `lua/keymaps.lua` (see `.config/nvim/README.md`).
+- **Kitty**: Keymaps in `kitty.conf` (see `.config/kitty/README.md`).
+- **Tmux**: Keymaps in `tmux.conf` (see `.config/tmux/README.md`).
+- **Lazygit**: Custom commands in `config.yml` (see `.config/lazygit/README.md`).
+- **WezTerm**: Keymaps in `wezterm.lua` (see `.config/wezterm/README.md`).
+- **VS Code**: Keymaps set in the UI or `keybindings.json` (see `.config/.vscode/README.md`).
+
+## How to Use
+
+- Each `.config/` folder is self-documented—open its `README.md` for details on usage, keymaps, and customization.
+- For a summary of all available shortcuts, check the relevant `README.md` or config file in each folder.
+
+## Keeping Things Up to Date
+
+- Edit config files directly in this repo.
+- Refer to each folder's `README.md` for tips on adding or updating keymaps and shortcuts.
+- After changes, reload the relevant app (or source the config) to apply updates.
+
+---
+
+**Tip:** Use these READMEs as your quick reference for all your customizations and shortcuts!
