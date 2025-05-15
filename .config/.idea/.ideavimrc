@@ -1,0 +1,37 @@
+" ── Leader & basics ─────────────────────────────────────────────────────────
+let mapleader = " "
+set clipboard=unnamedplus                " sync with system clipboard
+
+" ── Save & close ───────────────────────────────────────────────────────────
+nmap <leader>w :action SaveAll<CR>
+nmap <leader>q :action CloseEditor<CR>
+
+" ── Window (split) navigation ─────────────────────────────────────────────
+nmap <C-h> :action MoveFocusLeft<CR>
+nmap <C-j> :action MoveFocusDown<CR>
+nmap <C-k> :action MoveFocusUp<CR>
+nmap <C-l> :action MoveFocusRight<CR>
+
+" ── Yank & paste (system registers) ───────────────────────────────────────
+nmap <leader>y "*y
+nmap <leader>Y "+y
+nmap <leader>p "*p
+nmap <leader>P "+p
+vnoremap <leader>y "*y
+vnoremap <leader>Y "+y
+vnoremap <leader>p "*p
+vnoremap <leader>P "+p
+
+" ── Project-tool-window explorer ──────────────────────────────────────────
+nmap <leader>ee :action ActivateProjectToolWindow<CR>
+nmap <leader>ef :action SelectInProject<CR>
+
+" ── ‘Telescope’-style searching ───────────────────────────────────────────
+nmap <leader>ff :action GotoFile<CR>
+nmap <leader>fg :action FindInPath<CR>
+nmap <leader>fb :action RecentFiles<CR>
+nmap <leader>fh :action ShowAllActions<CR>
+
+" ── Toggle comment ─────────────────────────────────────────────────────────
+nmap <leader>/ :action CommentByLineComment<CR>
+vnoremap <leader>/ :action CommentByLineComment<CR>
