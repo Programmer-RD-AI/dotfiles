@@ -39,7 +39,12 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
     lazy = false,
     dependencies = {"nvim-tree/nvim-web-devicons"},
     config = function()
-        require("nvim-tree").setup {}
+        require("nvim-tree").setup {
+            view = {
+                side = "right",
+                width = 30
+            }
+        }
     end
 }, {
     'nvim-telescope/telescope.nvim',
@@ -83,8 +88,7 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
     cmd = {"LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile"},
     -- optional for floating window border decoration
     dependencies = {"nvim-lua/plenary.nvim"}
-}, -- Corrected line: changed }} to },
--- Add Comment.nvim plugin
+}, -- Add Comment.nvim plugin
 {
     'numToStr/Comment.nvim',
     opts = {}
@@ -94,7 +98,26 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
     config = function()
         require('lualine').setup {}
     end
-}, {
+}, -- which-key.nvim - helps you remember key bindings
+{
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+    },
+    keys = {{
+        "<leader>?",
+        function()
+            require("which-key").show({
+                global = false
+            })
+        end,
+        desc = "Buffer Local Keymaps (which-key)"
+    }}
+}, -- Treesitter and related plugins
+{
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
     config = function()
@@ -106,7 +129,93 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
             highlight = {
                 enable = true,
                 additional_vim_regex_highlighting = false
+            },
+            indent = {
+                enable = true
             }
         }
+    end
+}, -- nvim-treesitter-context - keeps current scope info pinned at the top of the window
+{
+    'nvim-treesitter/nvim-treesitter-context',
+    opts = {
+        enable = true,
+        max_lines = 4
+    }
+}, -- log-highlight.nvim - adds syntax highlighting for log files
+{
+    'fei6409/log-highlight.nvim',
+    config = function()
+        require('log-highlight').setup {}
+    end
+}, -- nvim-colorizer.lua - adds inline color previews
+{
+    'NvChad/nvim-colorizer.lua',
+    event = 'BufReadPre',
+    opts = {
+        filetypes = {'*'},
+        user_default_options = {
+            RGB = true,
+            RRGGBB = true,
+            names = true,
+            RRGGBBAA = false,
+            css = true,
+            css_fn = true
+        }
+    }
+}, -- document-color.nvim - uses LSP's color provider
+{
+    'mrshmllow/document-color.nvim',
+    ft = {'css', 'scss', 'html', 'javascript', 'typescript'},
+    config = function()
+        require('document-color').setup {
+            mode = 'single'
+        }
+    end
+}, -- nvim-treesitter-refactor - enhances TS with refactoring queries
+{
+    'nvim-treesitter/nvim-treesitter-refactor',
+    dependencies = {'nvim-treesitter/nvim-treesitter'},
+    config = function()
+        require('nvim-treesitter.configs').setup {
+            refactor = {
+                highlight_definitions = {
+                    enable = true
+                }
+            }
+        }
+    end
+}, -- toggleterm.nvim - better terminal integration
+{
+    "akinsho/toggleterm.nvim",
+    opts = {
+        size = 20,
+        open_mapping = [[<c-\>]],
+        direction = "float"
+    }
+}, -- nvim-tmux-navigation - seamless navigation between tmux panes and vim splits
+{
+    "alexghergh/nvim-tmux-navigation",
+    config = function()
+        require("nvim-tmux-navigation").setup {
+            disable_when_zoomed = true, -- skip tmux navigation if the pane is zoomed
+            keybindings = {
+                left = "<C-h>",
+                down = "<C-j>",
+                up = "<C-k>",
+                right = "<C-l>",
+                last_active = "<C-\\>",
+                next = "<C-Space>"
+            }
+        }
+
+        -- Set up keymaps
+        local nav = require("nvim-tmux-navigation")
+        vim.keymap.set('n', '<C-h>', nav.NvimTmuxNavigateLeft)
+        vim.keymap.set('n', '<C-j>', nav.NvimTmuxNavigateDown)
+        vim.keymap.set('n', '<C-k>', nav.NvimTmuxNavigateUp)
+        vim.keymap.set('n', '<C-l>', nav.NvimTmuxNavigateRight)
+        vim.keymap.set('n', '<C-\\>', nav.NvimTmuxNavigateLastActive)
+        vim.keymap.set('n', '<C-Space>', nav.NvimTmuxNavigateNext)
     end
 }})
