@@ -283,6 +283,157 @@ extract() {
     done
 }
 
+# ────────────────────────── Audio Transcription ────────────────────────────
+transcribe_audio() {
+    local input_file=""
+    local model="medium"
+    local language="en"
+    local task="transcribe"
+    local output_format="txt"
+    local show_help=false
+
+    # Parse command line arguments
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+        -i | --input)
+            input_file="$2"
+            shift 2
+            ;;
+        -m | --model)
+            model="$2"
+            shift 2
+            ;;
+        -l | --language)
+            language="$2"
+            shift 2
+            ;;
+        -t | --task)
+            task="$2"
+            shift 2
+            ;;
+        -f | --format)
+            output_format="$2"
+            shift 2
+            ;;
+        -h | --help)
+            show_help=true
+            shift
+            ;;
+        *)
+            if [[ -z "$input_file" ]]; then
+                input_file="$1"
+            fi
+            shift
+            ;;
+        esac
+    done
+
+    # Show help if requested
+    if [[ "$show_help" == true ]]; then
+        echo "Usage: transcribe_audio [OPTIONS] INPUT_FILE"
+        echo ""
+        echo "Transcribe audio files using FFmpeg and Whisper"
+        echo ""
+        echo "Options:"
+        echo "  -i, --input FILE     Input audio file (required)"
+        echo "  -m, --model MODEL    Whisper model (tiny, base, small, medium, large)"
+        echo "                       Default: medium"
+        echo "  -l, --language LANG  Language code (en, es, fr, de, etc.)"
+        echo "                       Default: en"
+        echo "  -t, --task TASK      Task type (transcribe, translate)"
+        echo "                       Default: transcribe"
+        echo "  -f, --format FORMAT  Output format (txt, json, srt, vtt, tsv)"
+        echo "                       Default: txt"
+        echo "  -h, --help           Show this help message"
+        echo ""
+        echo "Examples:"
+        echo "  transcribe_audio audio.ogg"
+        echo "  transcribe_audio -m large -l es audio.mp3"
+        echo "  transcribe_audio --model base --format srt audio.wav"
+        return 0
+    fi
+
+    # Check if input file is provided
+    if [[ -z "$input_file" ]]; then
+        echo "Error: Input file is required"
+        echo "Use 'transcribe_audio --help' for usage information"
+        return 1
+    fi
+
+    # Check if input file exists
+    if [[ ! -f "$input_file" ]]; then
+        echo "Error: Input file '$input_file' not found"
+        return 1
+    fi
+
+    # Check if required tools are available
+    if ! command -v ffmpeg &>/dev/null; then
+        echo "Error: ffmpeg is not installed"
+        echo "Install with: sudo apt install ffmpeg"
+        return 1
+    fi
+
+    if ! command -v whisper &>/dev/null; then
+        echo "Error: whisper is not installed"
+        echo "Install with: pip install openai-whisper"
+        return 1
+    fi
+
+    # Create temporary directory
+    local temp_dir=$(mktemp -d)
+    local temp_audio="$temp_dir/audio.wav"
+    local temp_output="$temp_dir/audio"
+
+    echo "Processing audio file: $input_file"
+    echo "Model: $model | Language: $language | Task: $task | Format: $output_format"
+    echo ""
+
+    # Convert audio to the format expected by Whisper
+    echo "Converting audio format..."
+    if ! ffmpeg -i "$input_file" -ar 16000 -ac 1 "$temp_audio" -loglevel error; then
+        echo "Error: Failed to convert audio file"
+        rm -rf "$temp_dir"
+        return 1
+    fi
+
+    echo "Transcribing audio..."
+    # Run Whisper transcription
+    if ! whisper "$temp_audio" \
+        --model "$model" \
+        --language "$language" \
+        --task "$task" \
+        --output_format "$output_format" \
+        --output_dir "$temp_dir"; then
+        echo "Error: Whisper transcription failed"
+        rm -rf "$temp_dir"
+        return 1
+    fi
+
+    # Display the result
+    echo ""
+    echo "Transcription result:"
+    echo "────────────────────────────────────────"
+
+    local result_file="$temp_output.$output_format"
+    if [[ -f "$result_file" ]]; then
+        cat "$result_file"
+    else
+        echo "Error: Output file not found"
+        rm -rf "$temp_dir"
+        return 1
+    fi
+
+    echo ""
+    echo "────────────────────────────────────────"
+
+    # Cleanup
+    rm -rf "$temp_dir"
+    echo "Temporary files cleaned up"
+}
+
+# Alias for convenience
+alias transcribe='transcribe_audio'
+
 # ────────────────────────── Completions ────────────────────────────
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 [[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
@@ -319,3 +470,11 @@ export NVM_DIR="$HOME/.nvm"
 # ────────────────────────── Launchers ──────────────────────────────
 
 show_system_info
+
+# pnpm
+export PNPM_HOME="/home/ranuga/snap/code/194/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
