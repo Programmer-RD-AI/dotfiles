@@ -448,7 +448,7 @@ RapidFuzz==3.10.1
 readme_renderer==43.0
 referencing @ file:///croot/referencing_1699012038513/work
 regex @ file:///croot/regex_1696515298636/work
-requests==2.28.1
+requests==2.32.4
 requests-file @ file:///Users/ktietz/demo/mc3/conda-bld/requests-file_1629455781986/work
 requests-toolbelt @ file:///croot/requests-toolbelt_1690874004362/work
 rfc3339-validator @ file:///croot/rfc3339-validator_1683077044675/work
