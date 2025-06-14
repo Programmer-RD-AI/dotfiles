@@ -1,18 +1,50 @@
-" ── Leader & basics ─────────────────────────────────────────────────────────
+" ═══════════════════════════════════════════════════════════════════════════
+" Leader & Basic Configuration
+" ═══════════════════════════════════════════════════════════════════════════
 let mapleader = " "
 set clipboard=unnamedplus                " sync with system clipboard
+set number                               " show line numbers
+set relativenumber                       " show relative line numbers
 
-" ── Save & close ───────────────────────────────────────────────────────────
+" ═══════════════════════════════════════════════════════════════════════════
+" Basic File Operations
+" ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>w :action SaveAll<CR>
 nmap <leader>q :action CloseEditor<CR>
 
-" ── Window (split) navigation ─────────────────────────────────────────────
+" ═══════════════════════════════════════════════════════════════════════════
+" Split Window Management
+" ═══════════════════════════════════════════════════════════════════════════
+" Create splits
+nmap <leader>sv :action SplitVertically<CR>
+nmap <leader>sh :action SplitHorizontally<CR>
+nmap <leader>sx :action Unsplit<CR>
+nmap <leader>se :action ChangeSplitOrientation<CR>
+
+" Navigate splits
 nmap <C-h> :action MoveFocusLeft<CR>
 nmap <C-j> :action MoveFocusDown<CR>
 nmap <C-k> :action MoveFocusUp<CR>
 nmap <C-l> :action MoveFocusRight<CR>
 
-" ── Yank & paste (system registers) ───────────────────────────────────────
+" Resize splits
+nmap <leader>+ :action StretchSplitToTop<CR>
+nmap <leader>- :action StretchSplitToBottom<CR>
+nmap <leader>> :action StretchSplitToRight<CR>
+nmap <leader>< :action StretchSplitToLeft<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" Tab Management
+" ═══════════════════════════════════════════════════════════════════════════
+nmap <leader>to :action NewFile<CR>
+nmap <leader>tx :action CloseContent<CR>
+nmap <leader>tn :action NextTab<CR>
+nmap <leader>tp :action PreviousTab<CR>
+nmap <leader>tf :action MoveTabRight<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" System Clipboard Integration
+" ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>y "*y
 nmap <leader>Y "+y
 nmap <leader>p "*p
@@ -22,16 +54,77 @@ vnoremap <leader>Y "+y
 vnoremap <leader>p "*p
 vnoremap <leader>P "+p
 
-" ── Project-tool-window explorer ──────────────────────────────────────────
+" ═══════════════════════════════════════════════════════════════════════════
+" File Explorer (Project Tool Window)
+" ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>ee :action ActivateProjectToolWindow<CR>
 nmap <leader>ef :action SelectInProject<CR>
 
-" ── ‘Telescope’-style searching ───────────────────────────────────────────
+" ═══════════════════════════════════════════════════════════════════════════
+" Fuzzy Finding & Search (Telescope-style)
+" ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>ff :action GotoFile<CR>
 nmap <leader>fg :action FindInPath<CR>
 nmap <leader>fb :action RecentFiles<CR>
 nmap <leader>fh :action ShowAllActions<CR>
 
-" ── Toggle comment ─────────────────────────────────────────────────────────
+" LSP-style search
+nmap <leader>fd :action GotoDeclaration<CR>
+nmap <leader>fr :action FindUsages<CR>
+nmap <leader>fi :action GotoImplementation<CR>
+nmap <leader>fs :action FileStructurePopup<CR>
+nmap <leader>fS :action GotoSymbol<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" LSP-style Navigation
+" ═══════════════════════════════════════════════════════════════════════════
+" Core navigation
+nmap gd :action GotoDeclaration<CR>
+nmap gD :action GotoTypeDeclaration<CR>
+nmap gi :action GotoImplementation<CR>
+nmap gr :action FindUsages<CR>
+nmap K :action QuickJavaDoc<CR>
+
+" Diagnostics
+nmap <space>e :action ShowErrorDescription<CR>
+nmap [d :action GotoPreviousError<CR>
+nmap ]d :action GotoNextError<CR>
+nmap <space>q :action ActivateProblemsViewToolWindow<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" Refactoring & Code Actions
+" ═══════════════════════════════════════════════════════════════════════════
+nmap <space>rn :action RenameElement<CR>
+nmap <space>ca :action ShowIntentionActions<CR>
+nmap <space>f :action ReformatCode<CR>
+nmap <space>D :action GotoTypeDeclaration<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" Comments
+" ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>/ :action CommentByLineComment<CR>
 vnoremap <leader>/ :action CommentByLineComment<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" Git Integration
+" ═══════════════════════════════════════════════════════════════════════════
+nmap <leader>lg :action ActivateVersionControlToolWindow<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" Terminal Integration
+" ═══════════════════════════════════════════════════════════════════════════
+nmap <C-\> :action ActivateTerminalToolWindow<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" Additional IDE Features
+" ═══════════════════════════════════════════════════════════════════════════
+" Run configurations
+nmap <leader>rr :action Run<CR>
+nmap <leader>rd :action Debug<CR>
+nmap <leader>rs :action Stop<CR>
+
+" Database
+nmap <leader>db :action ActivateDatabaseToolWindow<CR>
+
+" Debugging
+nmap <leader>bp :action ToggleLineBreakpoint<CR>

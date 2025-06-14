@@ -1,23 +1,25 @@
 {
-  // — Vim extension basics —
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Vim Extension Configuration
+  // ═══════════════════════════════════════════════════════════════════════════
   "vim.leader": "<space>",
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
-
-  // — Neovim integration (if you use vscode-neovim) —
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
-  "vim.vimrc.enable": false, // you can disable loading .vimrc if you prefer pure settings.json
+  "vim.vimrc.enable": false,
 
-  // — Leader-based Normal-mode mappings —
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Normal Mode Keybindings
+  // ═══════════════════════════════════════════════════════════════════════════
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Save
+    // Basic file operations
     {
       "before": ["<leader>", "w"],
       "commands": ["workbench.action.files.save"]
     },
 
-    // Explorer toggle (↔ NvimTreeToggle)
+    // File explorer (matching nvim-tree keybinds)
     {
       "before": ["<leader>", "e", "e"],
       "commands": ["workbench.view.explorer"]
@@ -27,19 +29,87 @@
       "commands": ["workbench.files.action.showActiveFileInExplorer"]
     },
 
-    // System-clipboard paste
+    // Split window management
+    {
+      "before": ["<leader>", "s", "v"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<leader>", "s", "h"],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    {
+      "before": ["<leader>", "s", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "s", "e"],
+      "commands": ["workbench.action.evenEditorWidths"]
+    },
+
+    // Harpoon-style file marking (using VS Code's pinned tabs)
+    {
+      "before": ["<leader>", "h", "a"],
+      "commands": ["workbench.action.pinEditor"]
+    },
+    {
+      "before": ["<leader>", "h", "h"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+    {
+      "before": ["<leader>", "h", "1"],
+      "commands": ["workbench.action.openEditorAtIndex1"]
+    },
+    {
+      "before": ["<leader>", "h", "2"],
+      "commands": ["workbench.action.openEditorAtIndex2"]
+    },
+    {
+      "before": ["<leader>", "h", "3"],
+      "commands": ["workbench.action.openEditorAtIndex3"]
+    },
+    {
+      "before": ["<leader>", "h", "4"],
+      "commands": ["workbench.action.openEditorAtIndex4"]
+    },
+    {
+      "before": ["<leader>", "h", "p"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "h", "n"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+
+    // Tab management
+    {
+      "before": ["<leader>", "t", "o"],
+      "commands": ["workbench.action.files.newUntitledFile"]
+    },
+    {
+      "before": ["<leader>", "t", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "t", "n"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<leader>", "t", "p"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+
+    // System clipboard
     { "before": ["<leader>", "p"], "after": ["\"", "*", "p"] },
     { "before": ["<leader>", "P"], "after": ["\"", "+", "p"] },
-
-    // System-clipboard yank
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
-    // LazyGit (if you have a LazyGit command/extension)
-    { "before": ["<leader>", "l", "g"], "commands": ["lazygit.open"] },
-
-    // Comment toggle
+    // Comments
     { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+
+    // Git integration
+    { "before": ["<leader>", "l", "g"], "commands": ["workbench.view.scm"] },
 
     // Telescope-style searching
     {
@@ -57,30 +127,174 @@
     {
       "before": ["<leader>", "f", "h"],
       "commands": ["workbench.action.showCommands"]
+    },
+
+    // LSP-style navigation
+    {
+      "before": ["<leader>", "f", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", "f", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["<leader>", "f", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["<leader>", "f", "s"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["<leader>", "f", "S"],
+      "commands": ["workbench.action.showAllSymbols"]
+    },
+
+    // LSP actions (matching Neovim)
+    { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"] },
+    { "before": ["g", "D"], "commands": ["editor.action.revealDeclaration"] },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
+    { "before": ["K"], "commands": ["editor.action.showHover"] },
+
+    // Diagnostics navigation (matching Neovim)
+    {
+      "before": ["<space>", "e"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prevInFiles"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.nextInFiles"]
+    },
+    {
+      "before": ["<space>", "q"],
+      "commands": ["workbench.actions.view.problems"]
+    },
+
+    // Terminal integration
+    {
+      "before": ["<C-\\>"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+
+    // Which-key style helper
+    {
+      "before": ["<leader>", "?"],
+      "commands": ["workbench.action.showCommands"]
+    },
+
+    // Improved Harpoon-style navigation
+    {
+      "before": ["<leader>", "h", "x"],
+      "commands": ["workbench.action.unpinEditor"]
+    },
+
+    // Additional LSP features
+    {
+      "before": ["<space>", "D"],
+      "commands": ["editor.action.goToTypeDefinition"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["editor.action.triggerParameterHints"]
+    },
+
+    // Workspace management
+    {
+      "before": ["<space>", "w", "a"],
+      "commands": ["workbench.action.addRootFolder"]
+    },
+
+    // Additional split window resize bindings
+    {
+      "before": ["<leader>", "+"],
+      "commands": ["workbench.action.increaseViewHeight"]
+    },
+    {
+      "before": ["<leader>", "-"],
+      "commands": ["workbench.action.decreaseViewHeight"]
+    },
+    {
+      "before": ["<leader>", ">"],
+      "commands": ["workbench.action.increaseViewWidth"]
+    },
+    {
+      "before": ["<leader>", "<"],
+      "commands": ["workbench.action.decreaseViewWidth"]
     }
   ],
 
-  // — Leader-based Visual-mode mappings —
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Visual Mode Keybindings
+  // ═══════════════════════════════════════════════════════════════════════════
   "vim.visualModeKeyBindingsNonRecursive": [
-    // Paste & yank with registers
+    // System clipboard
     { "before": ["<leader>", "p"], "after": ["\"", "*", "p"] },
     { "before": ["<leader>", "P"], "after": ["\"", "+", "p"] },
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
-    // Comment toggle
-    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] }
+    // Comments
+    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+
+    // Formatting
+    {
+      "before": ["<space>", "f"],
+      "commands": ["editor.action.formatSelection"]
+    }
   ],
 
-  // — Let VSCode handle these natively (avoid conflicts) —
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Key Handling (let VSCode handle these, removed conflicts)
+  // ═══════════════════════════════════════════════════════════════════════════
   "vim.handleKeys": {
     "<C-a>": false,
-    "<C-e>": false
+    "<C-e>": false,
+    "<C-f>": false,
+    "<C-v>": false,
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true,
+    "<C-\\>": false
   },
 
-  // — Editor styling to match your Neovim options —
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Editor Settings (matching Neovim configuration)
+  // ═══════════════════════════════════════════════════════════════════════════
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.autoIndent": "full",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "on",
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": true,
+  "editor.fontSize": 12,
+  "editor.fontFamily": "'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Terminal and Integrated Features
+  // ═══════════════════════════════════════════════════════════════════════════
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontFamily": "'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Language-specific Settings
+  // ═══════════════════════════════════════════════════════════════════════════
+  "python.defaultInterpreterPath": "python3",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pycodestyleEnabled": true,
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Appearance
+  // ═══════════════════════════════════════════════════════════════════════════
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.iconTheme": "vs-seti"
 }

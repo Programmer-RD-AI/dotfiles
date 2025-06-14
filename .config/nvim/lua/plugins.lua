@@ -218,4 +218,23 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
         vim.keymap.set('n', '<C-\\>', nav.NvimTmuxNavigateLastActive)
         vim.keymap.set('n', '<C-Space>', nav.NvimTmuxNavigateNext)
     end
+}, -- Harpoon - quick file navigation and marking
+{
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = {"nvim-lua/plenary.nvim"},
+    config = function()
+        local harpoon = require("harpoon")
+        harpoon:setup({
+            settings = {
+                save_on_toggle = true,
+                sync_on_ui_close = true,
+                save_on_change = true,
+                enter_on_sendcmd = false,
+                tmux_autoclose_windows = false,
+                excluded_filetypes = {"harpoon", "alpha", "dashboard", "gitcommit"},
+                mark_branch = false
+            }
+        })
+    end
 }})

@@ -10,7 +10,7 @@ require('mason').setup({
 
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = {'pylsp', 'lua_ls', 'rust_analyzer'}
+    ensure_installed = {'pyright', 'lua_ls', 'rust_analyzer', 'tsserver', 'gopls'}
 })
 
 -- Set different settings for different languages' LSP
@@ -43,20 +43,26 @@ local on_attach = function(client, bufnr)
         silent = true,
         buffer = bufnr
     }
+
+    -- Core navigation keymaps
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+
+    -- Workspace management
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
+
+    -- Type and refactoring
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<space>f", function()
         vim.lsp.buf.format({
             async = true
@@ -68,10 +74,32 @@ end
 -- How to add LSP for a specific language?
 -- 1. use `:Mason` to install corresponding LSP
 -- 2. add configuration below
-lspconfig.pylsp.setup({
+
+-- Python with pyright (better than pylsp for most use cases)
+lspconfig.pyright.setup({
+    on_attach = on_attach,
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "basic"
+            }
+        }
+    }
+})
+
+-- TypeScript/JavaScript
+lspconfig.tsserver.setup({
     on_attach = on_attach
 })
 
+-- Go
+lspconfig.gopls.setup({
+    on_attach = on_attach
+})
+
+-- Rust
 lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
     settings = {
@@ -79,6 +107,27 @@ lspconfig.rust_analyzer.setup({
             -- Enable clippy diagnostics
             checkOnSave = {
                 command = "clippy"
+            }
+        }
+    }
+})
+
+-- Lua
+lspconfig.lua_ls.setup({
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT'
+            },
+            diagnostics = {
+                globals = {'vim'}
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true)
+            },
+            telemetry = {
+                enable = false
             }
         }
     }
