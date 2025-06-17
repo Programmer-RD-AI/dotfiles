@@ -366,7 +366,7 @@ prometheus-client @ file:///work/ci_py311_2/prometheus_client_1679340520168/work
 prompt-toolkit @ file:///croot/prompt-toolkit_1704404351921/work
 Protego @ file:///tmp/build/80754af9/protego_1598657180827/work
 proto-plus==1.23.0
-protobuf==4.25.3
+protobuf==4.25.8
 psutil @ file:///work/ci_py311_2/psutil_1679337388738/work
 psycopg2==2.9.10
 ptyprocess @ file:///tmp/build/80754af9/ptyprocess_1609355006118/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
