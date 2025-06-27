@@ -4,6 +4,7 @@
   "copilot.vim": { "branch": "release", "commit": "18f485d892b56b311fd752039d6977333ebc2a0f" },
   "document-color.nvim": { "branch": "main", "commit": "74c487f0e5accfaae033755451b9e367220693fd" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
+  "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazygit.nvim": { "branch": "main", "commit": "b9eae3badab982e71abab96d3ee1d258f0c07961" },
   "log-highlight.nvim": { "branch": "main", "commit": "ad14bf52ef93d83a625ab22a1ed94405bcacbcf7" },

@@ -106,11 +106,46 @@ vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<cr>', {
 })
 
 -- ═══════════════════════════════════════════════════════════════════════════
+-- Search & Find
+-- ═══════════════════════════════════════════════════════════════════════════
+-- Enhanced search functionality (like Ctrl+F in browsers/editors)
+vim.keymap.set('n', '<leader>/', function()
+    vim.ui.input({
+        prompt = "Search: "
+    }, function(input)
+        if input and input ~= "" then
+            -- Enable search highlighting for this search
+            vim.opt.hlsearch = true
+            -- Perform the search
+            local ok, _ = pcall(vim.fn.search, input)
+            if not ok then
+                print("Pattern not found: " .. input)
+            end
+        end
+    end)
+end, {
+    desc = 'Search within current file (enhanced Ctrl+F)'
+})
+
+-- Traditional search (fallback)
+vim.keymap.set('n', '<C-f>', function()
+    vim.opt.hlsearch = true
+    vim.cmd('normal! /')
+end, {
+    desc = 'Search within current file (traditional)'
+})
+
+-- Clear search highlighting
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', {
+    desc = 'Clear search highlighting'
+})
+
+-- ═══════════════════════════════════════════════════════════════════════════
 -- Comments
 -- ═══════════════════════════════════════════════════════════════════════════
 require('Comment').setup()
 
-vim.keymap.set('n', '<leader>/', function()
+vim.keymap.set('n', '<leader>cc', function()
     require('Comment.api').toggle.linewise.current()
 end, {
     noremap = true,
@@ -118,7 +153,7 @@ end, {
     desc = 'Toggle comment on current line'
 })
 
-vim.keymap.set('v', '<leader>/', function()
+vim.keymap.set('v', '<leader>cc', function()
     require('Comment.api').toggle.linewise(vim.fn.visualmode())
 end, {
     noremap = true,
@@ -212,4 +247,24 @@ vim.keymap.set('n', '<leader>fS', function()
     require('telescope.builtin').lsp_workspace_symbols()
 end, {
     desc = 'Find workspace symbols'
+})
+
+-- ═══════════════════════════════════════════════════════════════════════════
+-- Terminal Integration
+-- ═══════════════════════════════════════════════════════════════════════════
+vim.keymap.set('n', '<C-\\>', '<cmd>ToggleTerm direction=float<CR>', {
+    desc = 'Toggle floating terminal'
+})
+
+vim.keymap.set('t', '<C-\\>', '<C-\\><C-n><cmd>ToggleTerm<CR>', {
+    desc = 'Toggle floating terminal from terminal mode'
+})
+
+-- Alternative terminal mappings in case the backslash doesn't work
+vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm direction=float<CR>', {
+    desc = 'Toggle floating terminal (alternative)'
+})
+
+vim.keymap.set('t', '<leader>tt', '<C-\\><C-n><cmd>ToggleTerm<CR>', {
+    desc = 'Toggle floating terminal from terminal mode (alternative)'
 })

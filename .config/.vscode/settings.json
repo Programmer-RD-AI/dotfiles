@@ -105,8 +105,14 @@
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
+    // Search within file
+    { "before": ["<leader>", "/"], "commands": ["actions.find"] },
+
     // Comments
-    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+    {
+      "before": ["<leader>", "c", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
 
     // Git integration
     { "before": ["<leader>", "l", "g"], "commands": ["workbench.view.scm"] },
@@ -181,6 +187,10 @@
       "before": ["<C-\\>"],
       "commands": ["workbench.action.terminal.toggleTerminal"]
     },
+    {
+      "before": ["<leader>", "t", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
 
     // Which-key style helper
     {
@@ -240,7 +250,10 @@
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
     // Comments
-    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+    {
+      "before": ["<leader>", "c", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
 
     // Formatting
     {
@@ -261,7 +274,7 @@
     "<C-j>": true,
     "<C-k>": true,
     "<C-l>": true,
-    "<C-\\>": false
+    "<C-\\>": true
   },
 
   // ═══════════════════════════════════════════════════════════════════════════

@@ -100,10 +100,15 @@ nmap <space>f :action ReformatCode<CR>
 nmap <space>D :action GotoTypeDeclaration<CR>
 
 " ═══════════════════════════════════════════════════════════════════════════
+" Search & Find
+" ═══════════════════════════════════════════════════════════════════════════
+nmap <leader>/ :action Find<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
 " Comments
 " ═══════════════════════════════════════════════════════════════════════════
-nmap <leader>/ :action CommentByLineComment<CR>
-vnoremap <leader>/ :action CommentByLineComment<CR>
+nmap <leader>cc :action CommentByLineComment<CR>
+vnoremap <leader>cc :action CommentByLineComment<CR>
 
 " ═══════════════════════════════════════════════════════════════════════════
 " Git Integration
@@ -114,6 +119,11 @@ nmap <leader>lg :action ActivateVersionControlToolWindow<CR>
 " Terminal Integration
 " ═══════════════════════════════════════════════════════════════════════════
 nmap <C-\> :action ActivateTerminalToolWindow<CR>
+imap <C-\> <Esc>:action ActivateTerminalToolWindow<CR>
+
+" Alternative terminal mapping
+nmap <leader>tt :action ActivateTerminalToolWindow<CR>
+imap <leader>tt <Esc>:action ActivateTerminalToolWindow<CR>
 
 " ═══════════════════════════════════════════════════════════════════════════
 " Additional IDE Features
