@@ -48,6 +48,7 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
     end
 }, {
     'nvim-telescope/telescope.nvim',
+    tag = '0.1.8', -- Use a stable version
     dependencies = {'nvim-lua/plenary.nvim'},
     config = function()
         require('telescope').setup {}
@@ -88,10 +89,12 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
     cmd = {"LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile"},
     -- optional for floating window border decoration
     dependencies = {"nvim-lua/plenary.nvim"}
-}, -- Add Comment.nvim plugin
+}, -- Comment.nvim plugin for easy commenting
 {
     'numToStr/Comment.nvim',
-    opts = {}
+    config = function()
+        require('Comment').setup()
+    end
 }, {
     'nvim-lualine/lualine.nvim',
     dependencies = {'nvim-tree/nvim-web-devicons'},

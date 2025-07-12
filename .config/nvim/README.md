@@ -24,45 +24,81 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 - Improved completion menu (`completeopt={'menu', 'menuone', 'noselect'}`)
 - Local leader set to comma (`,`)
 
-## Complete Keymap Reference
+## Complete Keymap Reference 📋
 
 **Leader Key**: `<space>` (spacebar)
 
-### Basic File Operations
+### ⚡ Quick Reference Table
 
-- `<leader>w` — Save file
+| Category     | Mapping      | Action           | Description                              |
+| ------------ | ------------ | ---------------- | ---------------------------------------- |
+| **Basic**    | `<leader>w`  | Save             | Save current file                        |
+| **Search**   | `<leader>/`  | Find in file     | Search within current file (like Ctrl+F) |
+| **Search**   | `<leader>cc` | Find in file     | Enhanced fuzzy search within current file |
+| **Search**   | `<C-f>`      | Find in file     | Alternative search within file           |
+| **Explorer** | `<leader>ee` | Toggle explorer  | Toggle file explorer                     |
+| **Explorer** | `<leader>ef` | Find in explorer | Toggle explorer focused on current file  |
+| **Terminal** | `<C-\>`      | Terminal         | Toggle floating terminal                 |
+| **Terminal** | `<leader>tt` | Terminal         | Alternative floating terminal toggle     |
+| **Git**      | `<leader>lg` | LazyGit          | Open LazyGit interface                   |
+| **Help**     | `<leader>?`  | Which-key        | Show buffer-local keymaps guide          |
 
-### File Explorer (nvim-tree)
+### 📁 File & Project Navigation
+
+#### File Explorer (nvim-tree)
 
 - `<leader>ee` — Toggle file explorer
 - `<leader>ef` — Toggle file explorer focused on current file
 
-### Split Window Management
+#### Telescope (Fuzzy Finder)
 
-**Creating Splits:**
+- `<leader>ff` — Find files
+- `<leader>fg` — Live grep (search in all files)
+- `<leader>fb` — List open buffers
+- `<leader>fh` — Find help tags
+
+#### Harpoon (Quick File Marking)
+
+- `<leader>ha` — Add current file to harpoon
+- `<leader>hh` — Toggle harpoon quick menu
+- `<leader>h1` to `<leader>h4` — Jump to harpoon files 1-4
+- `<leader>hp` — Previous harpoon file
+- `<leader>hn` — Next harpoon file
+
+### 🔍 Search & Find
+
+- `<leader>cc` — Fuzzy search within current file (enhanced search)
+- `<leader>/` — Search within current file (enhanced Ctrl+F)
+- `<C-f>` — Alternative search within current file
+- `<leader>ff` — Find files (Telescope)
+- `<leader>fg` — Find in files / Live grep (Telescope)
+- `<leader>fb` — Find buffers (Telescope)
+- `<leader>fh` — Find help tags (Telescope)
+
+### 🪟 Window & Split Management
+
+#### Creating & Managing Splits
 
 - `<leader>sv` — Split window vertically
 - `<leader>sh` — Split window horizontally
 - `<leader>se` — Make splits equal size
 - `<leader>sx` — Close current split
 
-**Navigating Splits:**
+#### Navigating Splits (works with tmux!)
 
 - `<C-h>` — Move to left split
 - `<C-j>` — Move to bottom split
 - `<C-k>` — Move to top split
 - `<C-l>` — Move to right split
 
-_Note: These work seamlessly with tmux panes via nvim-tmux-navigation plugin. The plugin handles both Neovim splits and tmux panes automatically._
-
-**Resizing Splits:**
+#### Resizing Splits
 
 - `<leader>+` — Increase split height
 - `<leader>-` — Decrease split height
 - `<leader>>` — Increase split width
 - `<leader><` — Decrease split width
 
-### Tab Management
+### 📑 Tab Management
 
 - `<leader>to` — Open new tab
 - `<leader>tx` — Close current tab
@@ -70,31 +106,55 @@ _Note: These work seamlessly with tmux panes via nvim-tmux-navigation plugin. Th
 - `<leader>tp` — Go to previous tab
 - `<leader>tf` — Open current buffer in new tab
 
-### System Clipboard Integration
+### 📋 System Clipboard Integration
 
 - `<leader>y` — Copy to system clipboard
 - `<leader>Y` — Copy to system clipboard (alternative)
 - `<leader>p` — Paste from system clipboard
 - `<leader>P` — Paste from system clipboard (alternative)
 
-### Comments
+### 💬 Comments
 
-- `<leader>/` — Toggle comment (works in normal and visual mode)
+- `<leader>gc` — Toggle comment (works in normal and visual mode)
 
-### Git Integration
+### 🔍 Enhanced Search
 
-- `<leader>lg` — Open LazyGit
+- `<leader>cc` — Fuzzy search within current file (enhanced file search)
+- `<leader>/` — Traditional search within current file
+- `<C-f>` — Alternative search within current file
 
-### Telescope (Fuzzy Finder)
+### 🔧 LSP (Code Intelligence)
 
-**File Operations:**
+#### Navigation
 
-- `<leader>ff` — Find files
-- `<leader>fg` — Live grep (search file content)
-- `<leader>fb` — List buffers
-- `<leader>fh` — Find help tags
+- `gd` — Go to definition
+- `gD` — Go to declaration
+- `gi` — Go to implementation
+- `gr` — Show references
+- `K` — Show hover documentation
+- `<C-k>` — Show signature help
 
-**LSP Integration:**
+#### Diagnostics & Errors
+
+- `<space>e` — Show diagnostics in floating window
+- `[d` — Go to previous diagnostic
+- `]d` — Go to next diagnostic
+- `<space>q` — Show diagnostics in location list
+
+#### Refactoring & Code Actions
+
+- `<space>rn` — Rename symbol
+- `<space>ca` — Code actions (auto-import, quick fixes)
+- `<space>f` — Format code
+- `<space>D` — Go to type definition
+
+#### Workspace Management
+
+- `<space>wa` — Add workspace folder
+- `<space>wr` — Remove workspace folder
+- `<space>wl` — List workspace folders
+
+#### Telescope LSP Integration
 
 - `<leader>fd` — Find LSP definitions
 - `<leader>fr` — Find LSP references
@@ -102,13 +162,39 @@ _Note: These work seamlessly with tmux panes via nvim-tmux-navigation plugin. Th
 - `<leader>fs` — Find document symbols
 - `<leader>fS` — Find workspace symbols
 
-### Terminal Integration
+### 🖥️ Terminal Integration
 
 - `<C-\>` — Toggle floating terminal
+- `<leader>tt` — Alternative floating terminal toggle
+- (In terminal) `<C-\>` — Exit terminal mode and close terminal
+- (In terminal) `<leader>tt` — Alternative exit terminal mode
 
-### Which-Key Helper
+### 🔀 Git Integration
 
-- `<leader>?` — Show buffer-local keymaps (interactive guide)
+- `<leader>lg` — Open LazyGit interface
+
+### ❓ Help & Discovery
+
+- `<leader>?` — Show buffer-local keymaps (which-key guide)
+- Most leader sequences will show helpful popups after a brief delay
+
+---
+
+## 🎯 Pro Tips for Efficiency
+
+**Navigation Workflow:**
+
+1. Use Harpoon (`<leader>ha`, `<leader>h1-4`) for your 4 most important files
+2. Use Telescope (`<leader>ff`, `<leader>fg`) for broader file exploration
+3. Use LSP navigation (`gd`, `gr`) for code jumping
+4. Use `<C-o>` and `<C-i>` to navigate jump history
+
+**Multi-file Editing:**
+
+1. Open splits with `<leader>sv/sh`
+2. Navigate with `<C-h/j/k/l>` (works with tmux!)
+3. Use floating terminal `<C-\>` for quick commands
+4. Balance splits with `<leader>se`
 
 ## LSP (Language Server Protocol) Features
 
@@ -116,40 +202,18 @@ _Note: These work seamlessly with tmux panes via nvim-tmux-navigation plugin. Th
 
 - **Python**: `pyright` (advanced type checking and IntelliSense)
 - **TypeScript/JavaScript**: `tsserver`
-- **Go**: `gopls`
+- **Go**: `gopls` with gofumpt formatting and enhanced analysis
 - **Rust**: `rust_analyzer` with clippy integration
 - **Lua**: `lua_ls` with Neovim-specific configuration
 
-### LSP Keymaps (Available when LSP is active)
+### Auto-Format on Save
 
-**Diagnostics:**
-
-- `<space>e` — Show diagnostics in floating window
-- `[d` — Go to previous diagnostic
-- `]d` — Go to next diagnostic
-- `<space>q` — Show diagnostics in location list
-
-**Code Navigation:**
-
-- `gD` — Go to declaration
-- `gd` — Go to definition
-- `gi` — Go to implementation
-- `gr` — Show references
-- `K` — Show hover information
-- `<C-k>` — Show signature help
-
-**Workspace Management:**
-
-- `<space>wa` — Add workspace folder
-- `<space>wr` — Remove workspace folder
-- `<space>wl` — List workspace folders
-
-**Refactoring & Code Actions:**
-
-- `<space>D` — Go to type definition
-- `<space>rn` — Rename symbol
-- `<space>ca` — Code action
-- `<space>f` — Format code
+All languages with LSP support now automatically format code on save:
+- **Go**: Uses `gofumpt` for superior formatting
+- **Python**: Uses LSP formatting (pyright)
+- **TypeScript/JavaScript**: Uses LSP formatting (tsserver)
+- **Rust**: Uses LSP formatting with clippy
+- **Lua**: Uses LSP formatting
 
 ### Python Development Setup
 
@@ -159,6 +223,7 @@ For optimal Python development:
 2. **Install packages in your environment** so LSP can see them
 3. **Use pyright** for superior type checking and completion
 4. **Example workflow:**
+
    ```bash
    cd your-project
    source venv/bin/activate  # or conda activate env-name
@@ -243,7 +308,7 @@ Tree-sitter provides superior syntax highlighting by using a concrete syntax tre
 
 **Example Multi-file Editing:**
 
-```
+```text
 ┌─────────────┬─────────────┐
 │  main.py    │ explorer    │
 ├─────────────┼─────────────┤
@@ -296,12 +361,22 @@ Tree-sitter provides superior syntax highlighting by using a concrete syntax tre
 **Efficient Editing:**
 
 - Master split windows for multi-file editing
-- Use `<leader>/` for quick commenting/uncommenting
+- Use `<leader>cc` for enhanced fuzzy search within files
+- Use `<leader>/` for quick in-file search (like Ctrl+F)
+- Use `<leader>gc` for commenting (changed from `<leader>cc`)
 - Leverage `<space>ca` for code actions (auto-imports, quick fixes)
+- Auto-formatting on save is enabled for all LSP-supported languages
+
+**Go Development:**
+
+- Enhanced Go support with `gofumpt` formatting
+- Auto-format on save with import organization
+- Advanced static analysis and unused parameter detection
+- Tree-sitter support for Go, gomod, and gowork files
 
 **Terminal Integration:**
 
-- Use `<C-\>` for floating terminal
+- Use `<C-\>` for floating terminal (or `<leader>tt` if backslash doesn't work)
 - Navigate seamlessly between terminal and editor splits
 - Use LazyGit (`<leader>lg`) for visual git operations
 
@@ -320,6 +395,7 @@ This Neovim configuration is designed to work harmoniously with VS Code (via Vim
 - `<space>` — Leader key
 - `gd`, `gr`, `gi` — LSP navigation
 - `<leader>ff`, `<leader>fg` — File finding
+- `<leader>cc` — Enhanced file search (fuzzy search within file)
 - `<leader>ee`, `<leader>ef` — File explorer
 - `<space>e`, `[d`, `]d` — Diagnostics navigation
 
@@ -333,7 +409,9 @@ This Neovim configuration is designed to work harmoniously with VS Code (via Vim
 
 - `<leader>w` — Save file
 - `<leader>y/p` — System clipboard
-- `<leader>/` — Toggle comments
+- `<leader>cc` — Enhanced file search (fuzzy search within file)
+- `<leader>/` — Find in file (traditional search)
+- `<leader>gc` — Toggle comments
 
 ### Editor-Specific Features
 

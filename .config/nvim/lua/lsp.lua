@@ -68,6 +68,14 @@ local on_attach = function(client, bufnr)
             async = true
         })
     end, bufopts)
+
+    -- Auto-format on save for all file types with LSP
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function()
+            vim.lsp.buf.format({ async = false })
+        end,
+    })
 end
 
 -- Configure each language
@@ -96,7 +104,16 @@ lspconfig.tsserver.setup({
 
 -- Go
 lspconfig.gopls.setup({
-    on_attach = on_attach
+    on_attach = on_attach,
+    settings = {
+        gopls = {
+            gofumpt = true, -- Use gofumpt for formatting
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        }
+    }
 })
 
 -- Rust

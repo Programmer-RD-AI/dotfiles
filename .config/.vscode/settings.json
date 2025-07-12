@@ -105,8 +105,20 @@
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
-    // Comments
-    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+    // Search within file
+    { "before": ["<leader>", "/"], "commands": ["actions.find"] },
+
+    // Enhanced file search (like <leader>cc in Neovim)
+    {
+      "before": ["<leader>", "c", "c"],
+      "commands": ["actions.find"]
+    },
+
+    // Comments (changed to <leader>gc to match updated Neovim config)
+    {
+      "before": ["<leader>", "g", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
 
     // Git integration
     { "before": ["<leader>", "l", "g"], "commands": ["workbench.view.scm"] },
@@ -181,6 +193,10 @@
       "before": ["<C-\\>"],
       "commands": ["workbench.action.terminal.toggleTerminal"]
     },
+    {
+      "before": ["<leader>", "t", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
 
     // Which-key style helper
     {
@@ -239,8 +255,11 @@
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
-    // Comments
-    { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"] },
+    // Comments (updated to match Neovim config)
+    {
+      "before": ["<leader>", "g", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
 
     // Formatting
     {
@@ -261,7 +280,7 @@
     "<C-j>": true,
     "<C-k>": true,
     "<C-l>": true,
-    "<C-\\>": false
+    "<C-\\>": true
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -291,6 +310,17 @@
   "python.linting.pylintEnabled": false,
   "python.linting.pycodestyleEnabled": true,
   "typescript.preferences.includePackageJsonAutoImports": "auto",
+
+  // Go language settings
+  "go.formatTool": "gofumpt",
+  "go.lintTool": "golangci-lint",
+  "go.useLanguageServer": true,
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Appearance
