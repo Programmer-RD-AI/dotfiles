@@ -248,6 +248,20 @@
     {
       "before": ["<leader>", "<"],
       "commands": ["workbench.action.decreaseViewWidth"]
+    },
+
+    // vim-eunuch style file operations
+    {
+      "before": ["<leader>", "r", "m"],
+      "commands": ["fileutils.removeFile"]
+    },
+    {
+      "before": ["<leader>", "r", "n"],
+      "commands": ["fileutils.renameFile"]
+    },
+    {
+      "before": ["<leader>", "m", "d"],
+      "commands": ["fileutils.newFolder"]
     }
   ],
 

@@ -289,3 +289,41 @@ vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm direction=float<CR>', {
 vim.keymap.set('t', '<leader>tt', '<C-\\><C-n><cmd>ToggleTerm<CR>', {
     desc = 'Toggle floating terminal from terminal mode (alternative)'
 })
+
+-- ═══════════════════════════════════════════════════════════════════════════
+-- Eunuch (UNIX helpers) - Optional Keymappings
+-- ═══════════════════════════════════════════════════════════════════════════
+vim.keymap.set('n', '<leader>rm', '<cmd>Remove %<CR>', {
+    desc = 'Remove current file'
+})
+
+vim.keymap.set('n', '<leader>rn', function()
+    local current_file = vim.fn.expand('%:t')
+    vim.ui.input({
+        prompt = 'Rename to: ',
+        default = current_file
+    }, function(new_name)
+        if new_name and new_name ~= '' and new_name ~= current_file then
+            vim.cmd('Rename ' .. vim.fn.shellescape(new_name))
+        end
+    end)
+end, {
+    desc = 'Rename current file'
+})
+
+vim.keymap.set('n', '<leader>md', function()
+    vim.ui.input({
+        prompt = 'Create directory: ',
+        default = vim.fn.expand('%:p:h') .. '/'
+    }, function(dir_name)
+        if dir_name and dir_name ~= '' then
+            vim.cmd('Mkdir ' .. vim.fn.shellescape(dir_name))
+        end
+    end)
+end, {
+    desc = 'Create directory'
+})
+
+vim.keymap.set('n', '<leader>ww', '<cmd>SudoWrite<CR>', {
+    desc = 'Write file with sudo'
+})

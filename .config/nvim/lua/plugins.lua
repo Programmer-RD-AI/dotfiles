@@ -240,4 +240,22 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
             }
         })
     end
+}, -- vim-eunuch - UNIX shell helpers
+{
+    'tpope/vim-eunuch',
+    cmd = {
+        'Remove',    -- :Remove → delete file + buffer
+        'Rename',    -- :Rename old new
+        'Move',      -- :Move old new (same as Rename)
+        'Chmod',     -- :Chmod +x foo.sh
+        'Mkdir',     -- :Mkdir path/to/dir
+        'SudoWrite', -- :SudoWrite → write buffer via sudo
+        'SudoEdit',  -- :SudoEdit → edit file via sudo
+        'Delete',    -- :Delete → delete file from disk
+        'Copy',      -- :Copy → copy file
+        'Duplicate', -- :Duplicate → duplicate file
+        'Find',      -- :Find → find files
+        'Locate',    -- :Locate → locate files
+        'Wall',      -- :Wall → write all windows
+    },
 }})

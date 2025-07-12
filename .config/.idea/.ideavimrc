@@ -149,3 +149,15 @@ nmap <leader>db :action ActivateDatabaseToolWindow<CR>
 
 " Debugging
 nmap <leader>bp :action ToggleLineBreakpoint<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" vim-eunuch style File Operations
+" ═══════════════════════════════════════════════════════════════════════════
+" File removal
+nmap <leader>rm :action SafeDelete<CR>
+
+" File rename (enhanced)
+nmap <leader>rn :action RenameFile<CR>
+
+" Create directory (closest equivalent)
+nmap <leader>md :action NewDir<CR>

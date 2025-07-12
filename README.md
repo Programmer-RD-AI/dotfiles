@@ -214,6 +214,7 @@ alias activate='source venv/bin/activate'
 - **File Navigation:** nvim-tree explorer and Telescope fuzzy finder
 - **Git Integration:** LazyGit terminal UI and git blame/diff
 - **Productivity Features:** Harpoon for quick file switching, which-key for discoverability
+- **UNIX File Operations:** vim-eunuch for seamless file management (remove, rename, mkdir, sudo)
 
 **Language Support:**
 
@@ -307,6 +308,10 @@ One of the key features of this dotfiles setup is the **consistent keybinding sy
 - `<leader>w` — Save file
 - `<leader>y/p` — System clipboard operations
 - `<leader>/` — Toggle comments
+- `<leader>rm` — Remove current file (vim-eunuch)
+- `<leader>rn` — Rename current file (vim-eunuch)
+- `<leader>md` — Create directory (vim-eunuch)
+- `<leader>ww` — Write file with sudo (vim-eunuch)
 
 ### Quick File Access
 
