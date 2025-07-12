@@ -19,7 +19,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 - Case-sensitive search (`ignorecase=false`, `smartcase=false`)
 - No search highlighting (`hlsearch=false`)
 - Soft wrapping with indent preservation (`wrap=true`, `breakindent=true`)
-- Tab settings: 2 spaces (`tabstop=2`, `shiftwidth=2`, `expandtab=true`)
+- Tab settings: 4 spaces (`tabstop=4`, `shiftwidth=4`, `expandtab=true`)
 - True color terminal support (`termguicolors=true`)
 - Improved completion menu (`completeopt={'menu', 'menuone', 'noselect'}`)
 - Local leader set to comma (`,`)
