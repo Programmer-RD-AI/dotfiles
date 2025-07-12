@@ -108,6 +108,7 @@
     // Search within file
     { "before": ["<leader>", "/"], "commands": ["actions.find"] },
 
+<<<<<<< HEAD
     // Enhanced file search (like <leader>cc in Neovim)
     {
       "before": ["<leader>", "c", "c"],
@@ -117,6 +118,11 @@
     // Comments (changed to <leader>gc to match updated Neovim config)
     {
       "before": ["<leader>", "g", "c"],
+=======
+    // Comments
+    {
+      "before": ["<leader>", "c", "c"],
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
       "commands": ["editor.action.commentLine"]
     },
 
@@ -255,9 +261,15 @@
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
+<<<<<<< HEAD
     // Comments (updated to match Neovim config)
     {
       "before": ["<leader>", "g", "c"],
+=======
+    // Comments
+    {
+      "before": ["<leader>", "c", "c"],
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
       "commands": ["editor.action.commentLine"]
     },
 

@@ -34,7 +34,10 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 | ------------ | ------------ | ---------------- | ---------------------------------------- |
 | **Basic**    | `<leader>w`  | Save             | Save current file                        |
 | **Search**   | `<leader>/`  | Find in file     | Search within current file (like Ctrl+F) |
+<<<<<<< HEAD
 | **Search**   | `<leader>cc` | Find in file     | Enhanced fuzzy search within current file |
+=======
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 | **Search**   | `<C-f>`      | Find in file     | Alternative search within file           |
 | **Explorer** | `<leader>ee` | Toggle explorer  | Toggle file explorer                     |
 | **Explorer** | `<leader>ef` | Find in explorer | Toggle explorer focused on current file  |
@@ -67,7 +70,10 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 
 ### 🔍 Search & Find
 
+<<<<<<< HEAD
 - `<leader>cc` — Fuzzy search within current file (enhanced search)
+=======
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 - `<leader>/` — Search within current file (enhanced Ctrl+F)
 - `<C-f>` — Alternative search within current file
 - `<leader>ff` — Find files (Telescope)
@@ -115,6 +121,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 
 ### 💬 Comments
 
+<<<<<<< HEAD
 - `<leader>gc` — Toggle comment (works in normal and visual mode)
 
 ### 🔍 Enhanced Search
@@ -141,6 +148,28 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 - `]d` — Go to next diagnostic
 - `<space>q` — Show diagnostics in location list
 
+=======
+- `<leader>cc` — Toggle comment (works in normal and visual mode)
+
+### 🔧 LSP (Code Intelligence)
+
+#### Navigation
+
+- `gd` — Go to definition
+- `gD` — Go to declaration
+- `gi` — Go to implementation
+- `gr` — Show references
+- `K` — Show hover documentation
+- `<C-k>` — Show signature help
+
+#### Diagnostics & Errors
+
+- `<space>e` — Show diagnostics in floating window
+- `[d` — Go to previous diagnostic
+- `]d` — Go to next diagnostic
+- `<space>q` — Show diagnostics in location list
+
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 #### Refactoring & Code Actions
 
 - `<space>rn` — Rename symbol
@@ -206,6 +235,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 - **Rust**: `rust_analyzer` with clippy integration
 - **Lua**: `lua_ls` with Neovim-specific configuration
 
+<<<<<<< HEAD
 ### Auto-Format on Save
 
 All languages with LSP support now automatically format code on save:
@@ -215,6 +245,8 @@ All languages with LSP support now automatically format code on save:
 - **Rust**: Uses LSP formatting with clippy
 - **Lua**: Uses LSP formatting
 
+=======
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 ### Python Development Setup
 
 For optimal Python development:
@@ -361,9 +393,13 @@ Tree-sitter provides superior syntax highlighting by using a concrete syntax tre
 **Efficient Editing:**
 
 - Master split windows for multi-file editing
+<<<<<<< HEAD
 - Use `<leader>cc` for enhanced fuzzy search within files
 - Use `<leader>/` for quick in-file search (like Ctrl+F)
 - Use `<leader>gc` for commenting (changed from `<leader>cc`)
+=======
+- Use `<leader>/` for quick in-file search (like Ctrl+F)
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 - Leverage `<space>ca` for code actions (auto-imports, quick fixes)
 - Auto-formatting on save is enabled for all LSP-supported languages
 
@@ -409,9 +445,13 @@ This Neovim configuration is designed to work harmoniously with VS Code (via Vim
 
 - `<leader>w` — Save file
 - `<leader>y/p` — System clipboard
+<<<<<<< HEAD
 - `<leader>cc` — Enhanced file search (fuzzy search within file)
 - `<leader>/` — Find in file (traditional search)
 - `<leader>gc` — Toggle comments
+=======
+- `<leader>/` — Find in file (enhanced search)
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 
 ### Editor-Specific Features
 

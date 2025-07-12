@@ -146,6 +146,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', {
 -- Note: Comment.nvim setup is handled in plugins.lua
 -- These keymaps will work once the plugin is loaded
 
+<<<<<<< HEAD
 -- Enhanced file search with <leader>cc (like Ctrl+Shift+F in other editors)
 vim.keymap.set('n', '<leader>cc', function()
     require('telescope.builtin').current_buffer_fuzzy_find()
@@ -162,12 +163,17 @@ vim.keymap.set('n', '<leader>gc', function()
         -- Fallback to built-in commenting
         vim.cmd('normal! gcc')
     end
+=======
+vim.keymap.set('n', '<leader>cc', function()
+    require('Comment.api').toggle.linewise.current()
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 end, {
     noremap = true,
     silent = true,
     desc = 'Toggle comment on current line'
 })
 
+<<<<<<< HEAD
 vim.keymap.set('v', '<leader>gc', function()
     local ok, comment_api = pcall(require, 'Comment.api')
     if ok then
@@ -176,6 +182,10 @@ vim.keymap.set('v', '<leader>gc', function()
         -- Fallback to built-in commenting
         vim.cmd('normal! gc')
     end
+=======
+vim.keymap.set('v', '<leader>cc', function()
+    require('Comment.api').toggle.linewise(vim.fn.visualmode())
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 end, {
     noremap = true,
     silent = true,

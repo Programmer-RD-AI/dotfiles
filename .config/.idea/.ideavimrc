@@ -103,15 +103,23 @@ nmap <space>D :action GotoTypeDeclaration<CR>
 " Search & Find
 " ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>/ :action Find<CR>
+<<<<<<< HEAD
 " Enhanced file search (like <leader>cc in Neovim)
 nmap <leader>cc :action Find<CR>
+=======
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 
 " ═══════════════════════════════════════════════════════════════════════════
 " Comments
 " ═══════════════════════════════════════════════════════════════════════════
+<<<<<<< HEAD
 " Changed to <leader>gc to match updated Neovim config
 nmap <leader>gc :action CommentByLineComment<CR>
 vnoremap <leader>gc :action CommentByLineComment<CR>
+=======
+nmap <leader>cc :action CommentByLineComment<CR>
+vnoremap <leader>cc :action CommentByLineComment<CR>
+>>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 
 " ═══════════════════════════════════════════════════════════════════════════
 " Git Integration
