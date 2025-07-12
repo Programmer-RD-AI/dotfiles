@@ -85,17 +85,11 @@ vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', {
 -- ═══════════════════════════════════════════════════════════════════════════
 -- System Clipboard Integration
 -- ═══════════════════════════════════════════════════════════════════════════
-vim.keymap.set({'n', 'v'}, '<leader>p', '"*p', {
-    desc = 'Paste from system clipboard'
-})
-vim.keymap.set({'n', 'v'}, '<leader>P', '"+p', {
-    desc = 'Paste from system clipboard (alternative)'
-})
-vim.keymap.set({'n', 'v'}, '<leader>y', '"*y', {
+vim.keymap.set({'n', 'v'}, 'y', '"*y', {
     desc = 'Copy to system clipboard'
 })
-vim.keymap.set({'n', 'v'}, '<leader>Y', '"+y', {
-    desc = 'Copy to system clipboard (alternative)'
+vim.keymap.set({'n', 'v'}, 'p', '"*p', {
+    desc = 'Paste from system clipboard'
 })
 
 -- ═══════════════════════════════════════════════════════════════════════════

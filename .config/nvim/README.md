@@ -108,10 +108,8 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 
 ### 📋 System Clipboard Integration
 
-- `<leader>y` — Copy to system clipboard
-- `<leader>Y` — Copy to system clipboard (alternative)
-- `<leader>p` — Paste from system clipboard
-- `<leader>P` — Paste from system clipboard (alternative)
+- `y` — Copy to system clipboard
+- `p` — Paste from system clipboard
 
 ### 💬 Comments
 
@@ -404,7 +402,7 @@ This Neovim configuration is designed to work harmoniously with VS Code (via Vim
 **File Operations** (unified approach):
 
 - `<leader>w` — Save file
-- `<leader>y/p` — System clipboard
+- `y/p` — System clipboard
 - `<leader>/` — Enhanced file search (fuzzy search within file)
 - `<leader>gc` — Toggle comments
 
