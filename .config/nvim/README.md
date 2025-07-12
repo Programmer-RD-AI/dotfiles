@@ -34,7 +34,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 | ------------ | ------------ | ---------------- | ---------------------------------------- |
 | **Basic**    | `<leader>w`  | Save             | Save current file                        |
 | **Search**   | `<leader>/`  | Find in file     | Search within current file (like Ctrl+F) |
-| **Search**   | `<leader>cc` | Find in file     | Enhanced fuzzy search within current file |
+| **Search**   | `<leader>/`  | Find in file     | Enhanced fuzzy search within current file |
 | **Search**   | `<C-f>`      | Find in file     | Alternative search within file           |
 | **Explorer** | `<leader>ee` | Toggle explorer  | Toggle file explorer                     |
 | **Explorer** | `<leader>ef` | Find in explorer | Toggle explorer focused on current file  |
@@ -67,7 +67,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 
 ### 🔍 Search & Find
 
-- `<leader>cc` — Fuzzy search within current file (enhanced search)
+- `<leader>/` — Fuzzy search within current file (enhanced search)
 - `<leader>/` — Search within current file (enhanced Ctrl+F)
 - `<C-f>` — Alternative search within current file
 - `<leader>ff` — Find files (Telescope)
@@ -119,8 +119,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 
 ### 🔍 Enhanced Search
 
-- `<leader>cc` — Fuzzy search within current file (enhanced file search)
-- `<leader>/` — Traditional search within current file
+- `<leader>/` — Fuzzy search within current file (enhanced file search)
 - `<C-f>` — Alternative search within current file
 
 ### 🔧 LSP (Code Intelligence)
@@ -359,9 +358,8 @@ Tree-sitter provides superior syntax highlighting by using a concrete syntax tre
 **Efficient Editing:**
 
 - Master split windows for multi-file editing
-- Use `<leader>cc` for enhanced fuzzy search within files
-- Use `<leader>/` for quick in-file search (like Ctrl+F)
-- Use `<leader>gc` for commenting (changed from `<leader>cc`)
+- Use `<leader>/` for enhanced fuzzy search within files (like Ctrl+F)
+- Use `<leader>gc` for commenting
 - Leverage `<space>ca` for code actions (auto-imports, quick fixes)
 - Auto-formatting on save is enabled for all LSP-supported languages
 
@@ -407,8 +405,7 @@ This Neovim configuration is designed to work harmoniously with VS Code (via Vim
 
 - `<leader>w` — Save file
 - `<leader>y/p` — System clipboard
-- `<leader>cc` — Enhanced file search (fuzzy search within file)
-- `<leader>/` — Find in file (traditional search)
+- `<leader>/` — Enhanced file search (fuzzy search within file)
 - `<leader>gc` — Toggle comments
 
 ### Editor-Specific Features

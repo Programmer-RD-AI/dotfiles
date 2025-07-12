@@ -146,8 +146,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', {
 -- Note: Comment.nvim setup is handled in plugins.lua
 -- These keymaps will work once the plugin is loaded
 
--- Enhanced file search with <leader>cc (like Ctrl+Shift+F in other editors)
-vim.keymap.set('n', '<leader>cc', function()
+-- Enhanced file search with <leader>/ (like Ctrl+F in other editors)
+vim.keymap.set('n', '<leader>/', function()
     require('telescope.builtin').current_buffer_fuzzy_find()
 end, {
     desc = 'Search within current file (fuzzy)'
