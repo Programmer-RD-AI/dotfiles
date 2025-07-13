@@ -165,6 +165,15 @@ set relativenumber                     " Show relative line numbers
 
 - `<leader>/` — Toggle line comment (normal and visual mode)
 
+### Surround Operations (vim-surround)
+
+**Text Object Manipulation:**
+
+- `ys{motion}{char}` — Add surround around motion (e.g., `ysiw"` surrounds inner word with quotes)
+- `cs{old}{new}` — Change surround (e.g., `cs"'` changes double quotes to single quotes)
+- `ds{char}` — Delete surround (e.g., `ds"` removes surrounding quotes)
+- `S{char}` — Surround selection in visual mode
+
 ### Git Integration
 
 - `<leader>lg` — Activate Version Control tool window
@@ -357,7 +366,7 @@ set argtextobj
 
 ### Surround Operations
 
-**Surround Plugin:**
+**Surround Plugin (vim-surround):**
 
 ```vim
 set surround
@@ -366,7 +375,15 @@ set surround
 " cs"' - change surrounding quotes from " to '
 " ds" - delete surrounding quotes
 " ysiw] - surround inner word with brackets
+" S" in visual mode - surround selection with quotes
 ```
+
+**Common Surround Operations:**
+
+- `ys{motion}{char}` — Add surround around motion
+- `cs{old}{new}` — Change existing surround
+- `ds{char}` — Delete surround
+- `S{char}` — Surround visual selection
 
 ## 🛠️ Troubleshooting
 

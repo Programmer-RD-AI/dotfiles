@@ -7,6 +7,12 @@ set number                               " show line numbers
 set relativenumber                       " show relative line numbers
 
 " ═══════════════════════════════════════════════════════════════════════════
+" IdeaVim Extensions
+" ═══════════════════════════════════════════════════════════════════════════
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+
+" ═══════════════════════════════════════════════════════════════════════════
 " Basic File Operations
 " ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>w :action SaveAll<CR>
@@ -103,23 +109,13 @@ nmap <space>D :action GotoTypeDeclaration<CR>
 " Search & Find
 " ═══════════════════════════════════════════════════════════════════════════
 nmap <leader>/ :action Find<CR>
-<<<<<<< HEAD
-" Enhanced file search (like <leader>cc in Neovim)
-nmap <leader>cc :action Find<CR>
-=======
->>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 
 " ═══════════════════════════════════════════════════════════════════════════
 " Comments
 " ═══════════════════════════════════════════════════════════════════════════
-<<<<<<< HEAD
-" Changed to <leader>gc to match updated Neovim config
+" Using <leader>gc to match Comment.nvim in Neovim config
 nmap <leader>gc :action CommentByLineComment<CR>
 vnoremap <leader>gc :action CommentByLineComment<CR>
-=======
-nmap <leader>cc :action CommentByLineComment<CR>
-vnoremap <leader>cc :action CommentByLineComment<CR>
->>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
 
 " ═══════════════════════════════════════════════════════════════════════════
 " Git Integration
@@ -161,3 +157,20 @@ nmap <leader>rn :action RenameFile<CR>
 
 " Create directory (closest equivalent)
 nmap <leader>md :action NewDir<CR>
+
+" ═══════════════════════════════════════════════════════════════════════════
+" vim-surround Usage Reference
+" ═══════════════════════════════════════════════════════════════════════════
+" vim-surround is automatically enabled with the Plug directive above
+" Standard vim-surround keybindings:
+" - ys{motion}{char} - surround motion with char (e.g., ysiw" surrounds word with quotes)
+" - yss{char} - surround entire line with char
+" - cs{old}{new} - change surrounding from old to new (e.g., cs"' changes " to ')
+" - ds{char} - delete surrounding char (e.g., ds" removes quotes)
+" - S{char} - surround selection in visual mode
+"
+" Examples:
+" - ysiw) - surround inner word with parentheses
+" - cs"' - change double quotes to single quotes
+" - ds( - delete surrounding parentheses
+" - In visual mode: select text, then S" - surround selection with quotes

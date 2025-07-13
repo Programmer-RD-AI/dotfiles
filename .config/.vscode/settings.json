@@ -8,6 +8,7 @@
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
   "vim.vimrc.enable": false,
+  "vim.surround": true,
 
   // ═══════════════════════════════════════════════════════════════════════════
   // Normal Mode Keybindings
@@ -105,24 +106,12 @@
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
-    // Search within file
+    // Search within file (like <leader>/ in Neovim)
     { "before": ["<leader>", "/"], "commands": ["actions.find"] },
 
-<<<<<<< HEAD
-    // Enhanced file search (like <leader>cc in Neovim)
-    {
-      "before": ["<leader>", "c", "c"],
-      "commands": ["actions.find"]
-    },
-
-    // Comments (changed to <leader>gc to match updated Neovim config)
+    // Comments (using <leader>gc to match Comment.nvim)
     {
       "before": ["<leader>", "g", "c"],
-=======
-    // Comments
-    {
-      "before": ["<leader>", "c", "c"],
->>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
       "commands": ["editor.action.commentLine"]
     },
 
@@ -275,15 +264,9 @@
     { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
     { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
 
-<<<<<<< HEAD
-    // Comments (updated to match Neovim config)
+    // Comments (using <leader>gc to match Comment.nvim)
     {
       "before": ["<leader>", "g", "c"],
-=======
-    // Comments
-    {
-      "before": ["<leader>", "c", "c"],
->>>>>>> 67be7613c02dc20f9ea8c07ae7db8351ded1334c
       "commands": ["editor.action.commentLine"]
     },
 

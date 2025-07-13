@@ -35,7 +35,8 @@ This VS Code configuration is designed around several core principles:
   "vim.useCtrlKeys": true,
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
-  "vim.vimrc.enable": false
+  "vim.vimrc.enable": false,
+  "vim.surround": true
 }
 ```
 
@@ -135,6 +136,15 @@ This VS Code configuration is designed around several core principles:
 
 - `<leader>/` — Toggle line comment (works in normal and visual mode)
 - `<space>f` — Format document (normal mode) or selection (visual mode)
+
+### Surround Operations (vim-surround)
+
+**Text Object Manipulation:**
+
+- `ys{motion}{char}` — Add surround around motion (e.g., `ysiw"` surrounds inner word with quotes)
+- `cs{old}{new}` — Change surround (e.g., `cs"'` changes double quotes to single quotes)
+- `ds{char}` — Delete surround (e.g., `ds"` removes surrounding quotes)
+- `S{char}` — Surround selection in visual mode
 
 ### Git Integration
 

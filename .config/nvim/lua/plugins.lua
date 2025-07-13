@@ -258,4 +258,13 @@ require("lazy").setup({"bluz71/vim-moonfly-colors", {
         'Locate',    -- :Locate → locate files
         'Wall',      -- :Wall → write all windows
     },
+}, -- vim-surround - surround text objects with brackets, quotes, etc.
+{
+    'tpope/vim-surround',
+    keys = {
+        {'ys', mode = 'n', desc = 'Add surrounding'},
+        {'cs', mode = 'n', desc = 'Change surrounding'},
+        {'ds', mode = 'n', desc = 'Delete surrounding'},
+        {'S', mode = 'v', desc = 'Surround selection'},
+    },
 }})

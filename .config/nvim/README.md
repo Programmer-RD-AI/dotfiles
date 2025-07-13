@@ -115,6 +115,13 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 
 - `<leader>gc` — Toggle comment (works in normal and visual mode)
 
+### 🔗 Surround Operations (vim-surround)
+
+- `ys{motion}{char}` — Add surround around motion (e.g., `ysiw"` surrounds inner word with quotes)
+- `cs{old}{new}` — Change surround (e.g., `cs"'` changes double quotes to single quotes)
+- `ds{char}` — Delete surround (e.g., `ds"` removes surrounding quotes)
+- `S{char}` — Surround selection in visual mode
+
 ### 🔍 Enhanced Search
 
 - `<leader>/` — Fuzzy search within current file (enhanced file search)
@@ -243,6 +250,7 @@ Managed with [lazy.nvim](https://github.com/folke/lazy.nvim)
 - `lualine.nvim` — Enhanced status line
 - `which-key.nvim` — Interactive keymap guide
 - `nvim-tmux-navigation` — Seamless navigation between Neovim and tmux
+- `vim-surround` — Efficient text object manipulation with surround operations
 
 ### Code Highlighting & Enhancement
 
