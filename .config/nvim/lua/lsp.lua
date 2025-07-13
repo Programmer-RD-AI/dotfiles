@@ -63,7 +63,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set("n", "<space>f", function()
+    vim.keymap.set("n", "<space>fo", function()
         vim.lsp.buf.format({
             async = true
         })

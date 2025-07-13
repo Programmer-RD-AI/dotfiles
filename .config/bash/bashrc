@@ -484,3 +484,4 @@ if [ -f '/home/ranuga/google-cloud-sdk/path.bash.inc' ]; then . '/home/ranuga/go
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/ranuga/google-cloud-sdk/completion.bash.inc' ]; then . '/home/ranuga/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="$(go env GOPATH)/bin:$PATH"
