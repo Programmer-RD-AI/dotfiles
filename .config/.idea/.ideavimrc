@@ -157,20 +157,3 @@ nmap <leader>rn :action RenameFile<CR>
 
 " Create directory (closest equivalent)
 nmap <leader>md :action NewDir<CR>
-
-" ═══════════════════════════════════════════════════════════════════════════
-" vim-surround Usage Reference
-" ═══════════════════════════════════════════════════════════════════════════
-" vim-surround is automatically enabled with the Plug directive above
-" Standard vim-surround keybindings:
-" - ys{motion}{char} - surround motion with char (e.g., ysiw" surrounds word with quotes)
-" - yss{char} - surround entire line with char
-" - cs{old}{new} - change surrounding from old to new (e.g., cs"' changes " to ')
-" - ds{char} - delete surrounding char (e.g., ds" removes quotes)
-" - S{char} - surround selection in visual mode
-"
-" Examples:
-" - ysiw) - surround inner word with parentheses
-" - cs"' - change double quotes to single quotes
-" - ds( - delete surrounding parentheses
-" - In visual mode: select text, then S" - surround selection with quotes
