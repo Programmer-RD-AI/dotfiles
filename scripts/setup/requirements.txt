@@ -570,7 +570,7 @@ Unidecode @ file:///tmp/build/80754af9/unidecode_1614712377438/work
 uri-template==1.3.0
 uritemplate==4.1.1
 urllib3==1.26.20
-uv==0.5.8
+uv==0.8.6
 uvicorn==0.18.2
 uvloop==0.19.0
 validators @ file:///tmp/build/80754af9/validators_1612286467315/work
