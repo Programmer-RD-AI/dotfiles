@@ -1,0 +1,501 @@
+git stash pop
+nvim .
+cat nvim/lua/keymaps.lua 
+git stash list
+git stash --keep-index
+git log --graph --oneline --decorate --all | grep stash
+npm install -g @anthropic-ai/claude-code
+claude
+clerar
+clear
+clerar
+cd dotfiles/
+cd .config/
+nvim .
+clear
+nvim --version
+cd .config/
+nvim .
+nvim --version
+rm -rf package.json 
+rm -rf :we
+rm -rf :w
+cd ..
+pnpm i
+pnpm init
+pnpm add --save-dev husky
+npx husky init
+clear
+gemini
+cd .config/
+nvim .
+cd Programming/Projects/se
+cd Programming/Projects
+cd ..
+cd Open-Source/
+cd serverless-uv-requirements/
+git pull
+git tag v1.1.1
+git push origin v1.1.1.
+git push origin v1.1.1
+clear
+#!/usr/bin/env bash
+set -euo pipefail
+# --------- EDIT IF YOUR REPO LIVES SOMEWHERE ELSE ----------
+DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+SRC="$DOTFILES/.config"
+TARGET="$HOME/.config"
+OLD_STR="$DOTFILES/.config"
+NEW_STR="$HOME/.config"
+# -----------------------------------------------------------
+echo "DOTFILES: $DOTFILES"
+echo "SRC:      $SRC"
+echo "TARGET:   $TARGET"
+echo
+# 0) Sanity checks
+[ -d "$DOTFILES" ] || { echo "❌ Dotfiles repo not found at $DOTFILES"; exit 1; }
+[ -d "$SRC" ] || { echo "❌ $SRC not found. Your repo must contain .config/"; exit 1; }
+# 1) Backup existing ~/.config (if it's not already the correct symlink)
+backup_made="no"
+if [ -e "$TARGET" ] && [ ! -L "$TARGET" -o "$(readlink "$TARGET" || true)" != "$SRC" ]; then   ts="$(date +%Y%m%d-%H%M%S)";   bk="$HOME/.config.backup.$ts";   echo "🟡 Existing $TARGET detected. Backing up to $bk";   mv -v "$TARGET" "$bk";   backup_made="yes"; fi
+# 2) Create/refresh the symlink ~/.config -> ~/dotfiles/.config
+echo "🔗 Linking $TARGET -> $SRC"
+ln -sfn "$SRC" "$TARGET"
+# 3) Prepare search tools (prefer ripgrep, fallback to grep -R)
+have_rg="no"
+if command -v rg >/dev/null 2>&1; then   have_rg="yes"; fi
+find_matches() {   if [ "$have_rg" = "yes" ]; then
+    rg -l --hidden --no-ignore -S --fixed-strings "$1" "$2" 2>/dev/null || true;   else
+    grep -RIl --exclude-dir=.git --binary-files=without-match "$1" "$2" 2>/dev/null || true;   fi; }
+# 4) Rewrite hard-coded paths from $OLD_STR -> $NEW_STR in text files
+echo "🛠  Rewriting any hard-coded '$OLD_STR' -> '$NEW_STR' in:"
+TARGETS=("$DOTFILES" "$HOME")
+for T in "${TARGETS[@]}"; do   [ -d "$T" ] || continue;   echo "   • $T";   MATCHED="$(find_matches "$OLD_STR" "$T")";   if [ -n "$MATCHED" ]; then     if [[ "$OSTYPE" == darwin* ]]; then
+      echo "$MATCHED" | xargs -I{} sed -i "" "s|$OLD_STR|$NEW_STR|g" "{}";     else       echo "$MATCHED" | xargs -I{} sed -i "s|$OLD_STR|$NEW_STR|g" "{}";     fi;   fi; done
+ls -a
+ls .config/
+#!/usr/bin/env bash
+set -euo pipefail
+# --------- EDIT IF YOUR REPO LIVES SOMEWHERE ELSE ----------
+DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+SRC="$DOTFILES/.config"
+TARGET="$HOME/.config"
+OLD_STR="$DOTFILES/.config"
+NEW_STR="$HOME/.config"
+# -----------------------------------------------------------
+echo "DOTFILES: $DOTFILES"
+echo "SRC:      $SRC"
+echo "TARGET:   $TARGET"
+echo
+# 0) Sanity checks
+[ -d "$DOTFILES" ] || { echo "❌ Dotfiles repo not found at $DOTFILES"; exit 1; }
+[ -d "$SRC" ] || { echo "❌ $SRC not found. Your repo must contain .config/"; exit 1; }
+# 1) Backup existing ~/.config (if it's not already the correct symlink)
+backup_made="no"
+if [ -e "$TARGET" ] && [ ! -L "$TARGET" -o "$(readlink "$TARGET" || true)" != "$SRC" ]; then   ts="$(date +%Y%m%d-%H%M%S)";   bk="$HOME/.config.backup.$ts";   echo "🟡 Existing $TARGET detected. Backing up to $bk";   mv -v "$TARGET" "$bk";   backup_made="yes"; fi
+# 2) Create/refresh the symlink ~/.config -> ~/dotfiles/.config
+echo "🔗 Linking $TARGET -> $SRC"
+ln -sfn "$SRC" "$TARGET"
+# 3) Prepare search tools (prefer ripgrep, fallback to grep -R)
+have_rg="no"
+if command -v rg >/dev/null 2>&1; then   have_rg="yes"; fi
+find_matches() {   if [ "$have_rg" = "yes" ]; then
+    rg -l --hidden --no-ignore -S --fixed-strings "$1" "$2" 2>/dev/null || true;   else
+    grep -RIl --exclude-dir=.git --binary-files=without-match "$1" "$2" 2>/dev/null || true;   fi; }
+# 4) Rewrite hard-coded paths from $OLD_STR -> $NEW_STR in text files
+echo "🛠  Rewriting any hard-coded '$OLD_STR' -> '$NEW_STR' in:"
+TARGETS=("$DOTFILES" "$HOME")
+for T in "${TARGETS[@]}"; do   [ -d "$T" ] || continue;   echo "   • $T";   MATCHED="$(find_matches "$OLD_STR" "$T")";   if [ -n "$MATCHED" ]; then     if [[ "$OSTYPE" == darwin* ]]; then
+      echo "$MATCHED" | xargs -I{} sed -i "" "s|$OLD_STR|$NEW_STR|g" "{}";     else       echo "$MATCHED" | xargs -I{} sed -i "s|$OLD_STR|$NEW_STR|g" "{}";     fi;   fi; done
+ls .config/
+git pull
+git push
+ls
+# 0) Show what's wrong (you’ll likely see garbage here)
+echo "BASH_ENV='$BASH_ENV'"; echo "ENV='$ENV'"; echo "XDG_DATA_HOME='$XDG_DATA_HOME'"
+# 1) Hard reset the offenders for this session
+unset BASH_ENV ENV
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+# 2) Make ~/.config point to the new repo path (idempotent)
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 3) Kill bad exports in your dotfiles (ENV/BASH_ENV are NOT paths to /bin/env!)
+#    Back up first:
+cp -a "$HOME/.bashrc" "$HOME/.bashrc.bak.$(date +%s)" 2>/dev/null || true
+cp -a "$HOME/.profile" "$HOME/.profile.bak.$(date +%s)" 2>/dev/null || true
+cp -a "$HOME/.bash_profile" "$HOME/.bash_profile.bak.$(date +%s)" 2>/dev/null || tr
+# 0) Show what's wrong (you’ll likely see garbage here)
+echo "BASH_ENV='$BASH_ENV'"; echo "ENV='$ENV'"; echo "XDG_DATA_HOME='$XDG_DATA_HOME'"
+# 1) Hard reset the offenders for this session
+unset BASH_ENV ENV
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+# 2) Make ~/.config point to the new repo path (idempotent)
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 3) Kill bad exports in your dotfiles (ENV/BASH_ENV are NOT paths to /bin/env!)
+#    Back up first:
+cp -a "$HOME/.bashrc" "$HOME/.bashrc.bak.$(date +%s)" 2>/dev/null || true
+cp -a "$HOME/.profile" "$HOME/.profile.bak.$(date +%s)" 2>/dev/null || true
+cp -a "$HOME/.bash_profile" "$HOME/.bash_profile.bak.$(date +%s)" 2>/dev/null || true
+#    Remove any lines that export/set ENV or BASH_ENV
+sed -i '/^[[:space:]]*export[[:space:]]\+ENV=/d;/^[[:space:]]*ENV=/d' "$HOME/.bashrc"       2>/dev/null || true
+sed -i '/^[[:space:]]*export[[:space:]]\+BASH_ENV=/d;/^[[:space:]]*BASH_ENV=/d' "$HOME/.bashrc" 2>/dev/null || true
+sed -i '/^[[:space:]]*export[[:space:]]\+ENV=/d;/^[[:space:]]*ENV=/d' "$HOME/.profile"     2>/dev/null || true
+sed -i '/^[[:space:]]*export[[:space:]]\+BASH_ENV=/d;/^[[:space:]]*BASH_ENV=/d' "$HOME/.profile" 2>/dev/null || true
+sed -i '/^[[:space:]]*export[[:space:]]\+ENV=/d;/^[[:space:]]*ENV=/d' "$HOME/.bash_profile"2>/dev/null || true
+sed -i '/^[[:space:]]*export[[:space:]]\+BASH_ENV=/d;/^[[:space:]]*BASH_ENV=/d' "$HOME/.bash_profile" 2>/dev/null || true
+# 4) Ensure your interactive shell sources ONLY your XDG bash config from the new location
+#    (append safely if not already present)
+grep -q 'XDG_CONFIG_HOME=.*/.config' "$HOME/.bashrc" 2>/dev/null || cat >> "$HOME/.bashrc" <<'EOF'
+
+# === XDG bash bootstrap (managed) ===
+export XDG_CONFIG_HOME="$HOME/.config"
+[ -f "$XDG_CONFIG_HOME/bash/profile.sh" ] && . "$XDG_CONFIG_HOME/bash/profile.sh"
+[ -f "$XDG_CONFIG_HOME/bash/aliases.sh" ] && . "$XDG_CONFIG_HOME/bash/aliases.sh"
+[ -f "$XDG_CONFIG_HOME/bash/exports.sh" ] && . "$XDG_CONFIG_HOME/bash/exports.sh"
+# ====================================
+EOF
+
+#    Replace any unquoted PATH pieces that split on spaces.
+#    First, show them:
+rg -n --hidden --no-ignore -S '/home/ranuga/Programming/Projects/Open ' "$HOME" "$HOME/dotfiles" || true
+#    Then (example) append a correct, quoted PATH export (safe no-op if dup):
+# 6) Find any stale references to the OLD repo path and rewrite them to the NEW path
+OLD="$HOME/dotfiles/.config"
+NEW="$HOME/dotfiles/config"
+if command -v rg >/dev/null 2>&1; then   MATCHES=$(rg -l --hidden --no-ignore -S --fixed-strings "$OLD" "$HOME" "$HOME/dotfiles" || true); else   MATCHES=$(grep -RIl --exclude-dir=.git --binary-files=without-match "$OLD" "$HOME" "$HOME/dotfiles" 2>/dev/null || true); fi
+[ -n "$MATCHES" ] && echo "$MATCHES" | xargs -I{} sed -i "s|$OLD|$NEW|g" "{}"
+# 7) VS Code Snap weirdness: force sane XDG_DATA_HOME (Snap rewrites it to /home/ranuga/snap/code/<rev>/.local/share)
+grep -q 'XDG_DATA_HOME=' "$HOME/.bashrc" 2>/dev/null || echo 'export XDG_DATA_HOME="$HOME/.local/share"' >> "$HOME/.bashrc"
+# 8) Reload your shell
+exec bash -l
+# Should be empty now
+echo "BASH_ENV='$BASH_ENV'"; echo "ENV='$ENV'"
+# Should resolve to the new repo
+readlink -f "$HOME/.config"        # -> /home/ranuga/dotfiles/config
+readlink -f "$HOME/.config/bash"   # -> /home/ranuga/dotfiles/config/bash
+# Verify 'env' binary found correctly
+command -v env                      # -> /usr/bin/env
+# 1) Anything still hard-coding the old repo path?
+OLD="$HOME/dotfiles/.config"
+rg -n --hidden --no-ignore -S --fixed-strings "$OLD" "$HOME" "$HOME/dotfiles" || echo "no matches"
+# 2) Any ~/.config entries not resolving into ~/dotfiles/config?
+for d in bash discord git kitty lazygit nvim ohmyzsh tmux wezterm; do   p="$HOME/.config/$d";   printf "%-9s -> %s\n" "$d" "$(readlink -f "$p" 2>/dev/null || echo MISSING)"; done
+# 3) Make sure XDG vars are sane (Snap/VSCode sometimes pollute these)
+echo "XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-unset}   (should be $HOME/.config)"
+echo "XDG_DATA_HOME=${XDG_DATA_HOME:-unset}       (should be $HOME/.local/share)"
+ls
+cat dotfiles/config/bash/
+ls dotfiles/config/bash/
+# 0) Ensure ~/.config points at the new repo path
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 1) Create a shim ~/.bashrc that sources the real one in your repo
+cat > "$HOME/.bashrc" <<'EOF'
+# ~/.bashrc shim -> repo bashrc
+export XDG_CONFIG_HOME="$HOME/.config"
+# Nuke any rogue ENV/BASH_ENV that might be injected by snap/VS Code
+unset ENV BASH_ENV
+# Source the real bashrc from your dotfiles repo
+if [ -f "$XDG_CONFIG_HOME/bash/bashrc" ]; then
+  . "$XDG_CONFIG_HOME/bash/bashrc"
+fi
+EOF
+
+# 2) Make sure login shells (and VS Code) load ~/.bashrc safely
+# ~/.profile is used by login shells; keep it minimal and robust
+cat > "$HOME/.profile" <<'EOF'
+# ~/.profile
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+# For interactive bash, load ~/.bashrc (which shims into your repo)
+if [ -n "$BASH_VERSION" ] && [ -r "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
+fi
+EOF
+
+# 3) Clean up any *existing* bad ENV/BASH_ENV definitions across your files
+# (these cause the "…/.local/share/../bin/env: No such file" errors)
+for f in "$HOME/.bashrc" "$HOME/.profile" "$HOME/.bash_profile"          "$HOME/.config/bash/bashrc" "$HOME/.config/bash/exports.sh"; do   [ -f "$f" ] || continue;   sed -i     -e '/^[[:space:]]*export[[:space:]]\+ENV=/d'     -e '/^[[:space:]]*ENV=/d'     -e '/^[[:space:]]*export[[:space:]]\+BASH_ENV=/d'     -e '/^[[:space:]]*BASH_ENV=/d' "$f"; done
+# 4) Fix your PATH entry that has a space in it (quote it properly)
+grep -rl --exclude-dir=.git -F '/Programming/Projects/Open ' "$HOME/.config/bash" "$HOME/.bashrc" "$HOME/.profile" 2>/dev/null   | xargs -r sed -i '/Open [Ss]ource/d'
+# Then append a correct, quoted PATH extension to your repo exports
+mkdir -p "$HOME/.config/bash"
+# 5) Sanity: make sure wezterm top-level file is optional but valid
+# (WezTerm already reads ~/.config/wezterm/wezterm.lua via the ~/.config symlink)
+[ -f "$HOME/.wezterm.lua" ] || {   [ -f "$HOME/.config/wezterm/wezterm.lua" ] &&   ln -s "$HOME/.config/wezterm/wezterm.lua" "$HOME/.wezterm.lua"; }
+# 6) Reload shell
+exec bash -l
+clear
+# 0) Ensure ~/.config points at the new repo path
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 1) Create a shim ~/.bashrc that sources the real one in your repo
+cat > "$HOME/.bashrc" <<'EOF'
+# ~/.bashrc shim -> repo bashrc
+export XDG_CONFIG_HOME="$HOME/.config"
+# Nuke any rogue ENV/BASH_ENV that might be injected by snap/VS Code
+unset ENV BASH_ENV
+# Source the real bashrc from your dotfiles repo
+if [ -f "$XDG_CONFIG_HOME/bash/bashrc" ]; then
+  . "$XDG_CONFIG_HOME/bash/bashrc"
+fi
+EOF
+
+# 2) Make sure login shells (and VS Code) load ~/.bashrc safely
+# ~/.profile is used by login shells; keep it minimal and robust
+cat > "$HOME/.profile" <<'EOF'
+# ~/.profile
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+# For interactive bash, load ~/.bashrc (which shims into your repo)
+if [ -n "$BASH_VERSION" ] && [ -r "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
+fi
+EOF
+
+# 3) Clean up any *existing* bad ENV/BASH_ENV definitions across your files
+# (these cause the "…/.local/share/../bin/env: No such file" errors)
+for f in "$HOME/.bashrc" "$HOME/.profile" "$HOME/.bash_profile"          "$HOME/.config/bash/bashrc" "$HOME/.config/bash/exports.sh"; do   [ -f "$f" ] || continue;   sed -i     -e '/^[[:space:]]*export[[:space:]]\+ENV=/d'     -e '/^[[:space:]]*ENV=/d'     -e '/^[[:space:]]*export[[:space:]]\+BASH_ENV=/d'     -e '/^[[:space:]]*BASH_ENV=/d' "$f"; done
+# 4) Fix your PATH entry that has a space in it (quote it properly)
+# First, remove any broken, unquoted lines referencing ".../Open Source"
+grep -rl --exclude-dir=.git -F '/Programming/Projects/Open ' "$HOME/.config/bash" "$HOME/.bashrc" "$HOME/.profile" 2>/dev/null   | xargs -r sed -i '/Open [Ss]ource/d'
+# Then append a correct, quoted PATH extension to your repo exports
+mkdir -p "$HOME/.config/bash"
+grep -q 'Open Source/bin' "$HOME/.config/bash/exports.sh" 2>/dev/null ||   echo 'export PATH="$PATH:$HOME/Programming/Projects/Open Source/bin"' >> "$HOME/.config/bash/exports.sh"
+# 5) Sanity: make sure wezterm top-level file is optional but valid
+# (WezTerm already reads ~/.config/wezterm/wezterm.lua via the ~/.config symlink)
+[ -f "$HOME/.wezterm.lua" ] || {   [ -f "$HOME/.config/wezterm/wezterm.lua" ] &&   ln -s "$HOME/.config/wezterm/wezterm.lua" "$HOME/.wezterm.lua"; }
+# 6) Reload shell
+exec bash -l
+exit
+# These must be empty
+echo "BASH_ENV='${BASH_ENV:-}'"; echo "ENV='${ENV:-}'"
+# These must resolve to the repo
+readlink -f "$HOME/.config"           # /home/ranuga/dotfiles/config
+readlink -f "$HOME/.config/bash"      # /home/ranuga/dotfiles/config/bash
+readlink -f "$HOME/.config/bash/bashrc"  # should exist
+# Verify PATH contains the quoted space path once
+echo "$PATH" | tr ':' '\n' | rg -n '^/home/ranuga/Programming/Projects/Open Source/bin$' || echo "PATH entry not found"
+# WezTerm: show which config it reads
+WEZTERM_LOG=info wezterm ls-fonts --list-system 2>&1 | rg -m1 'reading config'
+set -euo pipefail
+# 0) Point XDG to your repo-backed ~/.config
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 1) ~/.bashrc shim -> sources the real one in your repo
+cat > "$HOME/.bashrc" <<'EOF'
+# ~/.bashrc shim -> repo bashrc
+export XDG_CONFIG_HOME="$HOME/.config"
+unset ENV BASH_ENV
+if [ -f "$XDG_CONFIG_HOME/bash/bashrc" ]; then
+  . "$XDG_CONFIG_HOME/bash/bashrc"
+fi
+EOF
+
+set -euo pipefail
+# 0) Point XDG to your repo-backed ~/.config
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 1) ~/.bashrc shim -> sources the real one in your repo
+cat > "$HOME/.bashrc" <<'EOF'
+# ~/.bashrc shim -> repo bashrc
+export XDG_CONFIG_HOME="$HOME/.config"
+unset ENV BASH_ENV
+if [ -f "$XDG_CONFIG_HOME/bash/bashrc" ]; then
+  . "$XDG_CONFIG_HOME/bash/bashrc"
+fi
+EOF
+
+# must be empty
+echo "BASH_ENV=${BASH_ENV:-}  ENV=${ENV:-}"
+# must resolve to the repo-backed config
+readlink -f "$HOME/.config"
+readlink -f "$HOME/.config/bash"
+readlink -f "$HOME/.config/bash/bashrc"
+# PATH must include the quoted space path
+echo "$PATH" | tr ':' '\n' | rg -n '^/home/ranuga/Programming/Projects/Open Source/bin$' || echo "PATH entry not found"
+# WezTerm: show the file it actually read
+WEZTERM_LOG=info wezterm ls-fonts --list-system 2>&1 | rg -m1 'reading config'
+nvim .
+clear
+set -euo pipefail
+# 0) Point ~/.config to repo
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 1) Find and show the offending "Open " line(s) (spaces!) so you see the culprit
+if command -v rg >/dev/null 2>&1; then   rg -n --hidden --no-ignore -S '/home/ranuga/Programming/Projects/Open ' "$HOME" "$HOME/dotfiles" || true; else   grep -RIn --exclude-dir=.git '/home/ranuga/Programming/Projects/Open ' "$HOME" "$HOME/dotfiles" 2>/dev/null || true; fi
+# 2) Remove any broken unquoted lines that reference ".../Open " anywhere in your bash configs
+for f in "$HOME/.bashrc" "$HOME/.profile" "$HOME/.bash_profile"          "$HOME/.config/bash/bashrc" "$HOME/.config/bash/exports.sh"; do   [ -f "$f" ] || continue
+  sed -i '/\/home\/ranuga\/Programming\/Projects\/Open /d' "$f"; done
+# 3) Create a **known-good** repo bashrc that sets styling and sources exports/aliases safely
+mkdir -p "$HOME/.config/bash"
+cat > "$HOME/.config/bash/bashrc" <<'EOF'
+# ===== dotfiles/config/bash/bashrc =====
+# Hard guard: kill ENV/BASH_ENV rogues
+unset ENV BASH_ENV
+
+# Make sure XDG is sane
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+# History & shell options
+shopt -s histappend checkwinsize
+HISTCONTROL=ignoreboth
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+# Prompt styling (colors + git branch)
+parse_git_branch() {
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1 || return 0
+  git symbolic-ref --short -q HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null
+}
+__BASH_DOTFILES=1
+if [ -t 1 ]; then
+  RED="\[\e[31m\]"; GREEN="\[\e[32m\]"; YELLOW="\[\e[33m\]"
+  BLUE="\[\e[34m\]"; MAGENTA="\[\e[35m\]"; CYAN="\[\e[36m\]"; RESET="\[\e[0m\]"
+  PS1="${GREEN}\u${RESET}@${BLUE}\h${RESET}:${CYAN}\w${RESET}$(git_branch='$(parse_git_branch)'; [ -n \"$git_branch\" ] && echo \" ${YELLOW}(\$git_branch)${RESET}\")\n$ "
+fi
+
+# Source per-file configs if present
+[ -f "$XDG_CONFIG_HOME/bash/exports.sh" ] && . "$XDG_CONFIG_HOME/bash/exports.sh"
+[ -f "$XDG_CONFIG_HOME/bash/aliases.sh" ] && . "$XDG_CONFIG_HOME/bash/aliases.sh"
+[ -f "$XDG_CONFIG_HOME/bash/profile.sh" ] && . "$XDG_CONFIG_HOME/bash/profile.sh"
+
+# Completion (bash-completion) if available
+if [ -r /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
+elif [ -r /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
+# ===== end bashrc =====
+EOF
+
+# 4) Ensure exports.sh contains the quoted "Open Source" PATH entry (safe no-dup)
+touch "$HOME/.config/bash/exports.sh"
+grep -q 'Open Source/bin' "$HOME/.config/bash/exports.sh" ||   echo 'export PATH="$PATH:$HOME/Programming/Projects/Open Source/bin"' >> "$HOME/.config/bash/exports.sh"
+# 5) Minimal shim ~/.bashrc + ~/.profile (login shells) — keep them tiny and robust
+cat > "$HOME/.bashrc" <<'EOF'
+# ~/.bashrc shim -> repo
+export XDG_CONFIG_HOME="$HOME/.config"
+unset ENV BASH_ENV
+[ -f "$XDG_CONFIG_HOME/bash/bashrc" ] && . "$XDG_CONFIG_HOME/bash/bashrc"
+EOF
+
+git log --graph --oneline --decorate --all | grep stash
+npm install -g @anthropic-ai/claude-code
+clerar
+clerar
+nvim .
+# check which exists:
+ls $XDG_RUNTIME_DIR/discord-ipc-0    $XDG_RUNTIME_DIR/app/com.discordapp.Discord/discord-ipc-0
+# if only the Flatpak path exists, link it to the standard location:
+ln -sf "$XDG_RUNTIME_DIR/app/com.discordapp.Discord/discord-ipc-0" "$XDG_RUNTIME_DIR/discord-ipc-0"
+# some systems also need:
+ls -l /run/user/1000/discord-ipc-0
+lsof -p $(pgrep -f '[dD]iscord') | grep discord-ipc || echo "discord not touching IPC"
+ln -sf "$XDG_RUNTIME_DIR/app/com.discordapp.Discord/discord-ipc-0"        "$XDG_RUNTIME_DIR/discord-ipc-0"
+ln -sf "$XDG_RUNTIME_DIR/discord-ipc-0" /tmp/discord-ipc-0
+ls $XDG_RUNTIME_DIR/*discord-ipc-* 2>/dev/null
+nvim --version
+flatpak run com.discordapp.Discord &
+rm -f $XDG_RUNTIME_DIR/discord-ipc-0
+(pkill -f '[dD]iscord' || true); setsid discord >/dev/null 2>&1 &
+ls -l $XDG_RUNTIME_DIR/discord-ipc-0
+which -a discord || true
+readlink -f "$(which discord)" 2>/dev/null || true
+snap list | grep -i discord || true
+flatpak list | grep -i discord || true
+dpkg -l | grep -i discord || true
+sudo snap remove discord  # if present
+wget -O /tmp/discord.deb "https://discord.com/api/download?platform=linux&format=deb"
+sudo apt install -y /tmp/discord.deb
+cd dotfiles/
+cd .config/
+nautilus .
+cd. .
+..
+claude
+clear
+set -euo pipefail
+# Point XDG to your repo-backed ~/.config
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# Repo bashrc (this is the one you actually edit long-term)
+mkdir -p "$HOME/.config/bash"
+cat > "$HOME/.config/bash/bashrc" <<'EOF'
+# ===== dotfiles/config/bash/bashrc =====
+# Kill rogue ENV/BASH_ENV (Snap/VS Code garbage)
+unset ENV BASH_ENV
+
+# Basic sane env
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+# History + shell options
+shopt -s histappend checkwinsize
+HISTCONTROL=ignoreboth
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+# Prompt (with git branch if available)
+parse_git_branch() {
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1 || return 0
+  git symbolic-ref --short -q HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null
+}
+if [ -t 1 ]; then
+  RED="\[\e[31m\]"; GREEN="\[\e[32m\]"; YELLOW="\[\e[33m\]"
+  BLUE="\[\e[34m\]"; CYAN="\[\e[36m\]"; RESET="\[\e[0m\]"
+  __gb='$(parse_git_branch)'; __gb_ps=''; [ -n "$__gb" ] && __gb_ps=" ${YELLOW}(${__gb})${RESET}"
+  PS1="${GREEN}\u${RESET}@${BLUE}\h${RESET}:${CYAN}\w${RESET}${__gb_ps}\n$ "
+fi
+
+# Optional: source per-file configs if you have them (safe no-ops)
+[ -f "$XDG_CONFIG_HOME/bash/exports.sh" ] && . "$XDG_CONFIG_HOME/bash/exports.sh"
+[ -f "$XDG_CONFIG_HOME/bash/aliases.sh" ] && . "$XDG_CONFIG_HOME/bash/aliases.sh"
+[ -f "$XDG_CONFIG_HOME/bash/profile.sh" ] && . "$XDG_CONFIG_HOME/bash/profile.sh"
+
+# Bash completion if present
+if [ -r /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
+elif [ -r /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
+# ===== end =====
+EOF
+
+# Tiny shim ~/.bashrc that forwards to repo bashrc — nothing else
+cat > "$HOME/.bashrc" <<'EOF'
+export XDG_CONFIG_HOME="$HOME/.config"
+unset ENV BASH_ENV
+[ -f "$XDG_CONFIG_HOME/bash/bashrc" ] && . "$XDG_CONFIG_HOME/bash/bashrc"
+EOF
+
+EOF
+strace -e file bash -i -l -c exit 2>&1 | grep bashrc
+# 1) Make sure ~/.config points to your repo
+ln -sfn "$HOME/dotfiles/config" "$HOME/.config"
+# 2) Point Bash directly at your repo bashrc
+ln -sfn "$HOME/.config/bash/bashrc" "$HOME/.bashrc"
+# 3) (Login shells) ensure ~/.profile pulls in ~/.bashrc
+cat > "$HOME/.profile" <<'EOF'
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+[ -n "$BASH_VERSION" ] && [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+EOF
+
+# 4) Reload and prove it
+exec bash -l
+clear
+ls
+cd ..
+cat ~/.bashr
+cat ~/.bashrc
+cd do
+ls
+cd 
+ls
+cd dotfiles/
+sl
+git status
+cat config/bash/bashrc 
+nvim .
+exi
+exit
+bash --norc --rcfile /dev/null -i -x
+exit
+eit
