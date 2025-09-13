@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({"bluz71/vim-moonfly-colors", {
+tequire("lazy").setup({"bluz71/vim-moonfly-colors", {
     'saghen/blink.cmp',
     dependencies = {'rafamadriz/friendly-snippets'},
     version = '1.*',
