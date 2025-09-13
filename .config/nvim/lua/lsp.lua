@@ -9,31 +9,27 @@ require('mason').setup({
 })
 
 require('mason-lspconfig').setup({
-    -- A list of servers to automatically install if they're not already installed
-    ensure_installed = {'pyright', 'lua_ls', 'rust_analyzer', 'tsserver', 'gopls'}
+    ensure_installed = {'pyright', 'lua_ls', 'rust_analyzer', 'ts_ls', 'gopls'}
 })
 
--- Set different settings for different languages' LSP
--- LSP list: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--- How to use setup({}): https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
---     - the settings table is sent to the LSP
---     - on_attach: a lua callback function to run after LSP attaches to a given buffer
 local lspconfig = require('lspconfig')
 
--- Customized on_attach function
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = {
-    noremap = true,
-    silent = true
-}
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+
+local signs = {
+  Error = " ",
+  Warn  = " ",
+  Hint  = " ",
+  Info  = " ",
+}
+
+for t, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. t
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+
+local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -53,11 +49,11 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
     -- Workspace management
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
+    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    -- vim.keymap.set('n', '<space>wl', function()
+    --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, bufopts)
 
     -- Type and refactoring
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
@@ -69,7 +65,6 @@ local on_attach = function(client, bufnr)
         })
     end, bufopts)
 
-    -- Auto-format on save for all file types with LSP
     vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
         callback = function()
@@ -78,14 +73,10 @@ local on_attach = function(client, bufnr)
     })
 end
 
--- Configure each language
--- How to add LSP for a specific language?
--- 1. use `:Mason` to install corresponding LSP
--- 2. add configuration below
-
--- Python with pyright (better than pylsp for most use cases)
+-- Python with pyright 
 lspconfig.pyright.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         python = {
             analysis = {
@@ -98,16 +89,18 @@ lspconfig.pyright.setup({
 })
 
 -- TypeScript/JavaScript
-lspconfig.tsserver.setup({
-    on_attach = on_attach
+lspconfig.ts_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
 })
 
 -- Go
 lspconfig.gopls.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         gopls = {
-            gofumpt = true, 
+            gofumpt = true,
             analyses = {
                 unusedparams = true,
             },
@@ -119,9 +112,9 @@ lspconfig.gopls.setup({
 -- Rust
 lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
-            -- Enable clippy diagnostics
             checkOnSave = {
                 command = "clippy"
             }
@@ -132,6 +125,7 @@ lspconfig.rust_analyzer.setup({
 -- Lua
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -149,3 +143,14 @@ lspconfig.lua_ls.setup({
         }
     }
 })
+
+-- -- Customized on_attach function
+-- -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- local opts = {
+--     noremap = true,
+--     silent = true
+-- }
+-- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
