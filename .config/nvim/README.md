@@ -30,18 +30,52 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 
 ### ⚡ Quick Reference Table
 
-| Category     | Mapping      | Action           | Description                              |
-| ------------ | ------------ | ---------------- | ---------------------------------------- |
-| **Basic**    | `<leader>w`  | Save             | Save current file                        |
-| **Search**   | `<leader>/`  | Find in file     | Search within current file (like Ctrl+F) |
-| **Search**   | `<leader>/`  | Find in file     | Enhanced fuzzy search within current file |
-| **Search**   | `<C-f>`      | Find in file     | Alternative search within file           |
-| **Explorer** | `<leader>ee` | Toggle explorer  | Toggle file explorer                     |
-| **Explorer** | `<leader>ef` | Find in explorer | Toggle explorer focused on current file  |
-| **Terminal** | `<C-\>`      | Terminal         | Toggle floating terminal                 |
-| **Terminal** | `<leader>tt` | Terminal         | Alternative floating terminal toggle     |
-| **Git**      | `<leader>lg` | LazyGit          | Open LazyGit interface                   |
-| **Help**     | `<leader>?`  | Which-key        | Show buffer-local keymaps guide          |
+| Category | Mapping | Action | Description |
+|---|---|---|---|
+| **Basic** | `<leader>w` | Save | Save current file |
+| **Explorer** | `<leader>ee` | Toggle file explorer | Toggle file explorer |
+| **Explorer** | `<leader>ef` | Toggle file explorer on current file | Toggle file explorer on current file |
+| **Split Window** | `<leader>sv` | Split window vertically | Split window vertically |
+| **Split Window** | `<leader>sh` | Split window horizontally | Split window horizontally |
+| **Split Window** | `<leader>se` | Make splits equal size | Make splits equal size |
+| **Split Window** | `<leader>sx` | Close current split | Close current split |
+| **Split Window** | `<C-h>` | Go to left split | Go to left split |
+| **Split Window** | `<C-j>` | Go to bottom split | Go to bottom split |
+| **Split Window** | `<C-k>` | Go to top split | Go to top split |
+| **Split Window** | `<C-l>` | Go to right split | Go to right split |
+| **Split Window** | `<leader>+` | Increase split height | Increase split height |
+| **Split Window** | `<leader>-` | Decrease split height | Decrease split height |
+| **Split Window** | `<leader>>` | Increase split width | Increase split width |
+| **Split Window** | `<leader><` | Decrease split width | Decrease split width |
+| **Tab Management** | `<leader>to` | Open new tab | Open new tab |
+| **Tab Management** | `<leader>tx` | Close current tab | Close current tab |
+| **Tab Management** | `<leader>tn` | Go to next tab | Go to next tab |
+| **Tab Management** | `<leader>tp` | Go to previous tab | Go to previous tab |
+| **Tab Management** | `<leader>tf` | Open current buffer in new tab | Open current buffer in new tab |
+| **Clipboard** | `y` | Copy to system clipboard | Copy to system clipboard |
+| **Clipboard** | `p` | Paste from system clipboard | Paste from system clipboard |
+| **Git** | `<leader>lg` | Open LazyGit | Open LazyGit |
+| **Search** | `<leader>/` | Search within current file (fuzzy) | Search within current file (fuzzy) |
+| **Search** | `<Esc>` | Clear search highlighting | Clear search highlighting |
+| **Harpoon** | `<leader>ha` | Harpoon add file | Harpoon add file |
+| **Harpoon** | `<leader>hh` | Harpoon toggle menu | Harpoon toggle menu |
+| **Harpoon** | `<leader>h1` | Harpoon file 1 | Harpoon file 1 |
+| **Harpoon** | `<leader>h2` | Harpoon file 2 | Harpoon file 2 |
+| **Harpoon** | `<leader>h3` | Harpoon file 3 | Harpoon file 3 |
+| **Harpoon** | `<leader>h4` | Harpoon file 4 | Harpoon file 4 |
+| **Harpoon** | `<leader>hp` | Harpoon previous | Harpoon previous |
+| **Harpoon** | `<leader>hn` | Harpoon next | Harpoon next |
+| **LSP** | `<leader>fd` | Find LSP definitions | Find LSP definitions |
+| **LSP** | `<leader>fr` | Find LSP references | Find LSP references |
+| **LSP** | `<leader>fi` | Find LSP implementations | Find LSP implementations |
+| **LSP** | `<leader>fs` | Find document symbols | Find document symbols |
+| **LSP** | `<leader>fS` | Find workspace symbols | Find workspace symbols |
+| **Terminal** | `<C-\>` | Toggle floating terminal | Toggle floating terminal |
+| **Terminal** | `<C-\>` | Toggle floating terminal from terminal mode | Toggle floating terminal from terminal mode |
+| **UNIX** | `<leader>rm` | Remove current file | Remove current file |
+| **UNIX** | `<leader>rn` | Rename current file | Rename current file |
+| **UNIX** | `<leader>md` | Create directory | Create directory |
+| **UNIX** | `<leader>ww` | Write file with sudo | Write file with sudo |
 
 ### 📁 File & Project Navigation
 
@@ -68,8 +102,6 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 ### 🔍 Search & Find
 
 - `<leader>/` — Fuzzy search within current file (enhanced search)
-- `<leader>/` — Search within current file (enhanced Ctrl+F)
-- `<C-f>` — Alternative search within current file
 - `<leader>ff` — Find files (Telescope)
 - `<leader>fg` — Find in files / Live grep (Telescope)
 - `<leader>fb` — Find buffers (Telescope)
@@ -122,11 +154,6 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 - `ds{char}` — Delete surround (e.g., `ds"` removes surrounding quotes)
 - `S{char}` — Surround selection in visual mode
 
-### 🔍 Enhanced Search
-
-- `<leader>/` — Fuzzy search within current file (enhanced file search)
-- `<C-f>` — Alternative search within current file
-
 ### 🔧 LSP (Code Intelligence)
 
 #### Navigation
@@ -168,9 +195,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 ### 🖥️ Terminal Integration
 
 - `<C-\>` — Toggle floating terminal
-- `<leader>tt` — Alternative floating terminal toggle
 - (In terminal) `<C-\>` — Exit terminal mode and close terminal
-- (In terminal) `<leader>tt` — Alternative exit terminal mode
 
 ### 🔀 Git Integration
 
@@ -378,7 +403,7 @@ Tree-sitter provides superior syntax highlighting by using a concrete syntax tre
 
 **Terminal Integration:**
 
-- Use `<C-\>` for floating terminal (or `<leader>tt` if backslash doesn't work)
+- Use `<C-\>` for floating terminal
 - Navigate seamlessly between terminal and editor splits
 - Use LazyGit (`<leader>lg`) for visual git operations
 

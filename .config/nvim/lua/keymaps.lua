@@ -35,19 +35,18 @@ vim.keymap.set('n', '<leader>sx', '<cmd>close<CR>', {
 })
 
 -- Navigate splits (also works with tmux via nvim-tmux-navigation)
--- NOTE: These are handled by nvim-tmux-navigation plugin for seamless tmux integration
--- vim.keymap.set('n', '<C-h>', '<C-w>h', {
---     desc = 'Go to left split'
--- })
--- vim.keymap.set('n', '<C-j>', '<C-w>j', {
---     desc = 'Go to bottom split'
--- })
--- vim.keymap.set('n', '<C-k>', '<C-w>k', {
---     desc = 'Go to top split'
--- })
--- vim.keymap.set('n', '<C-l>', '<C-w>l', {
---     desc = 'Go to right split'
--- })
+vim.keymap.set('n', '<C-h>', '<C-w>h', {
+    desc = 'Go to left split'
+})
+vim.keymap.set('n', '<C-j>', '<C-w>j', {
+    desc = 'Go to bottom split'
+})
+vim.keymap.set('n', '<C-k>', '<C-w>k', {
+    desc = 'Go to top split'
+})
+vim.keymap.set('n', '<C-l>', '<C-w>l', {
+    desc = 'Go to right split'
+})
 
 -- Resize splits
 vim.keymap.set('n', '<leader>+', '<C-w>+', {
@@ -85,10 +84,10 @@ vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', {
 -- ═══════════════════════════════════════════════════════════════════════════
 -- System Clipboard Integration
 -- ═══════════════════════════════════════════════════════════════════════════
-vim.keymap.set({'n', 'v'}, 'y', 'y', {
+vim.keymap.set({ 'n', 'v' }, 'y', 'y', {
     desc = 'Copy to system clipboard'
 })
-vim.keymap.set({'n', 'v'}, 'p', 'p', {
+vim.keymap.set({ 'n', 'v' }, 'p', 'p', {
     desc = 'Paste from system clipboard'
 })
 
@@ -98,37 +97,29 @@ vim.keymap.set({'n', 'v'}, 'p', 'p', {
 vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<cr>', {
     desc = 'Open LazyGit'
 })
-
--- ═══════════════════════════════════════════════════════════════════════════
--- Search & Find
--- ═══════════════════════════════════════════════════════════════════════════
--- Enhanced search functionality (like Ctrl+F in browsers/editors)
-vim.keymap.set('n', '<leader>/', function()
-    vim.ui.input({
-        prompt = "Search: "
-    }, function(input)
-        if input and input ~= "" then
-            -- Enable search highlighting for this search
-            vim.opt.hlsearch = true
-            -- Perform the search
-            local ok, _ = pcall(vim.fn.search, input)
-            if not ok then
-                print("Pattern not found: " .. input)
-            end
-        end
-    end)
-end, {
-    desc = 'Search within current file (enhanced Ctrl+F)'
-})
-
--- Traditional search (fallback)
-vim.keymap.set('n', '<C-f>', function()
-    vim.opt.hlsearch = true
-    vim.cmd('normal! /')
-end, {
-    desc = 'Search within current file (traditional)'
-})
-
+--
+-- -- ═══════════════════════════════════════════════════════════════════════════
+-- -- Search & Find
+-- -- ═══════════════════════════════════════════════════════════════════════════
+-- -- Enhanced search functionality (like Ctrl+F in browsers/editors)
+-- vim.keymap.set('n', '<leader>/', function()
+--     vim.ui.input({
+--         prompt = "Search: "
+--     }, function(input)
+--         if input and input ~= "" then
+--             -- Enable search highlighting for this search
+--             vim.opt.hlsearch = true
+--             -- Perform the search
+--             local ok, _ = pcall(vim.fn.search, input)
+--             if not ok then
+--                 print("Pattern not found: " .. input)
+--             end
+--         end
+--     end)
+-- end, {
+--     desc = 'Search within current file (enhanced Ctrl+F)'
+-- })
+--
 -- Clear search highlighting
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', {
     desc = 'Clear search highlighting'
@@ -145,35 +136,6 @@ vim.keymap.set('n', '<leader>/', function()
     require('telescope.builtin').current_buffer_fuzzy_find()
 end, {
     desc = 'Search within current file (fuzzy)'
-})
-
--- Comment toggling with <leader>gc (mnemonic: go comment)
-vim.keymap.set('n', '<leader>gc', function()
-    local ok, comment_api = pcall(require, 'Comment.api')
-    if ok then
-        comment_api.toggle.linewise.current()
-    else
-        -- Fallback to built-in commenting
-        vim.cmd('normal! gcc')
-    end
-end, {
-    noremap = true,
-    silent = true,
-    desc = 'Toggle comment on current line'
-})
-
-vim.keymap.set('v', '<leader>gc', function()
-    local ok, comment_api = pcall(require, 'Comment.api')
-    if ok then
-        comment_api.toggle.linewise(vim.fn.visualmode())
-    else
-        -- Fallback to built-in commenting
-        vim.cmd('normal! gc')
-    end
-end, {
-    noremap = true,
-    silent = true,
-    desc = 'Toggle comment on selected lines'
 })
 
 -- ═══════════════════════════════════════════════════════════════════════════
@@ -273,15 +235,6 @@ vim.keymap.set('n', '<C-\\>', '<cmd>ToggleTerm direction=float<CR>', {
 
 vim.keymap.set('t', '<C-\\>', '<C-\\><C-n><cmd>ToggleTerm<CR>', {
     desc = 'Toggle floating terminal from terminal mode'
-})
-
--- Alternative terminal mappings in case the backslash doesn't work
-vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm direction=float<CR>', {
-    desc = 'Toggle floating terminal (alternative)'
-})
-
-vim.keymap.set('t', '<leader>tt', '<C-\\><C-n><cmd>ToggleTerm<CR>', {
-    desc = 'Toggle floating terminal from terminal mode (alternative)'
 })
 
 -- ═══════════════════════════════════════════════════════════════════════════

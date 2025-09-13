@@ -107,7 +107,7 @@ lspconfig.gopls.setup({
     on_attach = on_attach,
     settings = {
         gopls = {
-            gofumpt = true, -- Use gofumpt for formatting
+            gofumpt = true, 
             analyses = {
                 unusedparams = true,
             },
