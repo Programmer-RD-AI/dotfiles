@@ -1,5 +1,8 @@
 .history/
-.config/bash/bash_history
-.config/bash/bash_history
+config/bash/bash_history
+config/bash/bash_history
 node_modules/
+config/go
+config/discord
+config/dconf
 

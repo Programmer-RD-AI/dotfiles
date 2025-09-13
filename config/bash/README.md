@@ -1,32 +1,47 @@
-# Bash Configuration (`.config/bash`)
+# Bash Configuration
 
-This folder contains all custom Bash configuration for your environment.
+## Aliases
 
-## Main File
+**Navigation**
+- `..` → `cd ..`
+- `...` → `cd ../..`
+- `....` → `cd ../../..`
 
-- `bashrc`: Main Bash configuration file. Loaded for interactive shells.
+**Files**
+- `ls` → `exa --color=always`
+- `ll` → `exa -lhgF --git --color=always`
+- `la` → `exa -lahgF --git --color=always`
+- `tree` → `exa --tree --level=2`
 
-## Key Features
+**Git**
+- `g` → `git`
+- `gs` → `git status`
+- `ga` → `git add`
+- `gc` → `git commit -m`
+- `gd` → `git diff`
+- `gpl` → `git pull`
+- `gpr` → `git push origin`
 
-- **PATH Setup**: Adds user, cargo, Anaconda, Node, and Snap binaries to your PATH.
-- **Color Palette**: Defines custom colors for your prompt (Git status, user, host, path, etc.).
-- **Modular Initialization**: Only loads for interactive shells.
-- **Aliases & Functions**: (Add your custom aliases and functions here as needed.)
+**Python**
+- `py` → `python`
+- `rc` → `ruff check`
+- `rcf` → `ruff check --fix`
+- `rf` → `ruff format`
 
-## Example Key Bindings
+**System**
+- `c` → `clear`
+- `reload` → `source ~/.bashrc`
 
-- You can add custom key bindings in `bashrc` using `bind` or `bind -x`.
-- Example (add to `bashrc`):
-  ```bash
-  # Ctrl+L to clear and list files
-  bind -x '"\C-l":clear;ls -la'
-  ```
+## Functions
 
-## Usage
+- `load_env [file]` - Load .env variables
+- `run_mongo_container` - Start MongoDB container
+- `transcribe` - Audio transcription with Whisper
+- `extract` - Extract any archive
 
-- This file is symlinked to `~/.bashrc` for automatic loading.
-- To reload after changes: `source ~/.bashrc`
+## Git Prompt
 
----
-
-**Tip:** Add aliases, functions, and keymaps here to boost your shell productivity!
+- `?` → Untracked files
+- `*` → Modified files
+- `+` → Staged files
+- `-` → Deleted files
