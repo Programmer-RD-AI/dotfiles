@@ -229,7 +229,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 ### Language Servers Configured
 
 - **Python**: `pyright` (advanced type checking and IntelliSense)
-- **TypeScript/JavaScript**: `tsserver`
+- **TypeScript/JavaScript**: `ts_ls`
 - **Go**: `gopls` with gofumpt formatting and enhanced analysis
 - **Rust**: `rust_analyzer` with clippy integration
 - **Lua**: `lua_ls` with Neovim-specific configuration
@@ -239,7 +239,7 @@ This folder contains all Neovim configuration files, written in Lua for a modern
 All languages with LSP support now automatically format code on save:
 - **Go**: Uses `gofumpt` for superior formatting
 - **Python**: Uses LSP formatting (pyright)
-- **TypeScript/JavaScript**: Uses LSP formatting (tsserver)
+- **TypeScript/JavaScript**: Uses LSP formatting (ts_ls)
 - **Rust**: Uses LSP formatting with clippy
 - **Lua**: Uses LSP formatting
 ### Python Development Setup

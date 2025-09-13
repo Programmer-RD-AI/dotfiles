@@ -34,20 +34,6 @@ vim.keymap.set('n', '<leader>sx', '<cmd>close<CR>', {
     desc = 'Close current split'
 })
 
--- Navigate splits (also works with tmux via nvim-tmux-navigation)
-vim.keymap.set('n', '<C-h>', '<C-w>h', {
-    desc = 'Go to left split'
-})
-vim.keymap.set('n', '<C-j>', '<C-w>j', {
-    desc = 'Go to bottom split'
-})
-vim.keymap.set('n', '<C-k>', '<C-w>k', {
-    desc = 'Go to top split'
-})
-vim.keymap.set('n', '<C-l>', '<C-w>l', {
-    desc = 'Go to right split'
-})
-
 -- Resize splits
 vim.keymap.set('n', '<leader>+', '<C-w>+', {
     desc = 'Increase split height'
