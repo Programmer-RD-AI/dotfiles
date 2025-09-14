@@ -120,7 +120,7 @@ lspconfig.rust_analyzer.setup({
 	capabilities = capabilities,
 	settings = {
 		["rust-analyzer"] = {
-			checkOnSave = { true },
+			checkOnSave = true,
 		},
 	},
 })

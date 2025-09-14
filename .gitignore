@@ -5,4 +5,17 @@ node_modules/
 config/go
 config/discord
 config/dconf
+.gsd-keyboard.settings-ported
+Docker Desktop/
+evolution/
+github-copilot/       
+gnome-initial-setup-done
+gtk-3.0/
+ibus/
+monitors.xml
+monitors.xml~
+pulse/
+tiling-assistant/
+user-dirs.dirs
+user-dirs.locale
 
