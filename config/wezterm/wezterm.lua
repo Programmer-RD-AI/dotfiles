@@ -54,10 +54,8 @@ config.colors = {
 config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
-config.keys = {
-	-- Enter CopyMode
+config.keys = { -- Enter CopyMode
 	{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
-
 	-- Tab management
 	{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 	{
@@ -95,19 +93,19 @@ config.keys = {
 	},
 
 	-- Pane navigation (vim-style)
-	{ key = "h", mods = "CTRL", action = act.ActivatePaneDirection("Left") },
-	{ key = "j", mods = "CTRL", action = act.ActivatePaneDirection("Down") },
-	{ key = "k", mods = "CTRL", action = act.ActivatePaneDirection("Up") },
-	{ key = "l", mods = "CTRL", action = act.ActivatePaneDirection("Right") },
+	{ key = "h", mods = "CTRL",       action = act.ActivatePaneDirection("Left") },
+	{ key = "j", mods = "CTRL",       action = act.ActivatePaneDirection("Down") },
+	{ key = "k", mods = "CTRL",       action = act.ActivatePaneDirection("Up") },
+	{ key = "l", mods = "CTRL",       action = act.ActivatePaneDirection("Right") },
 
 	-- Clipboard
 	{ key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
 	{ key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
 
 	-- Font resizing
-	{ key = "=", mods = "CTRL", action = act.IncreaseFontSize },
-	{ key = "-", mods = "CTRL", action = act.DecreaseFontSize },
-	{ key = "0", mods = "CTRL", action = act.ResetFontSize },
+	{ key = "=", mods = "CTRL",       action = act.IncreaseFontSize },
+	{ key = "-", mods = "CTRL",       action = act.DecreaseFontSize },
+	{ key = "0", mods = "CTRL",       action = act.ResetFontSize },
 }
 
 -- CopyMode key table
@@ -241,7 +239,7 @@ config.key_tables = {
 			action = act.CopyMode("MoveToStartOfLineContent"),
 		},
 		{ key = "b", mods = "NONE", action = act.CopyMode("MoveBackwardWord") },
-		{ key = "b", mods = "ALT", action = act.CopyMode("MoveBackwardWord") },
+		{ key = "b", mods = "ALT",  action = act.CopyMode("MoveBackwardWord") },
 		{ key = "b", mods = "CTRL", action = act.CopyMode("PageUp") },
 		{
 			key = "d",
@@ -258,7 +256,7 @@ config.key_tables = {
 			mods = "NONE",
 			action = act.CopyMode({ JumpForward = { prev_char = false } }),
 		},
-		{ key = "f", mods = "ALT", action = act.CopyMode("MoveForwardWord") },
+		{ key = "f", mods = "ALT",  action = act.CopyMode("MoveForwardWord") },
 		{ key = "f", mods = "CTRL", action = act.CopyMode("PageDown") },
 		{
 			key = "g",
@@ -299,8 +297,8 @@ config.key_tables = {
 			mods = "CTRL",
 			action = act.CopyMode({ SetSelectionMode = "Block" }),
 		},
-		{ key = "w", mods = "NONE", action = act.CopyMode("MoveForwardWord") },
-		{ key = "PageUp", mods = "NONE", action = act.CopyMode("PageUp") },
+		{ key = "w",        mods = "NONE", action = act.CopyMode("MoveForwardWord") },
+		{ key = "PageUp",   mods = "NONE", action = act.CopyMode("PageUp") },
 		{ key = "PageDown", mods = "NONE", action = act.CopyMode("PageDown") },
 		{
 			key = "End",
@@ -328,7 +326,7 @@ config.key_tables = {
 			mods = "ALT",
 			action = act.CopyMode("MoveForwardWord"),
 		},
-		{ key = "UpArrow", mods = "NONE", action = act.CopyMode("MoveUp") },
+		{ key = "UpArrow",   mods = "NONE", action = act.CopyMode("MoveUp") },
 		{ key = "DownArrow", mods = "NONE", action = act.CopyMode("MoveDown") },
 	},
 }
