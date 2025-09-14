@@ -21,9 +21,8 @@ export RESET_COLOR='\[\e[0m\]'              # Reset to default
 
 # ────────────────────────── Environment ────────────────────────────
 export EDITOR='nvim'
-export VISUAL='code'
-export TERMINAL='kitty'
-export BROWSER='google-chrome'
+export TERMINAL='wezterm'
+export BROWSER='zen'
 export LANG='en_US.UTF-8'
 export TERM='xterm-256color'
 
@@ -477,12 +476,10 @@ case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
 *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
-# The next line updates PATH for the Google Cloud SDK.
+# gcloud
 if [ -f '/home/ranuga/google-cloud-sdk/path.bash.inc' ]; then . '/home/ranuga/google-cloud-sdk/path.bash.inc'; fi
 
-# The next line enables shell command completion for gcloud.
 if [ -f '/home/ranuga/google-cloud-sdk/completion.bash.inc' ]; then . '/home/ranuga/google-cloud-sdk/completion.bash.inc'; fi
 export PATH="$(go env GOPATH)/bin:$PATH"
 
@@ -490,8 +487,7 @@ export PATH="$(go env GOPATH)/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
+# conda 
 __conda_setup="$('/home/ranuga/micromamba/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -503,6 +499,5 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
 export PATH="$HOME/.local/bin:$PATH"
