@@ -21,7 +21,9 @@ config.automatically_reload_config = true
 -- Appearance
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 12.0
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.5
+config.hide_tab_bar_if_only_one_tab = true
+config.window_decorations = "RESIZE"
 
 local COLORS = {
 	background = "#1e1e2e",
@@ -119,9 +121,9 @@ config.keys = { -- Enter CopyMode
 	{ key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
 
 	-- Font resizing
-	{ key = "=", mods = "CTRL", action = act.IncreaseFontSize },
-	{ key = "-", mods = "CTRL", action = act.DecreaseFontSize },
-	{ key = "0", mods = "CTRL", action = act.ResetFontSize },
+	{ key = "=", mods = "CTRL",       action = act.IncreaseFontSize },
+	{ key = "-", mods = "CTRL",       action = act.DecreaseFontSize },
+	{ key = "0", mods = "CTRL",       action = act.ResetFontSize },
 }
 
 -- CopyMode key table
@@ -255,7 +257,7 @@ config.key_tables = {
 			action = act.CopyMode("MoveToStartOfLineContent"),
 		},
 		{ key = "b", mods = "NONE", action = act.CopyMode("MoveBackwardWord") },
-		{ key = "b", mods = "ALT", action = act.CopyMode("MoveBackwardWord") },
+		{ key = "b", mods = "ALT",  action = act.CopyMode("MoveBackwardWord") },
 		{ key = "b", mods = "CTRL", action = act.CopyMode("PageUp") },
 		{
 			key = "d",
@@ -272,7 +274,7 @@ config.key_tables = {
 			mods = "NONE",
 			action = act.CopyMode({ JumpForward = { prev_char = false } }),
 		},
-		{ key = "f", mods = "ALT", action = act.CopyMode("MoveForwardWord") },
+		{ key = "f", mods = "ALT",  action = act.CopyMode("MoveForwardWord") },
 		{ key = "f", mods = "CTRL", action = act.CopyMode("PageDown") },
 		{
 			key = "g",
@@ -318,7 +320,7 @@ config.key_tables = {
 			mods = "NONE",
 			action = act.CopyMode("MoveForwardWord"),
 		},
-		{ key = "PageUp", mods = "NONE", action = act.CopyMode("PageUp") },
+		{ key = "PageUp",   mods = "NONE", action = act.CopyMode("PageUp") },
 		{ key = "PageDown", mods = "NONE", action = act.CopyMode("PageDown") },
 		{
 			key = "End",
@@ -346,7 +348,7 @@ config.key_tables = {
 			mods = "ALT",
 			action = act.CopyMode("MoveForwardWord"),
 		},
-		{ key = "UpArrow", mods = "NONE", action = act.CopyMode("MoveUp") },
+		{ key = "UpArrow",   mods = "NONE", action = act.CopyMode("MoveUp") },
 		{ key = "DownArrow", mods = "NONE", action = act.CopyMode("MoveDown") },
 	},
 }
