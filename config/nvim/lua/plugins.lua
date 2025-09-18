@@ -109,8 +109,7 @@ require("lazy").setup({
 					documentation = { auto_show = false },
 					menu = {
 						border = "rounded",
-						winhighlight =
-						"Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
 					},
 				},
 				sources = {
@@ -169,9 +168,9 @@ require("lazy").setup({
 				exclude_groups = {},
 			})
 
-			vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-			vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-			vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 		end,
 	},
 	{
@@ -398,7 +397,7 @@ require("lazy").setup({
 			{ "ys", mode = "n", desc = "Add surrounding" },
 			{ "cs", mode = "n", desc = "Change surrounding" },
 			{ "ds", mode = "n", desc = "Delete surrounding" },
-			{ "S",  mode = "v", desc = "Surround selection" },
+			{ "S", mode = "v", desc = "Surround selection" },
 		},
 	},
 	{
