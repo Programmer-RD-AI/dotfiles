@@ -27,7 +27,6 @@ require("lazy").setup({
 			date_format = "%m-%d-%Y %H:%M:%S",
 			virtual_text_column = 1,
 		},
-
 	},
 	{
 		"ellisonleao/gruvbox.nvim",
@@ -120,8 +119,7 @@ require("lazy").setup({
 					documentation = { auto_show = false },
 					menu = {
 						border = "rounded",
-						winhighlight =
-						"Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
 					},
 				},
 				sources = {
@@ -409,7 +407,7 @@ require("lazy").setup({
 			{ "ys", mode = "n", desc = "Add surrounding" },
 			{ "cs", mode = "n", desc = "Change surrounding" },
 			{ "ds", mode = "n", desc = "Delete surrounding" },
-			{ "S",  mode = "v", desc = "Surround selection" },
+			{ "S", mode = "v", desc = "Surround selection" },
 		},
 	},
 	{
