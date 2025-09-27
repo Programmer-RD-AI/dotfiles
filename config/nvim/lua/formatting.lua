@@ -40,14 +40,26 @@ null_ls.setup({
 	end,
 })
 
-
 vim.api.nvim_create_user_command("RuffFixFile", function()
-  local file = vim.fn.expand("%:p")
-  if file == "" then return end
-  vim.cmd("write")
-  vim.fn.jobstart({ "ruff", "check", "--fix", file }, { stdout_buffered = true, stderr_buffered = true })
-  vim.fn.jobstart({ "ruff", "format", file }, { stdout_buffered = true, stderr_buffered = true })
-  vim.cmd("edit") -- reload
+	local file = vim.fn.expand("%:p")
+	if file == "" then
+		return
+	end
+	vim.cmd("write")
+	vim.fn.jobstart(
+		{ "ruff", "check", "--fix", file },
+		{ stdout_buffered = true, stderr_buffered = true }
+	)
+	vim.fn.jobstart(
+		{ "ruff", "format", file },
+		{ stdout_buffered = true, stderr_buffered = true }
+	)
+	vim.cmd("edit") -- reload
 end, {})
 
-vim.keymap.set("n", "<leader>rf", ":RuffFixFile<CR>", { desc = "Ruff fix current file" })
+vim.keymap.set(
+	"n",
+	"<leader>rf",
+	":RuffFixFile<CR>",
+	{ desc = "Ruff fix current file" }
+)
