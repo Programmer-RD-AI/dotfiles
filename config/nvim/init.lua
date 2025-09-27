@@ -1,5 +1,6 @@
 require("options")
 require("keymaps")
 require("plugins")
+require("formatting")
 require("lsp")
 require("diagnostics")
