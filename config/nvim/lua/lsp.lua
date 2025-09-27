@@ -1,3 +1,5 @@
+local utils = require("utils");
+
 require("mason").setup({
 	ui = {
 		icons = {
@@ -50,7 +52,10 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "K", function()
+		vim.lsp.buf.hover()
+		vim.cmd("wincmd p")
+	end, { silent = true })
 	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
 
 	-- Workspace management
@@ -85,9 +90,12 @@ lspconfig.pyright.setup({
 	settings = {
 		python = {
 			analysis = {
+				defaultInterpreterPath = getPythonPath(),
 				autoSearchPaths = true,
 				useLibraryCodeForTypes = true,
-				typeCheckingMode = "basic",
+				diagnosticMode = "workspace",
+				indexing = true,
+				typeCheckingMode = "strict",
 			},
 		},
 	},
