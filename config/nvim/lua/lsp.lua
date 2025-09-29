@@ -90,7 +90,7 @@ lspconfig.pyright.setup({
 	settings = {
 		python = {
 			analysis = {
-				defaultInterpreterPath = getPythonPath(),
+				defaultInterpreterPath = utils.getPythonPath(),
 				autoSearchPaths = true,
 				useLibraryCodeForTypes = true,
 				diagnosticMode = "workspace",
