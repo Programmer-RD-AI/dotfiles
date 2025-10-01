@@ -1,7 +1,7 @@
-function getPythonPath()
-	local root = vim.fs.dirname(
-		vim.fs.find({ "pyproject.toml", "setup.py", ".git" }, { upward = true })[1]
-	)
+local M = {}
+
+function M.getPythonPath()
+	local root = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "setup.py", ".git" }, { upward = true })[1])
 	local venv = root .. "/.venv"
 	local python = venv .. "/bin/python"
 	if vim.loop.os_uname().sysname:match("Windows") then
@@ -9,3 +9,5 @@ function getPythonPath()
 	end
 	return python
 end
+
+return M
