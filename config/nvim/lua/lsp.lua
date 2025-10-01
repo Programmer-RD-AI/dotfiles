@@ -48,6 +48,8 @@ local on_attach = function(_, bufnr)
 	}
 
 	-- Core navigation keymaps
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+	vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -78,27 +80,17 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		buffer = bufnr,
 		callback = function()
-			vim.lsp.buf.format({ async = false })
+			vim.lsp.buf.format({ async = false, bufnr = bufnr })
 		end,
 	})
 end
 
 -- Python with pyright
-lspconfig.pyright.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		python = {
-			analysis = {
-				defaultInterpreterPath = utils.getPythonPath(),
-				autoSearchPaths = true,
-				useLibraryCodeForTypes = true,
-				diagnosticMode = "workspace",
-				indexing = true,
-				typeCheckingMode = "strict",
-			},
-		},
-	},
+lspconfig.ruff.setup({
+	cmd = { "ruff", "server" }, -- explicit; uses the built-in language server
+	root_dir = utils.root_dir,
+	capabilities = capabilities, -- use whatever you already pass globally
+	on_attach = on_attach, -- you said you’ve set keymaps & format-on-save already
 })
 
 -- TypeScript/JavaScript
