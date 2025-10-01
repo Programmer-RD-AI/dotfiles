@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 require("mason").setup({
 	ui = {
 		icons = {
@@ -90,7 +88,7 @@ lspconfig.pyright.setup({
 	settings = {
 		python = {
 			analysis = {
-				defaultInterpreterPath = utils.getPythonPath(),
+				defaultInterpreterPath = getPythonPath(),
 				autoSearchPaths = true,
 				useLibraryCodeForTypes = true,
 				diagnosticMode = "workspace",
