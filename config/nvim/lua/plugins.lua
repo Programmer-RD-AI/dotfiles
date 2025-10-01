@@ -51,6 +51,16 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"azratul/live-share.nvim",
+		dependencies = {
+			"jbyuki/instant.nvim",
+		},
+		config = function()
+			vim.g.instant_username = "Ranuga-Mac" -- Any name they want
+			require("live-share").setup({})
+		end,
+	},
+	{
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
 			local nav = require("nvim-tmux-navigation")
@@ -119,7 +129,8 @@ require("lazy").setup({
 					documentation = { auto_show = false },
 					menu = {
 						border = "rounded",
-						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+						winhighlight =
+						"Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
 					},
 				},
 				sources = {
@@ -407,7 +418,7 @@ require("lazy").setup({
 			{ "ys", mode = "n", desc = "Add surrounding" },
 			{ "cs", mode = "n", desc = "Change surrounding" },
 			{ "ds", mode = "n", desc = "Delete surrounding" },
-			{ "S", mode = "v", desc = "Surround selection" },
+			{ "S",  mode = "v", desc = "Surround selection" },
 		},
 	},
 	{
