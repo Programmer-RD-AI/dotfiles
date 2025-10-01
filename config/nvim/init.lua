@@ -1,7 +1,7 @@
-require("utils")
 require("options")
 require("keymaps")
 require("plugins")
+require("utils")
 require("formatting")
 require("lsp")
 require("diagnostics")
