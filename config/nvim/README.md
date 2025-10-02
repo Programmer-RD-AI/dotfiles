@@ -4,52 +4,79 @@
 
 **Leader**: `<space>`
 
-**Essential**
+### Essential
 - `<leader>w` → Save file
-- `<leader>ee` → File explorer
-- `<leader>ff` → Find files
-- `<leader>fg` → Search in files
-- `<leader>/` → Search current file
-- `<leader>lg` → Git UI (LazyGit)
-- `<C-\>` → Terminal
+- `<leader>?` → Show buffer local keymaps (which-key)
 
-**File Navigation**
-- `<leader>ha` → Mark file (Harpoon)
-- `<leader>hh` → Show marked files
-- `<leader>h1/h2/h3/h4` → Jump to file 1/2/3/4
+### File Explorer
+- `<leader>ee` → Toggle file explorer
+- `<leader>ef` → Toggle file explorer on current file
 
-**Splits**
+### Search
+- `<leader>ff` → Find files (Telescope)
+- `<leader>fg` → Search in files (Telescope)
+- `<leader>fb` → Find buffers (Telescope)
+- `<leader>fh` → Find help tags (Telescope)
+- `<leader>/` → Search current file (Telescope)
+- `<Esc>` → Clear search highlighting
+
+### Window Management (Splits & Tabs)
 - `<leader>sv` → Split vertical
 - `<leader>sh` → Split horizontal
-- `<C-h/j/k/l>` → Navigate splits
-
-**Tabs**
+- `<leader>se` → Make splits equal size
+- `<leader>sx` → Close current split
 - `<leader>to` → New tab
 - `<leader>tx` → Close tab
 - `<leader>tn/tp` → Next/previous tab
+- `<leader>tf` → Open current buffer in new tab
+- `<C-h/j/k/l>` → Navigate splits
 
-**Code (LSP)**
+### Terminal
+- `<C-\>` → Toggle floating terminal
+
+### Git
+- `<leader>lg` → Git UI (LazyGit)
+
+### Harpoon (File Bookmarking)
+- `<leader>ha` → Mark file
+- `<leader>hh` → Show marked files
+- `<leader>h1/h2/h3/h4` → Jump to file 1/2/3/4
+- `<leader>hp` → Go to previous marked file
+- `<leader>hn` → Go to next marked file
+
+### LSP & Code
 - `gd` → Go to definition
 - `gr` → Find references
-- `K` → Show docs
-- `<space>rn` → Rename
-- `<space>ca` → Code actions
-- `<space>f` → Format
-- `[d/]d` → Next/prev error
+- `K` → Show docs (hover)
+- `<leader>rn` → Rename
+- `<leader>ca` → Code actions
+- `<leader>f` → Format
+- `[d`/`]d` → Next/previous error
+- `<leader>fd` → Find LSP definitions (Telescope)
+- `<leader>fr` → Find LSP references (Telescope)
+- `<leader>fi` → Find LSP implementations (Telescope)
+- `<leader>fs` → Find document symbols (Telescope)
+- `<leader>fS` → Find workspace symbols (Telescope)
 
-**Comments**
+### Trouble (Diagnostics)
+- `<leader>xx` → Toggle diagnostics
+- `<leader>xX` → Toggle buffer diagnostics
+- `<leader>cs` → Toggle symbols
+- `<leader>cl` → Toggle LSP definitions/references
+- `<leader>xL` → Toggle location list
+- `<leader>xQ` → Toggle quickfix list
+
+### Comments
 - `<leader>gc` → Toggle comment
 
-**File Operations**
+### Surround
+- `ys` → Add surrounding
+- `cs` → Change surrounding
+- `ds` → Delete surrounding
+- `S` → Surround selection (visual mode)
+
+### File Operations
 - `<leader>rm` → Delete file
 - `<leader>rn` → Rename file
-
-## Setup
-
-1. Open nvim - plugins auto-install
-2. Run `:Mason` to install language servers
-3. Use `<leader>?` to see all keybindings
-
-## Languages Supported
-
-Python, TypeScript/JavaScript, Go, Rust, Lua
+- `<leader>md` → Create directory
+- `<leader>ww` → Write file with sudo

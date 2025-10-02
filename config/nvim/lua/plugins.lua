@@ -79,6 +79,12 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"nvim-java/nvim-java",
+		config = function()
+			require("java").setup()
+		end,
+	},
+	{
 		"folke/trouble.nvim",
 		opts = {},
 		cmd = "Trouble",
