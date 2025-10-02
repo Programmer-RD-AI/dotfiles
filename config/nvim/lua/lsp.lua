@@ -146,3 +146,10 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+-- Java
+
+lspconfig.jdtls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
