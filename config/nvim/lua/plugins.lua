@@ -19,6 +19,12 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({})
+		end,
+	},
+	{
 		"f-person/git-blame.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -135,8 +141,7 @@ require("lazy").setup({
 					documentation = { auto_show = false },
 					menu = {
 						border = "rounded",
-						winhighlight =
-						"Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
 					},
 				},
 				sources = {
@@ -424,7 +429,7 @@ require("lazy").setup({
 			{ "ys", mode = "n", desc = "Add surrounding" },
 			{ "cs", mode = "n", desc = "Change surrounding" },
 			{ "ds", mode = "n", desc = "Delete surrounding" },
-			{ "S",  mode = "v", desc = "Surround selection" },
+			{ "S", mode = "v", desc = "Surround selection" },
 		},
 	},
 	{
