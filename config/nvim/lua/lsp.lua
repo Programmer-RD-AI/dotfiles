@@ -12,7 +12,7 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"pyright",
+		"ruff",
 		"lua_ls",
 		"rust_analyzer",
 		"ts_ls",
@@ -85,7 +85,7 @@ local on_attach = function(_, bufnr)
 	})
 end
 
--- Python with pyright
+-- Python with ruff
 lspconfig.ruff.setup({
 	cmd = { "ruff", "server" }, -- explicit; uses the built-in language server
 	root_dir = utils.root_dir,
