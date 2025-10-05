@@ -101,7 +101,12 @@ vim.lsp.enable("ruff")
 -- TypeScript/JavaScript
 vim.lsp.config.ts_ls = {
 	cmd = { "typescript-language-server", "--stdio" },
-	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	filetypes = {
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+	},
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
