@@ -20,6 +20,54 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"saecki/crates.nvim",
+		tag = "stable",
+		config = function()
+			require("crates").setup()
+		end,
+	},
+	{
+		"y3owk1n/undo-glow.nvim",
+	},
+	{
+		"AlejandroSuero/freeze-code.nvim",
+		-- TODO: Add Uuid Image Names
+		config = function()
+			require("freeze-code").setup()
+		end,
+		opts = {
+			copy = false,
+			open = true,
+			dir = vim.env.PWD,
+			freeze_config = {
+				output = "freeze.png",
+				config = "base",
+				theme = "default",
+			},
+		},
+	},
+	{
+		"neolooong/whichpy.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = {},
+	},
+	{
+		"ldelossa/gh.nvim",
+		dependencies = {
+			{
+				"ldelossa/litee.nvim",
+				config = function()
+					require("litee.lib").setup()
+				end,
+			},
+		},
+		config = function()
+			require("litee.gh").setup()
+		end,
+	},
+	{
 		"sphamba/smear-cursor.nvim",
 		opts = {},
 	},
@@ -187,6 +235,16 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"chrisgrieser/nvim-rulebook",
+		config = function()
+			require("rulebook").ignoreRule()
+			require("rulebook").prettifyError()
+			require("rulebook").yankDiagnosticCode()
+			require("rulebook").suppressFormatter()
+			require("rulebook").prettifyError()
+		end,
+	},
+	{
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
 		dependencies = {
@@ -227,6 +285,9 @@ require("lazy").setup({
 		},
 	},
 	{
+		"declancm/cinnamon.nvim",
+	},
+	{
 		"andweeb/presence.nvim",
 		config = function()
 			require("presence").setup({
@@ -259,6 +320,14 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({})
+		end,
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	},
+	{
 		"kdheepak/lazygit.nvim",
 		cmd = {
 			"LazyGit",
@@ -276,7 +345,7 @@ require("lazy").setup({
 			require("Comment").setup()
 		end,
 	},
-	{
+	{ -- TODO: https://github.com/MunifTanjim/nougat.nvim/blob/main/examples/bubbly.lua
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
