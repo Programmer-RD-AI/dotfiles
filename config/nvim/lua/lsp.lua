@@ -21,9 +21,7 @@ require("mason-lspconfig").setup({
 })
 
 local lspconfig = require("lspconfig")
-
-local capabilities = require("blink.cmp").get_lsp_capabilities()
-
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local signs = {
 	Error = " ",
 	Warn = " ",
@@ -148,7 +146,6 @@ lspconfig.lua_ls.setup({
 })
 
 -- Java
-
 lspconfig.jdtls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,

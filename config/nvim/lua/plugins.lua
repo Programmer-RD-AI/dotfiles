@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -17,6 +18,10 @@ require("lazy").setup({
 		config = function()
 			require("neodev").setup({})
 		end,
+	},
+	{
+		"sphamba/smear-cursor.nvim",
+		opts = {},
 	},
 	{
 		"windwp/nvim-ts-autotag",
@@ -128,30 +133,6 @@ require("lazy").setup({
 		},
 	},
 	{
-		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
-		version = "1.*",
-		config = function()
-			require("blink.cmp").setup({
-				keymap = { preset = "default" },
-				appearance = {
-					nerd_font_variant = "mono",
-				},
-				completion = {
-					documentation = { auto_show = false },
-					menu = {
-						border = "rounded",
-						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel",
-					},
-				},
-				sources = {
-					default = { "lsp", "path", "snippets", "buffer" },
-				},
-				fuzzy = { implementation = "prefer_rust_with_warning" },
-			})
-		end,
-	},
-	{
 		"nvimtools/none-ls.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
@@ -204,6 +185,46 @@ require("lazy").setup({
 			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 			vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 		end,
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+		config = function()
+			local luasnip = require("luasnip")
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+	},
+
+	{
+		"saadparwaiz1/cmp_luasnip",
+		dependencies = { "nvim-cmp" },
+	},
+	{
+		"hrsh7th/cmp-buffer",
+		dependencies = { "hrsh7th/nvim-cmp" },
+	},
+	{
+		"hrsh7th/cmp-nvim-lsp",
+		dependencies = { "hrsh7th/nvim-cmp" },
+	},
+	{
+		"hrsh7th/cmp-path",
+		dependencies = { "hrsh7th/nvim-cmp" },
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			"cmp-buffer",
+			"cmp-path",
+			"cmp-nvim-lsp",
+			"saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+		},
 	},
 	{
 		"andweeb/presence.nvim",
