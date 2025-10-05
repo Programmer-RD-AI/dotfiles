@@ -145,6 +145,7 @@ require("lazy").setup({
 	},
 	{
 		"folke/trouble.nvim",
+		lazy = false,
 		opts = {},
 		cmd = "Trouble",
 		keys = {
@@ -236,13 +237,37 @@ require("lazy").setup({
 	},
 	{
 		"chrisgrieser/nvim-rulebook",
-		config = function()
-			require("rulebook").ignoreRule()
-			require("rulebook").prettifyError()
-			require("rulebook").yankDiagnosticCode()
-			require("rulebook").suppressFormatter()
-			require("rulebook").prettifyError()
-		end,
+		lazy = false,
+		keys = {
+			{
+				"<leader>ri",
+				function()
+					require("rulebook").ignoreRule()
+				end,
+				desc = "Ignore diagnostic rule",
+			},
+			{
+				"<leader>rl",
+				function()
+					require("rulebook").lookupRule()
+				end,
+				desc = "Look up diagnostic rule",
+			},
+			{
+				"<leader>ry",
+				function()
+					require("rulebook").yankDiagnosticCode()
+				end,
+				desc = "Yank diagnostic code",
+			},
+			{
+				"<leader>rs",
+				function()
+					require("rulebook").suppressFormatter()
+				end,
+				desc = "Suppress formatter",
+			},
+		},
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -329,6 +354,7 @@ require("lazy").setup({
 	},
 	{
 		"kdheepak/lazygit.nvim",
+		lazy = false,
 		cmd = {
 			"LazyGit",
 			"LazyGitConfig",
@@ -421,6 +447,7 @@ require("lazy").setup({
 	}, -- nvim-colorizer.lua - adds inline color previews
 	{
 		"NvChad/nvim-colorizer.lua",
+		lazy = false,
 		event = "BufReadPre",
 		opts = {
 			filetypes = { "*" },
@@ -436,6 +463,7 @@ require("lazy").setup({
 	}, -- document-color.nvim - uses LSP's color provider
 	{
 		"mrshmllow/document-color.nvim",
+		lazy = false,
 		ft = { "css", "scss", "html", "javascript", "typescript" },
 		config = function()
 			require("document-color").setup({
@@ -496,6 +524,7 @@ require("lazy").setup({
 	}, -- vim-eunuch - UNIX shell helpers
 	{
 		"tpope/vim-eunuch",
+		lazy = false,
 		cmd = {
 			"Remove", -- :Remove → delete file + buffer
 			"Rename", -- :Rename old new
@@ -515,11 +544,12 @@ require("lazy").setup({
 	-- vim-surround - surround text objects with brackets, quotes, etc.
 	{
 		"tpope/vim-surround",
+		lazy = false,
 		keys = {
 			{ "ys", mode = "n", desc = "Add surrounding" },
 			{ "cs", mode = "n", desc = "Change surrounding" },
 			{ "ds", mode = "n", desc = "Delete surrounding" },
-			{ "S", mode = "v", desc = "Surround selection" },
+			{ "S",  mode = "v", desc = "Surround selection" },
 		},
 	},
 	{

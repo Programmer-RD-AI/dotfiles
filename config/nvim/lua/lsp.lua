@@ -20,7 +20,6 @@ require("mason-lspconfig").setup({
 	},
 })
 
-local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local signs = {
 	Error = " ",
@@ -91,21 +90,27 @@ local on_attach = function(client, bufnr)
 end
 
 -- Python with ruff
-lspconfig.ruff.setup({
-	cmd = { "ruff", "server" }, -- explicit; uses the built-in language server
+vim.lsp.config.ruff = {
+	cmd = { "ruff", "server" },
 	root_dir = utils.root_dir,
-	capabilities = capabilities, -- use whatever you already pass globally
-	on_attach = on_attach, -- you said you’ve set keymaps & format-on-save already
-})
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+vim.lsp.enable("ruff")
 
 -- TypeScript/JavaScript
-lspconfig.ts_ls.setup({
+vim.lsp.config.ts_ls = {
+	cmd = { "typescript-language-server", "--stdio" },
+	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	on_attach = on_attach,
 	capabilities = capabilities,
-})
+}
+vim.lsp.enable("ts_ls")
 
 -- Go
-lspconfig.gopls.setup({
+vim.lsp.config.gopls = {
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -117,10 +122,13 @@ lspconfig.gopls.setup({
 			staticcheck = true,
 		},
 	},
-})
+}
+vim.lsp.enable("gopls")
 
 -- Rust
-lspconfig.rust_analyzer.setup({
+vim.lsp.config.rust_analyzer = {
+	cmd = { "rust-analyzer" },
+	filetypes = { "rust" },
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -128,10 +136,13 @@ lspconfig.rust_analyzer.setup({
 			checkOnSave = true,
 		},
 	},
-})
+}
+vim.lsp.enable("rust_analyzer")
 
 -- Lua
-lspconfig.lua_ls.setup({
+vim.lsp.config.lua_ls = {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -150,10 +161,14 @@ lspconfig.lua_ls.setup({
 			},
 		},
 	},
-})
+}
+vim.lsp.enable("lua_ls")
 
 -- Java
-lspconfig.jdtls.setup({
+vim.lsp.config.jdtls = {
+	cmd = { "jdtls" },
+	filetypes = { "java" },
 	on_attach = on_attach,
 	capabilities = capabilities,
-})
+}
+vim.lsp.enable("jdtls")
