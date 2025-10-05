@@ -14,7 +14,8 @@ null_ls.setup({
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
-			local grp = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+			local grp =
+				vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 			vim.api.nvim_clear_autocmds({ group = grp, buffer = bufnr })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = grp,
@@ -38,9 +39,20 @@ vim.api.nvim_create_user_command("RuffFixFile", function()
 		return
 	end
 	vim.cmd("write")
-	vim.fn.jobstart({ "ruff", "check", "--fix", file }, { stdout_buffered = true, stderr_buffered = true })
-	vim.fn.jobstart({ "ruff", "format", file }, { stdout_buffered = true, stderr_buffered = true })
+	vim.fn.jobstart(
+		{ "ruff", "check", "--fix", file },
+		{ stdout_buffered = true, stderr_buffered = true }
+	)
+	vim.fn.jobstart(
+		{ "ruff", "format", file },
+		{ stdout_buffered = true, stderr_buffered = true }
+	)
 	vim.cmd("edit") -- reload
 end, {})
 
-vim.keymap.set("n", "<leader>rf", ":RuffFixFile<CR>", { desc = "Ruff fix current file" })
+vim.keymap.set(
+	"n",
+	"<leader>rf",
+	":RuffFixFile<CR>",
+	{ desc = "Ruff fix current file" }
+)
