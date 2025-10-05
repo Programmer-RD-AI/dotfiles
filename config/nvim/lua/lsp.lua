@@ -34,9 +34,16 @@ for t, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+	-- Notify when LSP attaches
+	vim.notify(
+		string.format("LSP %s attached to buffer %d", client.name, bufnr),
+		vim.log.levels.INFO,
+		{ title = "LSP" }
+	)
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = {
@@ -46,8 +53,8 @@ local on_attach = function(_, bufnr)
 	}
 
 	-- Core navigation keymaps
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
-	vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float)
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, bufopts)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)

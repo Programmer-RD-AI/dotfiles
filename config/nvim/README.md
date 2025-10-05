@@ -6,57 +6,89 @@
 
 ### Essential
 - `<leader>w` → Save file
-- `<leader>?` → Show buffer local keymaps (which-key)
+- `<leader>?` → Show buffer local keymaps
+- `<Esc>` → Clear search highlighting
 
 ### File Explorer
 - `<leader>ee` → Toggle file explorer
 - `<leader>ef` → Toggle file explorer on current file
 
-### Search
-- `<leader>ff` → Find files (Telescope)
-- `<leader>fg` → Search in files (Telescope)
-- `<leader>fb` → Find buffers (Telescope)
-- `<leader>fh` → Find help tags (Telescope)
-- `<leader>/` → Search current file (Telescope)
-- `<Esc>` → Clear search highlighting
+### Search & Find
+- `<leader>ff` → Find files
+- `<leader>fg` → Live grep (search in files)
+- `<leader>fb` → Find buffers
+- `<leader>fh` → Find help tags
+- `<leader>/` → Search current file (fuzzy)
 
-### Window Management (Splits & Tabs)
-- `<leader>sv` → Split vertical
-- `<leader>sh` → Split horizontal
+### Window Management
+**Splits:**
+- `<leader>sv` → Split window vertically
+- `<leader>sh` → Split window horizontally
 - `<leader>se` → Make splits equal size
 - `<leader>sx` → Close current split
-- `<leader>to` → New tab
-- `<leader>tx` → Close tab
-- `<leader>tn/tp` → Next/previous tab
+- `<leader>+` → Increase split height
+- `<leader>-` → Decrease split height
+- `<leader>>` → Increase split width
+- `<leader><` → Decrease split width
+
+**Tabs:**
+- `<leader>to` → Open new tab
+- `<leader>tx` → Close current tab
+- `<leader>tn` → Go to next tab
+- `<leader>tp` → Go to previous tab
 - `<leader>tf` → Open current buffer in new tab
-- `<C-h/j/k/l>` → Navigate splits
+
+**Navigation:**
+- `<C-Space>` → Navigate to next Tmux pane
 
 ### Terminal
-- `<C-\>` → Toggle floating terminal
+- `<C-\>` → Toggle floating terminal (Normal mode)
+- `<C-\>` → Toggle floating terminal (Terminal mode)
 
 ### Git
-- `<leader>lg` → Git UI (LazyGit)
+- `<leader>lg` → Open LazyGit
 
-### Harpoon (File Bookmarking)
-- `<leader>ha` → Mark file
-- `<leader>hh` → Show marked files
-- `<leader>h1/h2/h3/h4` → Jump to file 1/2/3/4
-- `<leader>hp` → Go to previous marked file
-- `<leader>hn` → Go to next marked file
+### Harpoon (Quick File Navigation)
+- `<leader>ha` → Add file to Harpoon
+- `<leader>hh` → Toggle Harpoon menu
+- `<leader>h1` → Jump to Harpoon file 1
+- `<leader>h2` → Jump to Harpoon file 2
+- `<leader>h3` → Jump to Harpoon file 3
+- `<leader>h4` → Jump to Harpoon file 4
+- `<leader>hp` → Go to previous Harpoon file
+- `<leader>hn` → Go to next Harpoon file
 
-### LSP & Code
+### Completion
+- `<C-b>` → Scroll documentation backward
+- `<C-f>` → Scroll documentation forward
+- `<C-Space>` → Trigger completion
+- `<C-e>` → Abort completion
+- `<CR>` → Confirm completion
+- `<Tab>` → Select next item / expand snippet
+- `<S-Tab>` → Select previous item / jump back in snippet
+
+### LSP
+**Core Navigation:**
 - `gd` → Go to definition
+- `gD` → Go to declaration
 - `gr` → Find references
-- `K` → Show docs (hover)
-- `<leader>rn` → Rename
-- `<leader>ca` → Code actions
-- `<leader>f` → Format
-- `[d`/`]d` → Next/previous error
-- `<leader>fd` → Find LSP definitions (Telescope)
-- `<leader>fr` → Find LSP references (Telescope)
-- `<leader>fi` → Find LSP implementations (Telescope)
-- `<leader>fs` → Find document symbols (Telescope)
-- `<leader>fS` → Find workspace symbols (Telescope)
+- `gi` → Go to implementation
+- `K` → Show documentation (hover)
+- `<C-k>` → Show signature help
+- `<space>D` → Go to type definition
+
+**LSP Actions:**
+- `<leader>ca` / `<space>ca` → Code actions
+- `<space>rn` → Rename symbol
+- `<space>fo` → Format code
+- `<leader>of` → Open floating diagnostic window
+
+**LSP Telescope Integration:**
+- `<leader>fd` → Find LSP definitions
+- `<leader>fr` → Find LSP references
+- `<leader>fi` → Find LSP implementations
+- `<leader>fs` → Find document symbols
+- `<leader>fS` → Find workspace symbols
 
 ### Trouble (Diagnostics)
 - `<leader>xx` → Toggle diagnostics
@@ -66,9 +98,6 @@
 - `<leader>xL` → Toggle location list
 - `<leader>xQ` → Toggle quickfix list
 
-### Comments
-- `<leader>gc` → Toggle comment
-
 ### Surround
 - `ys` → Add surrounding
 - `cs` → Change surrounding
@@ -76,7 +105,7 @@
 - `S` → Surround selection (visual mode)
 
 ### File Operations
-- `<leader>rm` → Delete file
-- `<leader>rn` → Rename file
+- `<leader>rm` → Delete current file
+- `<leader>rn` → Rename current file
 - `<leader>md` → Create directory
 - `<leader>ww` → Write file with sudo
