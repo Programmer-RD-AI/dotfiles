@@ -63,12 +63,13 @@ config.keys = { -- Enter CopyMode
 		key = "[",
 		mods = "LEADER",
 		action = act.ActivateCopyMode,
-		{
-			key = "Enter",
-			mods = "SHIFT",
-			action = wezterm.action({ SendString = "\x1b\r" }),
-		},
 	},
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action({ SendString = "\x1b\r" }),
+	},
+	{ key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
 	{
 		key = "Enter",
 		mods = "SHIFT",
@@ -146,7 +147,6 @@ config.keys = { -- Enter CopyMode
 	{ key = "0", mods = "CTRL", action = act.ResetFontSize },
 }
 
--- CopyMode key table
 config.key_tables = {
 	copy_mode = {
 		{
