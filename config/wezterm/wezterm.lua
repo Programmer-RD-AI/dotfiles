@@ -54,7 +54,7 @@ config.colors = {
 }
 
 -- Keys / leader
-config.default_prog = { "/usr/bin/bash" }
+config.default_prog = { "/bin/zsh" }
 config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
@@ -88,15 +88,15 @@ config.keys = { -- Enter CopyMode
 	},
 
 	-- Direct tab switching with Ctrl+1...9
-	{ key = "1", mods = "CTRL", action = act.ActivateTab(0) },
-	{ key = "2", mods = "CTRL", action = act.ActivateTab(1) },
-	{ key = "3", mods = "CTRL", action = act.ActivateTab(2) },
-	{ key = "4", mods = "CTRL", action = act.ActivateTab(3) },
-	{ key = "5", mods = "CTRL", action = act.ActivateTab(4) },
-	{ key = "6", mods = "CTRL", action = act.ActivateTab(5) },
-	{ key = "7", mods = "CTRL", action = act.ActivateTab(6) },
-	{ key = "8", mods = "CTRL", action = act.ActivateTab(7) },
-	{ key = "9", mods = "CTRL", action = act.ActivateTab(8) },
+	{ key = "1",     mods = "CTRL",  action = act.ActivateTab(0) },
+	{ key = "2",     mods = "CTRL",  action = act.ActivateTab(1) },
+	{ key = "3",     mods = "CTRL",  action = act.ActivateTab(2) },
+	{ key = "4",     mods = "CTRL",  action = act.ActivateTab(3) },
+	{ key = "5",     mods = "CTRL",  action = act.ActivateTab(4) },
+	{ key = "6",     mods = "CTRL",  action = act.ActivateTab(5) },
+	{ key = "7",     mods = "CTRL",  action = act.ActivateTab(6) },
+	{ key = "8",     mods = "CTRL",  action = act.ActivateTab(7) },
+	{ key = "9",     mods = "CTRL",  action = act.ActivateTab(8) },
 
 	-- Pane splits
 	{
@@ -142,9 +142,9 @@ config.keys = { -- Enter CopyMode
 	{ key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
 
 	-- Font resizing
-	{ key = "=", mods = "CTRL", action = act.IncreaseFontSize },
-	{ key = "-", mods = "CTRL", action = act.DecreaseFontSize },
-	{ key = "0", mods = "CTRL", action = act.ResetFontSize },
+	{ key = "=", mods = "CTRL",       action = act.IncreaseFontSize },
+	{ key = "-", mods = "CTRL",       action = act.DecreaseFontSize },
+	{ key = "0", mods = "CTRL",       action = act.ResetFontSize },
 }
 
 config.key_tables = {
@@ -277,7 +277,7 @@ config.key_tables = {
 			action = act.CopyMode("MoveToStartOfLineContent"),
 		},
 		{ key = "b", mods = "NONE", action = act.CopyMode("MoveBackwardWord") },
-		{ key = "b", mods = "ALT", action = act.CopyMode("MoveBackwardWord") },
+		{ key = "b", mods = "ALT",  action = act.CopyMode("MoveBackwardWord") },
 		{ key = "b", mods = "CTRL", action = act.CopyMode("PageUp") },
 		{
 			key = "d",
@@ -294,7 +294,7 @@ config.key_tables = {
 			mods = "NONE",
 			action = act.CopyMode({ JumpForward = { prev_char = false } }),
 		},
-		{ key = "f", mods = "ALT", action = act.CopyMode("MoveForwardWord") },
+		{ key = "f", mods = "ALT",  action = act.CopyMode("MoveForwardWord") },
 		{ key = "f", mods = "CTRL", action = act.CopyMode("PageDown") },
 		{
 			key = "g",
@@ -340,7 +340,7 @@ config.key_tables = {
 			mods = "NONE",
 			action = act.CopyMode("MoveForwardWord"),
 		},
-		{ key = "PageUp", mods = "NONE", action = act.CopyMode("PageUp") },
+		{ key = "PageUp",   mods = "NONE", action = act.CopyMode("PageUp") },
 		{ key = "PageDown", mods = "NONE", action = act.CopyMode("PageDown") },
 		{
 			key = "End",
@@ -368,7 +368,7 @@ config.key_tables = {
 			mods = "ALT",
 			action = act.CopyMode("MoveForwardWord"),
 		},
-		{ key = "UpArrow", mods = "NONE", action = act.CopyMode("MoveUp") },
+		{ key = "UpArrow",   mods = "NONE", action = act.CopyMode("MoveUp") },
 		{ key = "DownArrow", mods = "NONE", action = act.CopyMode("MoveDown") },
 	},
 }
