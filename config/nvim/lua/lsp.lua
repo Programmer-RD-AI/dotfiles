@@ -13,11 +13,13 @@ require("mason").setup({
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"ruff",
-		"pyright", -- Python LSP for go-to-definition, hover, etc.
+		"pyright",
 		"lua_ls",
 		"rust_analyzer",
 		"ts_ls",
 		"gopls",
+		"terraformls",
+		"tflint",
 	},
 })
 
@@ -228,3 +230,11 @@ vim.lsp.config.jdtls = {
 	capabilities = capabilities,
 }
 vim.lsp.enable("jdtls")
+
+vim.lsp.config.terraformls = {
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = { "terraform-ls", "serve" }, -- masonry installs terraform-ls binary; this is the default start command
+	filetypes = { "terraform", "tf", "hcl" },
+}
+vim.lsp.enable("terraformls")
