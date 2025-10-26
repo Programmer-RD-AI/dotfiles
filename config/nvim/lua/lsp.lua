@@ -113,7 +113,12 @@ vim.lsp.enable("ruff")
 vim.lsp.config.basedpyright = {
 	cmd = { "basedpyright-langserver", "--stdio" },
 	filetypes = { "python" },
-	root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py", ".git" },
+	root_markers = {
+		"pyrightconfig.json",
+		"pyproject.toml",
+		"setup.py",
+		".git",
+	},
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
