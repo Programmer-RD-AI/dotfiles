@@ -13,13 +13,15 @@ require("mason").setup({
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"ruff",
-		"pyright",
+		"ruff-lsp",
 		"lua_ls",
 		"rust_analyzer",
 		"ts_ls",
 		"gopls",
 		"terraformls",
 		"tflint",
+		"basedpyright",
+		"pylsp",
 	},
 })
 
@@ -108,21 +110,19 @@ vim.lsp.config.ruff = {
 }
 vim.lsp.enable("ruff")
 
--- Pyright for go-to-definition, hover, type checking
-vim.lsp.config.pyright = {
-	cmd = { "pyright-langserver", "--stdio" },
+vim.lsp.config.basedpyright = {
+	cmd = { "basedpyright-langserver", "--stdio" },
 	filetypes = { "python" },
-	root_markers = {
-		"pyrightconfig.json",
-		"pyproject.toml",
-		"setup.py",
-		".git",
-	},
+	root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py", ".git" },
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
-		pyright = {
-			disableOrganizeImports = true, -- Let ruff handle this
+		basedpyright = {
+			analysis = {
+				typeCheckingMode = "basic", -- or "off" if still too noisy
+				diagnosticMode = "openFilesOnly",
+				useLibraryCodeForTypes = true,
+			},
 		},
 		python = {
 			analysis = {
@@ -133,8 +133,16 @@ vim.lsp.config.pyright = {
 		},
 	},
 }
-vim.lsp.enable("pyright")
-
+vim.lsp.enable("basedpyright")
+vim.lsp.config.pylsp = {
+	cmd = { "pylsp" },
+	filetypes = { "python" },
+	root_markers = { "pyproject.toml", ".git" },
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {},
+}
+vim.lsp.enable("pylsp")
 -- TypeScript/JavaScript
 vim.lsp.config.ts_ls = {
 	cmd = { "typescript-language-server", "--stdio" },
