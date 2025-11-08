@@ -1,15 +1,11 @@
 vim.g.mapleader = " "
 
--- ═══════════════════════════════════════════════════════════════════════════
 -- Basic File Operations
--- ═══════════════════════════════════════════════════════════════════════════
 vim.keymap.set("n", "<leader>w", "<cmd>write<cr>", {
 	desc = "Save",
 })
 
--- ═══════════════════════════════════════════════════════════════════════════
 -- File Explorer (nvim-tree)
--- ═══════════════════════════════════════════════════════════════════════════
 vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", {
 	desc = "Toggle file explorer",
 })
@@ -17,9 +13,7 @@ vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", {
 	desc = "Toggle file explorer on current file",
 })
 
--- ═══════════════════════════════════════════════════════════════════════════
 -- Split Window Management
--- ═══════════════════════════════════════════════════════════════════════════
 -- Create splits
 vim.keymap.set("n", "<leader>sv", "<C-w>v", {
 	desc = "Split window vertically",
@@ -48,28 +42,7 @@ vim.keymap.set("n", "<leader><", "<C-w><", {
 	desc = "Decrease split width",
 })
 
--- ═══════════════════════════════════════════════════════════════════════════
--- Tab Management
--- ═══════════════════════════════════════════════════════════════════════════
-vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", {
-	desc = "Open new tab",
-})
-vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", {
-	desc = "Close current tab",
-})
-vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", {
-	desc = "Go to next tab",
-})
-vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", {
-	desc = "Go to previous tab",
-})
-vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", {
-	desc = "Open current buffer in new tab",
-})
-
--- ═══════════════════════════════════════════════════════════════════════════
 -- System Clipboard Integration
--- ═══════════════════════════════════════════════════════════════════════════
 vim.keymap.set({ "n", "v" }, "y", "y", {
 	desc = "Copy to system clipboard",
 })
@@ -77,46 +50,19 @@ vim.keymap.set({ "n", "v" }, "p", "p", {
 	desc = "Paste from system clipboard",
 })
 
--- ═══════════════════════════════════════════════════════════════════════════
 -- Git Integration (LazyGit)
--- ═══════════════════════════════════════════════════════════════════════════
 vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", {
 	desc = "Open LazyGit",
 })
---
--- -- ═══════════════════════════════════════════════════════════════════════════
--- -- Search & Find
--- -- ═══════════════════════════════════════════════════════════════════════════
--- -- Enhanced search functionality (like Ctrl+F in browsers/editors)
--- vim.keymap.set('n', '<leader>/', function()
---     vim.ui.input({
---         prompt = "Search: "
---     }, function(input)
---         if input and input ~= "" then
---             -- Enable search highlighting for this search
---             vim.opt.hlsearch = true
---             -- Perform the search
---             local ok, _ = pcall(vim.fn.search, input)
---             if not ok then
---                 print("Pattern not found: " .. input)
---             end
---         end
---     end)
--- end, {
---     desc = 'Search within current file (enhanced Ctrl+F)'
--- })
---
+
 -- Clear search highlighting
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", {
 	desc = "Clear search highlighting",
 })
 
--- ═══════════════════════════════════════════════════════════════════════════
 -- Comments
--- ═══════════════════════════════════════════════════════════════════════════
 -- Note: Comment.nvim setup is handled in plugins.lua
 -- These keymaps will work once the plugin is loaded
-
 -- Enhanced file search with <leader>/ (like Ctrl+F in other editors)
 vim.keymap.set("n", "<leader>/", function()
 	require("telescope.builtin").current_buffer_fuzzy_find()
@@ -124,9 +70,7 @@ end, {
 	desc = "Search within current file (fuzzy)",
 })
 
--- ═══════════════════════════════════════════════════════════════════════════
 -- Harpoon (Quick File Navigation)
--- ═══════════════════════════════════════════════════════════════════════════
 vim.keymap.set("n", "<leader>ha", function()
 	require("harpoon"):list():add()
 end, {
@@ -178,9 +122,7 @@ end, {
 	desc = "Harpoon next",
 })
 
--- ═══════════════════════════════════════════════════════════════════════════
 -- LSP Enhanced Telescope Integration
--- ═══════════════════════════════════════════════════════════════════════════
 -- Add LSP-specific telescope keymaps that work when LSP is attached
 vim.keymap.set("n", "<leader>fd", function()
 	require("telescope.builtin").lsp_definitions()
@@ -211,6 +153,9 @@ vim.keymap.set("n", "<leader>fS", function()
 end, {
 	desc = "Find workspace symbols",
 })
+
+vim.keymap.set("n", ",p", '"0p', { desc = "[P]aste last yanked not deleted" })
+vim.keymap.set("x", "p", '"_dP', { desc = "[P]aste over selected without saving to register" })
 
 -- ═══════════════════════════════════════════════════════════════════════════
 -- Terminal Integration
@@ -260,3 +205,14 @@ end, {
 vim.keymap.set("n", "<leader>ww", "<cmd>SudoWrite<CR>", {
 	desc = "Write file with sudo",
 })
+
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], { desc = "Move focus to the left window" })
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], { desc = "Move focus to the right window" })
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], { desc = "Move focus to the lower window" })
+vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")

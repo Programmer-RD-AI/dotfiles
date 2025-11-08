@@ -12,20 +12,22 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"ruff",
-		"ruff-lsp",
+		"basedpyright",
 		"lua_ls",
 		"rust_analyzer",
 		"ts_ls",
 		"gopls",
 		"terraformls",
+		"ruff",
+		"ruff-lsp",
 		"tflint",
-		"basedpyright",
-		"pylsp",
 	},
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+capabilities.offsetEncoding = { "utf-16" }
+
 local signs = {
 	Error = " ",
 	Warn = " ",
@@ -33,7 +35,6 @@ local signs = {
 	Info = " ",
 }
 
--- Use modern diagnostic signs API (non-deprecated)
 vim.diagnostic.config({
 	signs = {
 		text = {
@@ -43,40 +44,75 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.INFO] = signs.Info,
 		},
 	},
+	virtual_text = {
+		source = "if_many",
+		format = function(diagnostic)
+			if diagnostic.source == "pyright" or diagnostic.source == "basedpyright" then
+				return nil
+			end
+			if diagnostic.source == "ruff" then
+				return string.format("%s [%s]", diagnostic.message, diagnostic.code or "")
+			end
+			return diagnostic.message
+		end,
+	},
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
 })
 
+local original_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+	local client = vim.lsp.get_client_by_id(ctx.client_id)
+	if client and (client.name == "pyright" or client.name == "basedpyright") then
+		return
+	end
+	original_handler(err, result, ctx, config)
+end
+
 local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = {
 		noremap = true,
 		silent = true,
 		buffer = bufnr,
 	}
 
-	-- Core navigation keymaps
+	local function center_after()
+		vim.schedule(function()
+			vim.cmd("normal! zz")
+		end)
+	end
+
+	vim.keymap.set("n", "gd", function()
+		require("telescope.builtin").lsp_definitions()
+		center_after()
+	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to definition" }))
+
+	vim.keymap.set("n", "gD", function()
+		vim.lsp.buf.declaration()
+		center_after()
+	end, bufopts)
+
+	vim.keymap.set("n", "gi", function()
+		require("telescope.builtin").lsp_implementations()
+		center_after()
+	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to implementation" }))
+
+	vim.keymap.set("n", "gr", function()
+		require("telescope.builtin").lsp_references()
+		center_after()
+	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to references" }))
+
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, bufopts)
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
 		vim.cmd("wincmd p")
 	end, { silent = true })
 	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
 
-	-- Workspace management
-	-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-	-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-	-- vim.keymap.set('n', '<space>wl', function()
-	--     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	-- end, bufopts)
-
-	-- Type and refactoring
 	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
@@ -94,7 +130,6 @@ local on_attach = function(client, bufnr)
 	})
 end
 
--- Python: Ruff for linting/formatting + Pyright for navigation/type checking
 vim.lsp.config.ruff = {
 	cmd = { "ruff", "server" },
 	filetypes = { "python" },
@@ -124,14 +159,14 @@ vim.lsp.config.basedpyright = {
 	settings = {
 		basedpyright = {
 			analysis = {
-				typeCheckingMode = "basic", -- or "off" if still too noisy
+				typeCheckingMode = "off",
 				diagnosticMode = "openFilesOnly",
 				useLibraryCodeForTypes = true,
 			},
 		},
 		python = {
 			analysis = {
-				typeCheckingMode = "basic",
+				typeCheckingMode = "off",
 				autoSearchPaths = true,
 				useLibraryCodeForTypes = true,
 			},
@@ -139,16 +174,7 @@ vim.lsp.config.basedpyright = {
 	},
 }
 vim.lsp.enable("basedpyright")
-vim.lsp.config.pylsp = {
-	cmd = { "pylsp" },
-	filetypes = { "python" },
-	root_markers = { "pyproject.toml", ".git" },
-	capabilities = capabilities,
-	on_attach = on_attach,
-	settings = {},
-}
-vim.lsp.enable("pylsp")
--- TypeScript/JavaScript
+
 vim.lsp.config.ts_ls = {
 	cmd = { "typescript-language-server", "--stdio" },
 	filetypes = {
@@ -163,7 +189,6 @@ vim.lsp.config.ts_ls = {
 }
 vim.lsp.enable("ts_ls")
 
--- Go
 vim.lsp.config.gopls = {
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -182,7 +207,6 @@ vim.lsp.config.gopls = {
 }
 vim.lsp.enable("gopls")
 
--- Rust
 vim.lsp.config.rust_analyzer = {
 	cmd = { "rust-analyzer" },
 	filetypes = { "rust" },
@@ -200,7 +224,6 @@ vim.lsp.config.rust_analyzer = {
 }
 vim.lsp.enable("rust_analyzer")
 
--- Lua
 vim.lsp.config.lua_ls = {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
@@ -234,7 +257,6 @@ vim.lsp.config.lua_ls = {
 }
 vim.lsp.enable("lua_ls")
 
--- Java
 vim.lsp.config.jdtls = {
 	cmd = { "jdtls" },
 	filetypes = { "java" },
@@ -247,7 +269,7 @@ vim.lsp.enable("jdtls")
 vim.lsp.config.terraformls = {
 	on_attach = on_attach,
 	capabilities = capabilities,
-	cmd = { "terraform-ls", "serve" }, -- masonry installs terraform-ls binary; this is the default start command
+	cmd = { "terraform-ls", "serve" },
 	filetypes = { "terraform", "tf", "hcl" },
 }
 vim.lsp.enable("terraformls")
