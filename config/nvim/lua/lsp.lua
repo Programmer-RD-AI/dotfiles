@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 require("mason").setup({
 	ui = {
 		icons = {
@@ -47,18 +45,11 @@ vim.diagnostic.config({
 	virtual_text = {
 		source = "if_many",
 		format = function(diagnostic)
-			if
-				diagnostic.source == "pyright"
-				or diagnostic.source == "basedpyright"
-			then
+			if diagnostic.source == "pyright" or diagnostic.source == "basedpyright" then
 				return nil
 			end
 			if diagnostic.source == "ruff" then
-				return string.format(
-					"%s [%s]",
-					diagnostic.message,
-					diagnostic.code or ""
-				)
+				return string.format("%s [%s]", diagnostic.message, diagnostic.code or "")
 			end
 			return diagnostic.message
 		end,
@@ -69,16 +60,9 @@ vim.diagnostic.config({
 })
 
 local original_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(
-	err,
-	result,
-	ctx,
-	config
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
 	local client = vim.lsp.get_client_by_id(ctx.client_id)
-	if
-		client and (client.name == "pyright" or client.name == "basedpyright")
-	then
+	if client and (client.name == "pyright" or client.name == "basedpyright") then
 		return
 	end
 	original_handler(err, result, ctx, config)
@@ -109,15 +93,10 @@ local on_attach = function(client, bufnr)
 		center_after()
 	end, bufopts)
 
-	vim.keymap.set(
-		"n",
-		"gi",
-		function()
-			require("telescope.builtin").lsp_implementations()
-			center_after()
-		end,
-		vim.tbl_extend("force", bufopts, { desc = "LSP: Go to implementation" })
-	)
+	vim.keymap.set("n", "gi", function()
+		require("telescope.builtin").lsp_implementations()
+		center_after()
+	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to implementation" }))
 
 	vim.keymap.set("n", "gr", function()
 		require("telescope.builtin").lsp_references()
