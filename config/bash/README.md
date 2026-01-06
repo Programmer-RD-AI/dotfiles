@@ -1,47 +1,38 @@
-# Bash Configuration
+# Bash
 
 ## Aliases
 
 **Navigation**
-- `..` → `cd ..`
-- `...` → `cd ../..`
-- `....` → `cd ../../..`
+- `..`, `...`, `....` → Go up directories
 
 **Files**
-- `ls` → `exa --color=always`
-- `ll` → `exa -lhgF --git --color=always`
-- `la` → `exa -lahgF --git --color=always`
-- `tree` → `exa --tree --level=2`
+- `ls`, `ll`, `la` → exa with colors
+- `tree` → exa tree view
 
 **Git**
-- `g` → `git`
-- `gs` → `git status`
-- `ga` → `git add`
-- `gc` → `git commit -m`
-- `gd` → `git diff`
-- `gpl` → `git pull`
-- `gpr` → `git push origin`
+- `g` → git
+- `gs`, `ga`, `gc`, `gd` → status, add, commit, diff
+- `gpl`, `gpr` → pull, push
 
 **Python**
-- `py` → `python`
-- `rc` → `ruff check`
-- `rcf` → `ruff check --fix`
-- `rf` → `ruff format`
+- `py` → python
+- `rc`, `rcf`, `rf` → ruff check/fix/format
 
 **System**
-- `c` → `clear`
-- `reload` → `source ~/.bashrc`
+- `c` → clear
+- `reload` → source bashrc
 
 ## Functions
 
-- `load_env [file]` - Load .env variables
-- `run_mongo_container` - Start MongoDB container
-- `transcribe` - Audio transcription with Whisper
-- `extract` - Extract any archive
+- `load_env [file]` → Load .env vars
+- `run_mongo_container` → Start MongoDB
+- `transcribe` → Audio to text (Whisper)
+- `extract` → Extract archives
 
 ## Git Prompt
 
-- `?` → Untracked files
-- `*` → Modified files
-- `+` → Staged files
-- `-` → Deleted files
+- `?` → Untracked
+- `*` → Modified
+- `+` → Staged
+- `-` → Deleted
+

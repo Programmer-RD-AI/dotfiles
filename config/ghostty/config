@@ -1,49 +1,34 @@
-# This is the configuration file for Ghostty.
-#
-# This template file has been automatically created at the following
-# path since Ghostty couldn't find any existing config files on your system:
-#
-#   /home/ranuga/.config/ghostty/config
-#
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
-# Run `ghostty +show-config --default --docs` to view a list of
-# all available config options and their default values.
-#
-# Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
-#
-# Ghostty can reload the configuration while running by using the menu
-# options or the bound key (default: Command + Shift + comma on macOS and
-# Control + Shift + comma on other platforms). Not all config options can be
-# reloaded while running; some only apply to new windows and others may require
-# a full restart to take effect.
+font-family="JetBrainsMonoNL Nerd Font Propo"
+font-size="17.5"
+theme="Spacegray Eighties Dull" 
+cursor-opacity="0.5"
+background-opacity="0.5"
+background-blur="true"
+maximize="true"
+fullscreen="true"
+title="prdai's ghostty"
+window-decoration="auto"
+window-title-font-family="JetBrainsMonoNL Nerd Font Propo"
+window-theme="dark"
+quick-terminal-position="center"
+shell-integration="bash"
+macos-titlebar-style="transparent"
+auto-update="download"
+gtk-titlebar = false
+window-decoration = false
+cursor-style = block
+cursor-style-blink = true
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+a>t=new_tab
+keybind = ctrl+a>w=close_surface
+keybind = ctrl+one=goto_tab:1
+keybind = ctrl+two=goto_tab:2
+keybind = ctrl+three=goto_tab:3
+keybind = ctrl+four=goto_tab:4
+keybind = ctrl+five=goto_tab:5
+keybind = ctrl+six=goto_tab:6
+keybind = ctrl+seven=goto_tab:7
+keybind = ctrl+eight=goto_tab:8
+keybind = ctrl+nine=goto_tab:9
 
-# Config syntax crash course
-# ==========================
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-# font-family = Iosevka
-# window-padding-x = 2
-#
-# # Spacing around the equals sign does not matter.
-# # All of these are identical:
-# key=value
-# key= value
-# key =value
-# key = value
-#
-# # Any line beginning with a # is a comment. It's not possible to put
-# # a comment after a config option, since it would be interpreted as a
-# # part of the value. For example, this will have a value of "#123abc":
-# background = #123abc
-#
-# # Empty values are used to reset config keys to default.
-# key =
-#
-# # Some config options have unique syntaxes for their value,
-# # which is explained in the docs for that config option.
-# # Just for example:
-# resize-overlay-duration = 4s 200ms

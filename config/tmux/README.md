@@ -1,14 +1,14 @@
-# Tmux Configuration
+# Tmux
+
+Prefix: `Ctrl+a`
 
 ## Key Bindings
-
-**Prefix**: `Ctrl+a`
 
 **Panes**
 - `Ctrl+a |` → Split vertical
 - `Ctrl+a -` → Split horizontal
-- `Alt+Arrow` → Navigate panes (no prefix)
-- `Ctrl+a Arrow` → Resize panes
+- `Alt+Arrow` → Navigate (no prefix)
+- `Ctrl+a Arrow` → Resize
 
 **Copy Mode**
 - `Ctrl+a [` → Enter copy mode
@@ -20,7 +20,8 @@
 
 ## Features
 
-- Vi-style keys
+- Vi keys
 - Mouse support
-- 50k scrollback history
+- 50k scrollback
 - Windows start at 1
+

@@ -1,134 +1,62 @@
-# Neovim Configuration
+# Neovim
 
-## Key Bindings
+Leader: `<space>`
 
-**Leader**: `<space>`
-**Escape ReMap**: `<capslock>`
+## Essential Bindings
 
-```
-setxkbmap -option caps:swapescape
-```
+**File Operations**
+- `<leader>w` → Save
+- `<leader>?` → Show keymaps
+- `<Esc>` → Clear search
 
-### Essential
+**File Explorer**
+- `<leader>ee` → Toggle explorer
+- `<leader>ef` → Focus current file
 
-- `<leader>w` → Save file
-- `<leader>?` → Show buffer local keymaps
-- `<Esc>` → Clear search highlighting
-
-### File Explorer
-
-- `<leader>ee` → Toggle file explorer
-- `<leader>ef` → Toggle file explorer on current file
-
-### Search & Find
-
+**Search**
 - `<leader>ff` → Find files
-- `<leader>fg` → Live grep (search in files)
-- `<leader>fb` → Find buffers
-- `<leader>fh` → Find help tags
-- `<leader>/` → Search current file (fuzzy)
+- `<leader>fg` → Grep
+- `<leader>fb` → Buffers
+- `<leader>/` → Search file
 
-### Window Management
+**Splits**
+- `<leader>sv` → Vertical split
+- `<leader>sh` → Horizontal split
+- `<leader>sx` → Close split
+- `<C-Space>` → Next tmux pane
 
-**Splits:**
+**Tabs**
+- `<leader>to` → New tab
+- `<leader>tx` → Close tab
+- `<leader>tn/tp` → Next/prev tab
 
-- `<leader>sv` → Split window vertically
-- `<leader>sh` → Split window horizontally
-- `<leader>se` → Make splits equal size
-- `<leader>sx` → Close current split
-- `<leader>+` → Increase split height
-- `<leader>-` → Decrease split height
-- `<leader>>` → Increase split width
-- `<leader><` → Decrease split width
+**Terminal**
+- `<C-\>` → Toggle terminal
 
-**Tabs:**
+**Git**
+- `<leader>lg` → LazyGit
 
-- `<leader>to` → Open new tab
-- `<leader>tx` → Close current tab
-- `<leader>tn` → Go to next tab
-- `<leader>tp` → Go to previous tab
-- `<leader>tf` → Open current buffer in new tab
+**Harpoon**
+- `<leader>ha` → Add file
+- `<leader>hh` → Menu
+- `<leader>h1-4` → Jump to file 1-4
 
-**Navigation:**
-
-- `<C-Space>` → Navigate to next Tmux pane
-
-### Terminal
-
-- `<C-\>` → Toggle floating terminal (Normal mode)
-- `<C-\>` → Toggle floating terminal (Terminal mode)
-
-### Git
-
-- `<leader>lg` → Open LazyGit
-
-### Harpoon (Quick File Navigation)
-
-- `<leader>ha` → Add file to Harpoon
-- `<leader>hh` → Toggle Harpoon menu
-- `<leader>h1` → Jump to Harpoon file 1
-- `<leader>h2` → Jump to Harpoon file 2
-- `<leader>h3` → Jump to Harpoon file 3
-- `<leader>h4` → Jump to Harpoon file 4
-- `<leader>hp` → Go to previous Harpoon file
-- `<leader>hn` → Go to next Harpoon file
-
-### Completion
-
-- `<C-b>` → Scroll documentation backward
-- `<C-f>` → Scroll documentation forward
-- `<C-Space>` → Trigger completion
-- `<C-e>` → Abort completion
-- `<CR>` → Confirm completion
-- `<Tab>` → Select next item / expand snippet
-- `<S-Tab>` → Select previous item / jump back in snippet
-
-### LSP
-
-**Core Navigation:**
-
+**LSP**
 - `gd` → Go to definition
-- `gD` → Go to declaration
 - `gr` → Find references
 - `gi` → Go to implementation
-- `K` → Show documentation (hover)
-- `<C-k>` → Show signature help
-- `<space>D` → Go to type definition
+- `K` → Hover docs
+- `<leader>ca` → Code actions
+- `<space>rn` → Rename
+- `<space>fo` → Format
 
-**LSP Actions:**
-
-- `<leader>ca` / `<space>ca` → Code actions
-- `<space>rn` → Rename symbol
-- `<space>fo` → Format code
-- `<leader>of` → Open floating diagnostic window
-
-**LSP Telescope Integration:**
-
-- `<leader>fd` → Find LSP definitions
-- `<leader>fr` → Find LSP references
-- `<leader>fi` → Find LSP implementations
-- `<leader>fs` → Find document symbols
-- `<leader>fS` → Find workspace symbols
-
-### Trouble (Diagnostics)
-
+**Diagnostics**
 - `<leader>xx` → Toggle diagnostics
-- `<leader>xX` → Toggle buffer diagnostics
-- `<leader>cs` → Toggle symbols
-- `<leader>cl` → Toggle LSP definitions/references
-- `<leader>xL` → Toggle location list
-- `<leader>xQ` → Toggle quickfix list
+- `<leader>of` → Floating diagnostic
 
-### Surround
+**Surround**
+- `ys/cs/ds` → Add/change/delete surround
+- `S` → Surround selection (visual)
 
-- `ys` → Add surrounding
-- `cs` → Change surrounding
-- `ds` → Delete surrounding
-- `S` → Surround selection (visual mode)
+> Tip: Use caps lock as escape. Run: `setxkbmap -option caps:swapescape`
 
-### File Operations
-
-- `<leader>rm` → Delete current file
-- `<leader>rn` → Rename current file
-- `<leader>md` → Create directory
-- `<leader>ww` → Write file with sudo
