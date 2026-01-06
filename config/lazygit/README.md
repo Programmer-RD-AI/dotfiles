@@ -1,12 +1,15 @@
 # Lazygit
 
+Git UI with nvim integration.
+
 ## Config
 
 - **Editor**: nvim
 - **Pager**: delta
-- **Theme**: Green active borders, white inactive
+- **Theme**: Green borders
 - **Icons**: Nerd Fonts v3
 
 ## Custom Keys
 
-- `C` (in files view) → Create commit with message prompt
+- `C` (files view) → Commit with message prompt
+
