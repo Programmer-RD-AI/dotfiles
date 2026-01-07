@@ -17,7 +17,6 @@ require("mason-lspconfig").setup({
 		"gopls",
 		"terraformls",
 		"ruff",
-		"ruff-lsp",
 		"tflint",
 	},
 })
@@ -45,18 +44,11 @@ vim.diagnostic.config({
 	virtual_text = {
 		source = "if_many",
 		format = function(diagnostic)
-			if
-				diagnostic.source == "pyright"
-				or diagnostic.source == "basedpyright"
-			then
+			if diagnostic.source == "pyright" or diagnostic.source == "basedpyright" then
 				return nil
 			end
 			if diagnostic.source == "ruff" then
-				return string.format(
-					"%s [%s]",
-					diagnostic.message,
-					diagnostic.code or ""
-				)
+				return string.format("%s [%s]", diagnostic.message, diagnostic.code or "")
 			end
 			return diagnostic.message
 		end,
@@ -67,20 +59,6 @@ vim.diagnostic.config({
 })
 
 local original_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(
-	err,
-	result,
-	ctx,
-	config
-)
-	local client = vim.lsp.get_client_by_id(ctx.client_id)
-	if
-		client and (client.name == "pyright" or client.name == "basedpyright")
-	then
-		return
-	end
-	original_handler(err, result, ctx, config)
-end
 
 local on_attach = function(client, bufnr)
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -107,15 +85,10 @@ local on_attach = function(client, bufnr)
 		center_after()
 	end, bufopts)
 
-	vim.keymap.set(
-		"n",
-		"gi",
-		function()
-			require("telescope.builtin").lsp_implementations()
-			center_after()
-		end,
-		vim.tbl_extend("force", bufopts, { desc = "LSP: Go to implementation" })
-	)
+	vim.keymap.set("n", "gi", function()
+		require("telescope.builtin").lsp_implementations()
+		center_after()
+	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to implementation" }))
 
 	vim.keymap.set("n", "gr", function()
 		require("telescope.builtin").lsp_references()
@@ -205,13 +178,18 @@ vim.lsp.config.ts_ls = {
 	capabilities = capabilities,
 }
 vim.lsp.enable("ts_ls")
+local home = os.getenv("HOME")
 
 vim.lsp.config.gopls = {
-	cmd = { "gopls" },
+	cmd = { home .. "/.local/bin/gopls-wrapper" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_markers = { "go.mod", "go.work", ".git" },
 	on_attach = on_attach,
 	capabilities = capabilities,
+	init_options = {
+		usePlaceholders = true,
+		completeUnimported = true,
+	},
 	settings = {
 		gopls = {
 			gofumpt = true,
@@ -219,11 +197,11 @@ vim.lsp.config.gopls = {
 				unusedparams = true,
 			},
 			staticcheck = true,
+			["build.directoryFilters"] = { "-node_modules" },
 		},
 	},
 }
 vim.lsp.enable("gopls")
-
 vim.lsp.config.rust_analyzer = {
 	cmd = { "rust-analyzer" },
 	filetypes = { "rust" },
