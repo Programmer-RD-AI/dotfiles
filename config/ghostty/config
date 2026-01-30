@@ -11,10 +11,11 @@ window-decoration="auto"
 window-title-font-family="JetBrainsMonoNL Nerd Font Propo"
 window-theme="dark"
 quick-terminal-position="center"
-shell-integration="zsh"
+shell-integration="bash"
 macos-titlebar-style="transparent"
 auto-update="download"
 gtk-titlebar = false
+window-decoration = false
 cursor-style = block
 cursor-style-blink = true
 keybind = ctrl+shift+c=copy_to_clipboard
