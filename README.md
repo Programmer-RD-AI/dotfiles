@@ -20,12 +20,26 @@ source ~/.bashrc
 
 ## What's Inside
 
-- **bash** - Shell aliases and functions
+**Core Tools**
 - **nvim** - Editor with LSP
-- **ghostty** - Terminal (main terminal now)
+- **bash** - Shell aliases and functions
+- **ghostty** - Terminal (main one)
 - **tmux** - Terminal multiplexer
 - **lazygit** - Git UI
 
-> **Note:** WezTerm config is no longer maintained. Using Ghostty now.
+**Window Management**
+- **aerospace** - macOS window manager
 
-Check `config/*/README.md` for details.
+**Other Shells**
+- **ohmyzsh** - Zsh config
+- **fish** - Fish shell
+
+**Editors**
+- **.vscode** - VS Code with vim
+- **.idea** - IntelliJ with vim
+
+**Legacy**
+- **wezterm** - Old terminal (not maintained)
+- **kitty** - Alternative terminal
+
+> Check `config/*/README.md` for keybindings and details.
