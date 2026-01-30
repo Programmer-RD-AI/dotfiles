@@ -13,11 +13,11 @@ Zsh with Oh My Zsh config.
 **Environment**
 - Editor: nvim
 - Visual: code
-- Terminal: wezterm
+- Terminal: ghostty
 - Homebrew paths
 
 **Prompt**
 - Git info
 - System info command
 
-> Similar aliases to bash config. Check `bash/README.md` for common commands.
+> Similar aliases to bash config. Check `../bash/README.md` for common commands.
