@@ -15,7 +15,7 @@ Window manager for macOS.
 **Layout**
 - `Alt+/` → Toggle tiles layout
 - `Alt+,` → Toggle accordion layout
-- `Alt+Shift+=/−` → Resize
+- `Alt+Shift+=/-` → Resize
 
 **Workspaces**
 - `Alt+1-9` → Switch workspace
