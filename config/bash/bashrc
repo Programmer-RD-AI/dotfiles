@@ -40,53 +40,6 @@ if [[ -f /usr/bin/dircolors ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# ────────────────────────── System Info Function ────────────────────────────
-function show_system_info() {
-    # Colors
-    local RED='\e[38;5;202m'  # Ubuntu orange
-    local WHITE='\e[97m'      # Bright white
-    local INFO='\e[38;5;251m' # Info text color
-    local RESET='\e[0m'       # Reset color
-
-    # System information with proper error handling
-    local USER=$(whoami)
-    local HOSTNAME=$(hostname)
-    local OS=$(lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || echo "Unknown")
-    local KERNEL=$(uname -r)
-    local UPTIME=$(uptime -p | sed 's/up //')
-    local PACKAGES=$(dpkg -l 2>/dev/null | grep -c '^ii' || echo "Unknown")
-    local SHELL=$(basename "$SHELL")
-    local MEMORY=$(free -h | awk '/^Mem:/ {printf "%s/%s", $3, $2}')
-    local CPU=$(lscpu | grep "Model name" | sed 's/Model name:[[:space:]]*//g')
-
-    # Calculate padding for alignment (longest label + 2 spaces)
-    local padding=11 # Length of "Hostname: " as base padding
-
-    # Print Ubuntu logo with system information
-    echo -e "
-${RED}              .-/+oossssoo+/-.               ${WHITE}User:${RESET}     ${INFO}${USER}${RESET}
-${RED}          \`:+ssssssssssssssssss+:\`           ${WHITE}Hostname:${RESET} ${INFO}${HOSTNAME}${RESET}
-${RED}        -+ssssssssssssssssssyyssss+-         ${WHITE}OS:${RESET}       ${INFO}${OS}${RESET}
-${RED}      .ossssssssssssssssss${WHITE}dMMMNy${RED}sssso.       ${WHITE}Kernel:${RESET}   ${INFO}${KERNEL}${RESET}
-${RED}     /sssssssssss${WHITE}hdmmNNmmyNMMMMh${RED}ssssss\      ${WHITE}Uptime:${RESET}   ${INFO}${UPTIME}${RESET}
-${RED}    +sssssssss${WHITE}hm${RED}yd${WHITE}MMMMMMMNddddy${RED}ssssssss+     ${WHITE}Packages:${RESET} ${INFO}${PACKAGES}${RESET}
-${RED}   /ssssssss${WHITE}hNMMM${RED}yh${WHITE}hyyyyhmNMMMNh${RED}ssssssss\    ${WHITE}Shell:${RESET}    ${INFO}${SHELL}${RESET}
-${RED}  .ssssssss${WHITE}dMMMNh${RED}ssssssssss${WHITE}hNMMMd${RED}ssssssss.   ${WHITE}Memory:${RESET}   ${INFO}${MEMORY}${RESET}
-${RED}  +ssss${WHITE}hhhyNMMNy${RED}ssssssssssss${WHITE}yNMMMy${RED}ssssssss+  ${WHITE}CPU:${RESET}      ${INFO}${CPU}${RESET}
-${RED}  oss${WHITE}yNMMMNyMMh${RED}ssssssssssssss${WHITE}hmmmh${RED}ssssssso
-${RED}  oss${WHITE}yNMMMNyMMh${RED}sssssssssssssshmmmh${RED}ssssssso
-${RED}  +ssss${WHITE}hhhyNMMNy${RED}ssssssssssss${WHITE}yNMMMy${RED}ssssssss+
-${RED}  .ssssssss${WHITE}dMMMNh${RED}ssssssssss${WHITE}hNMMMd${RED}ssssssss.
-${RED}   \ssssssss${WHITE}hNMMM${RED}yh${WHITE}hyyyyhdNMMMNh${RED}ssssssss/
-${RED}    +sssssssss${WHITE}dm${RED}yd${WHITE}MMMMMMMMddddy${RED}ssssssss+
-${RED}     \sssssssssss${WHITE}hdmNNNNmyNMMMMh${RED}ssssss/
-${RED}      .ossssssssssssssssss${WHITE}dMMMNy${RED}sssso.
-${RED}        -+sssssssssssssssss${WHITE}yyy${RED}ssss+-
-${RED}          \`:+ssssssssssssssssss+:\`
-${RED}              .-/+oossssoo+/-.${RESET}
-"
-}
-
 # ────────────────────────── Load Environment Variables ────────────────────────────
 # Add this in the Special Functions section
 load_env() {
@@ -468,7 +421,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # ────────────────────────── Launchers ──────────────────────────────
 
-show_system_info
+neofetch
 
 # pnpm
 export PNPM_HOME="/home/ranuga/snap/code/194/.local/share/pnpm"
@@ -503,3 +456,4 @@ unset __conda_setup
 export PATH="$HOME/.local/bin:$PATH"
 
 source '/home/ranuga/.bash_completions/typer.sh'
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
