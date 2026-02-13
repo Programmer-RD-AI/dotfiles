@@ -5,7 +5,7 @@ Personal dev configs.
 ## Install
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+git clone https://github.com/prdai/dotfiles.git ~/.dotfiles
 
 # Link configs
 ln -sf ~/.dotfiles/config/bash/bashrc ~/.bashrc
@@ -29,14 +29,20 @@ source ~/.bashrc
 
 **Window Management**
 - **aerospace** - macOS window manager
+- **dconf** - GNOME desktop settings (Linux)
 
 **Other Shells**
 - **ohmyzsh** - Zsh config
 - **fish** - Fish shell
+- **zshrc** - Standalone zsh config
 
 **Editors**
 - **.vscode** - VS Code with vim
 - **.idea** - IntelliJ with vim
+
+**Other Tools**
+- **git** - Git aliases and worktree commands
+- **obsidian** - Obsidian vault vim keybindings
 
 **Legacy**
 - **wezterm** - Old terminal (not maintained)
