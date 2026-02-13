@@ -142,6 +142,8 @@ require("lazy").setup({
 	-- 		})
 	-- 	end,
 	-- },
+	"lervag/vimtex",
+	"let-def/texpresso.vim",
 	{
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
@@ -585,7 +587,7 @@ require("lazy").setup({
 		keys = {
 			{ "ys", mode = "n", desc = "Add surrounding" },
 			{ "cs", mode = "n", desc = "Change surrounding" },
-			{ "ds", mode = "n", desc = "Delete urrounding" },
+			{ "ds", mode = "n", desc = "Deleturrounding" },
 			{ "S", mode = "v", desc = "Surround selection" },
 		},
 	},

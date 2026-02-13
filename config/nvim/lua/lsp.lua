@@ -18,7 +18,9 @@ require("mason-lspconfig").setup({
 		"terraformls",
 		"ruff",
 		"tflint",
+		"texlab",
 	},
+	automatic_installation = true,
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -288,3 +290,14 @@ vim.lsp.config.terraformls = {
 	filetypes = { "terraform", "tf", "hcl" },
 }
 vim.lsp.enable("terraformls")
+
+vim.lsp.config.texlab = {
+	settings = {
+		texlab = {
+			build = { onSave = true },
+			chktex = { onEdit = true },
+			latexFormatter = { command = "latexiindnent" },
+		},
+	},
+}
+vim.lsp.enable("texlab")
