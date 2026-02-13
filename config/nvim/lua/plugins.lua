@@ -236,7 +236,20 @@ require("lazy").setup({
 		tag = "0.1.8", -- Use a stable version
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("telescope").setup({})
+			require("telescope").setup({
+				defaults = {
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--hidden",
+					},
+				},
+			})
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
@@ -245,19 +258,20 @@ require("lazy").setup({
 		end,
 	},
 	{ "github/copilot.vim" },
-	{ 'diogo464/kubernetes.nvim' } ,{
-	"xiyaowong/transparent.nvim",
-	lazy = false,
-	config = function()
-		require("transparent").setup({
-			exclude_groups = {},
-		})
+	{ "diogo464/kubernetes.nvim" },
+	{
+		"xiyaowong/transparent.nvim",
+		lazy = false,
+		config = function()
+			require("transparent").setup({
+				exclude_groups = {},
+			})
 
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-	end,
-},
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+		end,
+	},
 	{
 		"chrisgrieser/nvim-rulebook",
 		lazy = false,
@@ -571,8 +585,8 @@ require("lazy").setup({
 		keys = {
 			{ "ys", mode = "n", desc = "Add surrounding" },
 			{ "cs", mode = "n", desc = "Change surrounding" },
-			{ "ds", mode = "n", desc = "Delete surrounding" },
-			{ "S",  mode = "v", desc = "Surround selection" },
+			{ "ds", mode = "n", desc = "Delete urrounding" },
+			{ "S", mode = "v", desc = "Surround selection" },
 		},
 	},
 	{
