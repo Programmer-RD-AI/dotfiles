@@ -12,7 +12,7 @@ Main terminal emulator.
 
 ## Key Bindings
 
-**Leader**: `Ctrl+a`
+Leader: `Ctrl+a`
 
 **Tabs**
 - `Ctrl+a t` → New tab

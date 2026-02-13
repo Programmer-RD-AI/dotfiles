@@ -13,3 +13,14 @@ Git UI with nvim integration.
 
 - `C` (files view) → Commit with message prompt
 
+## Default Keys
+
+Lazygit uses standard keybindings. Some helpful ones:
+- `<space>` → Stage/unstage files
+- `a` → Stage all
+- `c` → Commit
+- `P` → Push
+- `p` → Pull
+- `enter` → View file/commit details
+- `?` → Show all keybindings
+

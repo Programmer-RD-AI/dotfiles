@@ -2,8 +2,12 @@
 
 Alternative shell config.
 
-## Setup
+## Config
 
-Fish shell with minimal custom config in `conf.d/`.
+- Fish shell with minimal custom config in `conf.d/`
+- Vi keybindings
+- Basic environment setup
+
+## Notes
 
 > Most shell work happens in bash. This is just here for reference.

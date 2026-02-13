@@ -1,5 +1,11 @@
 # Obsidian Vault - Vim Keybindings
 
+Vim-style keybindings for Obsidian note-taking app.
+
+## Setup
+
+Copy the vault config JSON to your Obsidian vault's `.obsidian/` directory to enable these vim bindings.
+
 ## General
 
 | Key | Action |
