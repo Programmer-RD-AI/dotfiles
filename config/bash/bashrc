@@ -9,6 +9,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/.nvm/versions/node/current/bin:$PATH"
 export PATH="/home/ranuga/snap/code/183/.local/share/../bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # ────────────────────────── Color palette ────────────────────────────
 
@@ -25,6 +26,7 @@ export TERMINAL='wezterm'
 export BROWSER='zen'
 export LANG='en_US.UTF-8'
 export TERM='xterm-256color'
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
 
 # ───────────────────────── Shell Options ───────────────────────────
 shopt -s autocd       # Type directory to cd
@@ -457,3 +459,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 source '/home/ranuga/.bash_completions/typer.sh'
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+alias claude-mem='bun "/home/ranuga/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
