@@ -29,12 +29,10 @@ source ~/.bashrc
 
 **Window Management**
 - **aerospace** - macOS window manager
-- **dconf** - GNOME desktop settings (Linux)
 
 **Other Shells**
-- **ohmyzsh** - Zsh config
 - **fish** - Fish shell
-- **zshrc** - Standalone zsh config
+- **zshrc** - Zsh config
 
 **Editors**
 - **.vscode** - VS Code with vim

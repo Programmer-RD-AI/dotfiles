@@ -1,9 +1,14 @@
 # Zshrc
 
-Standalone zsh configuration.
+Zsh configuration.
 
 ## Config
 
-See `ohmyzsh/README.md` for Oh My Zsh-based zsh config details.
+Minimal zsh setup with custom aliases and functions.
 
-This provides an alternative minimal zsh setup.
+## Features
+
+- Custom prompt
+- Vi mode keybindings
+- Useful aliases
+- Environment variables
