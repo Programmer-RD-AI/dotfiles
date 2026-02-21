@@ -131,9 +131,18 @@ if.app-id = 'net.zen.Zen'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp'
+if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'net.spotify.Spotify'
-run = 'move-node-to-workspace 3'
+if.app-id = 'com.apple.Music'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if.app-id = 'com.cron.electron'
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 9'
+
