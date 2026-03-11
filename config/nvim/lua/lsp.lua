@@ -18,7 +18,10 @@ require("mason-lspconfig").setup({
 		"terraformls",
 		"ruff",
 		"tflint",
+		"texlab",
+		"clangd",
 	},
+	automatic_installation = true,
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -58,7 +61,27 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+-- Filter out all basedpyright/pyright diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = {
+		source = "if_many",
+	},
+	underline = true,
+	signs = true,
+	update_in_insert = false,
+})
+
 local original_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+	-- Filter out pyright/basedpyright diagnostics
+	if result and result.diagnostics then
+		local client = vim.lsp.get_client_by_id(ctx.client_id)
+		if client and (client.name == "basedpyright" or client.name == "pyright") then
+			result.diagnostics = {}
+		end
+	end
+	original_handler(err, result, ctx, config)
+end
 
 local on_attach = function(client, bufnr)
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -268,3 +291,29 @@ vim.lsp.config.terraformls = {
 	filetypes = { "terraform", "tf", "hcl" },
 }
 vim.lsp.enable("terraformls")
+
+vim.lsp.config.texlab = {
+	settings = {
+		texlab = {
+			build = { onSave = true },
+			chktex = { onEdit = true },
+			latexFormatter = { command = "latexiindnent" },
+		},
+	},
+}
+vim.lsp.enable("texlab")
+
+vim.lsp.config.clangd = {
+	cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed" },
+	filetypes = { "c", "cpp", "objc", "objcpp" },
+	root_markers = {
+		"compile_commands.json",
+		"compile_flags.txt",
+		"CMakeLists.txt",
+		"Makefile",
+		".git",
+	},
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+vim.lsp.enable("clangd")
