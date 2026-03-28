@@ -146,3 +146,14 @@ run = 'move-node-to-workspace 8'
 if.app-id = 'net.whatsapp.WhatsApp'
 run = 'move-node-to-workspace 9'
 
+[workspace-to-monitor-force-assignment]
+1 = 'secondary'
+2 = 'secondary'
+3 = 'secondary'
+4 = 'secondary'
+5 = 'secondary'
+
+6 = 'main'
+7 = 'main'
+8 = 'main'
+9 = 'main'
