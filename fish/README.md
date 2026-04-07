@@ -5,7 +5,7 @@ Fish shell environment configuration.
 ## Setup
 
 ```bash
-ln -sf ~/.dotfiles/config/fish ~/.config/fish
+ln -sf ~/.dotfiles/fish ~/.config/fish
 ```
 
 ## Files

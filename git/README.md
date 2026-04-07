@@ -5,8 +5,8 @@ Global git configuration.
 ## Setup
 
 ```bash
-ln -sf ~/.dotfiles/config/git/.gitconfig ~/.gitconfig
-ln -sf ~/.dotfiles/config/git/ignore ~/.config/git/ignore
+ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/git/ignore ~/.config/git/ignore
 ```
 
 ## Features

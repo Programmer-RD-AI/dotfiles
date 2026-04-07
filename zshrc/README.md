@@ -5,7 +5,7 @@ macOS shell config. Mirror of the bash config adapted for zsh + macOS.
 ## Setup
 
 ```bash
-ln -sf ~/.dotfiles/config/zshrc/.zshrc ~/.zshrc
+ln -sf ~/.dotfiles/zshrc/.zshrc ~/.zshrc
 source ~/.zshrc
 ```
 

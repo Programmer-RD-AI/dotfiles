@@ -8,31 +8,31 @@ Personal dev configs.
 git clone https://github.com/prdai/dotfiles.git ~/.dotfiles
 
 # Shell
-ln -sf ~/.dotfiles/config/bash/bashrc ~/.bashrc          # Linux / bash
-ln -sf ~/.dotfiles/config/zshrc/.zshrc ~/.zshrc           # macOS / zsh
+ln -sf ~/.dotfiles/bash/bashrc ~/.bashrc                  # Linux / bash
+ln -sf ~/.dotfiles/zshrc/.zshrc ~/.zshrc                  # macOS / zsh
 
 # Editors & tools
-ln -sf ~/.dotfiles/config/nvim ~/.config/
-ln -sf ~/.dotfiles/config/lazygit ~/.config/
-ln -sf ~/.dotfiles/config/.idea/.ideavimrc ~/.ideavimrc
-ln -sf ~/.dotfiles/config/.idea/.editorconfig ~/.editorconfig
+ln -sf ~/.dotfiles/nvim ~/.config/
+ln -sf ~/.dotfiles/lazygit ~/.config/
+ln -sf ~/.dotfiles/.idea/.ideavimrc ~/.ideavimrc
+ln -sf ~/.dotfiles/.idea/.editorconfig ~/.editorconfig
 
 # Terminals
-ln -sf ~/.dotfiles/config/ghostty ~/.config/
-ln -sf ~/.dotfiles/config/kitty ~/.config/
+ln -sf ~/.dotfiles/ghostty ~/.config/
+ln -sf ~/.dotfiles/kitty ~/.config/
 
 # Multiplexer
-ln -sf ~/.dotfiles/config/tmux ~/.config/
+ln -sf ~/.dotfiles/tmux ~/.config/
 
 # Window manager (macOS)
-ln -sf ~/.dotfiles/config/aerospace ~/.config/
+ln -sf ~/.dotfiles/aerospace ~/.config/
 
 # Git
-ln -sf ~/.dotfiles/config/git/.gitconfig ~/.gitconfig
-ln -sf ~/.dotfiles/config/git/ignore ~/.config/git/ignore
+ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/git/ignore ~/.config/git/ignore
 
 # Fish shell
-ln -sf ~/.dotfiles/config/fish ~/.config/
+ln -sf ~/.dotfiles/fish ~/.config/
 
 # Reload
 source ~/.bashrc   # or: source ~/.zshrc
@@ -57,4 +57,4 @@ source ~/.bashrc   # or: source ~/.zshrc
 
 > **Note:** WezTerm config is no longer maintained. Using Ghostty now.
 
-Check `config/*/README.md` for details.
+Check `*/README.md` for details.
