@@ -1,63 +1,62 @@
-# VS Code
+# vs code
 
-Vim experience in VS Code, matching Neovim keybindings.
+vim experience in vs code, matching neovim keybindings.
 
-## Setup
+## setup
 
-Leader: `<space>`
+leader: `<space>`
 
-**Core Settings**
+**core settings**
 - Font: JetBrains Mono
 - Vim backend: Neovim
 - Clipboard: System sync
 - Format on save: Enabled
 
-## Essential Bindings
+## essential bindings
 
-**Files**
+**files**
 - `<leader>w` → Save
 - `<leader>ee` → Toggle explorer
 - `<leader>ef` → Reveal file in explorer
 
-**Search**
+**search**
 - `<leader>ff` → Find files
 - `<leader>fg` → Find in files
 - `<leader>fb` → Show buffers
 
-**Splits**
+**splits**
 - `<leader>sv/sh` → Split vertical/horizontal
 - `<leader>sx` → Close split
 - `<C-h/j/k/l>` → Navigate splits
 
-**Tabs**
+**tabs**
 - `<leader>to/tx` → Open/close tab
 - `<leader>tn/tp` → Next/prev tab
 
-**Harpoon-style**
+**harpoon-style**
 - `<leader>ha` → Pin editor
 - `<leader>h1-4` → Jump to editor 1-4
 
-**Clipboard**
+**clipboard**
 - `<leader>y/p` → Copy/paste system clipboard
 
-**LSP**
+**lsp**
 - `gd/gr/gi` → Definition/references/implementation
 - `K` → Hover docs
 - `<space>rn` → Rename
 - `<space>ca` → Code actions
 - `<space>f` → Format
 
-**Comments**
+**comments**
 - `<leader>/` → Toggle comment
 
-**Git**
+**git**
 - `<leader>lg` → Source control view
 
-**Terminal**
+**terminal**
 - `<C-\>` → Toggle terminal
 
-**Surround**
+**surround**
 - `ys/cs/ds` → Add/change/delete surround
 
-> Cross-editor consistency with Neovim and IntelliJ keybindings.
-
+> cross-editor consistency with neovim and intellij keybindings.

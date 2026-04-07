@@ -1,19 +1,19 @@
-# Neovim
+# neovim
 
-Leader: `<space>`
+leader: `<space>`
 
-## File Operations
+## file operations
 
 - `<leader>w` → Save
 - `<leader>?` → Show buffer keymaps (which-key)
 - `<Esc>` → Clear search highlight
 
-## File Explorer
+## file explorer
 
 - `<leader>ee` → Toggle explorer
 - `<leader>ef` → Focus current file in explorer
 
-## Search (Telescope)
+## search (telescope)
 
 - `<leader>ff` → Find files
 - `<leader>fg` → Live grep
@@ -21,7 +21,7 @@ Leader: `<space>`
 - `<leader>fh` → Help tags
 - `<leader>/` → Fuzzy search in current buffer
 
-## LSP Telescope
+## lsp telescope
 
 - `<leader>fd` → Go to definition
 - `<leader>fr` → Find references
@@ -29,7 +29,7 @@ Leader: `<space>`
 - `<leader>fs` → Document symbols
 - `<leader>fS` → Workspace symbols
 
-## LSP
+## lsp
 
 - `gd` → Definition (Telescope)
 - `gD` → Declaration
@@ -42,7 +42,7 @@ Leader: `<space>`
 - `<space>ca` / `<leader>ca` → Code actions
 - `<space>fo` → Format
 
-## LSP Languages
+## lsp languages
 
 | Language | Server |
 |----------|--------|
@@ -56,14 +56,14 @@ Leader: `<space>`
 | C / C++ | `clangd` |
 | LaTeX | `texlab` |
 
-## Format on Save (null-ls)
+## format on save (null-ls)
 
 - Lua → stylua
 - JS / TS / HTML / CSS → prettier
 - Go → gofumpt + goimports
 - Python → ruff (via LSP)
 
-## Diagnostics
+## diagnostics
 
 - `<leader>xx` → Toggle diagnostics (Trouble)
 - `<leader>xX` → Buffer diagnostics (Trouble)
@@ -74,33 +74,33 @@ Leader: `<space>`
 - `<leader>of` → Open floating diagnostic
 - `[d` / `]d` → Prev / next diagnostic
 
-## Python (Ruff)
+## python (ruff)
 
 - `<leader>rf` → Ruff fix current file (check + fix + format)
 
-## Rulebook
+## rulebook
 
 - `<leader>ri` → Ignore diagnostic rule
 - `<leader>rl` → Look up rule docs
 - `<leader>ry` → Yank diagnostic code
 - `<leader>rs` → Suppress formatter
 
-## Harpoon
+## harpoon
 
 - `<leader>ha` → Add file
 - `<leader>hh` → Toggle menu
 - `<leader>h1-4` → Jump to file 1-4
 - `<leader>hp` / `<leader>hn` → Prev / next
 
-## Git
+## git
 
 - `<leader>lg` → LazyGit
 
-## Terminal
+## terminal
 
 - `<C-\>` → Toggle floating terminal
 
-## Splits
+## splits
 
 - `<leader>sv` → Vertical split
 - `<leader>sh` → Horizontal split
@@ -110,22 +110,21 @@ Leader: `<space>`
 - `<leader>>` / `<leader><` → Increase / decrease width
 - `<C-h/j/k/l>` → Navigate splits (works from terminal mode too)
 
-## File Management (Eunuch)
+## file management (eunuch)
 
 - `<leader>rm` → Remove current file
 - `<leader>rn` → Rename current file
 - `<leader>md` → Create directory
 - `<leader>ww` → SudoWrite
 
-## Surround
+## surround
 
 - `ys/cs/ds` → Add / change / delete surround
 - `S` → Surround selection (visual)
 
-## Paste
+## paste
 
 - `,p` → Paste last yanked (not deleted)
 - `p` (visual) → Paste over selection without saving to register
 
-> Tip: Use caps lock as escape. Run: `setxkbmap -option caps:swapescape`
-
+> tip: use caps lock as escape. run: `setxkbmap -option caps:swapescape`

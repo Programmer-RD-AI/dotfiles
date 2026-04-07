@@ -1,13 +1,13 @@
-# Fish
+# fish
 
-Fish shell environment configuration.
+fish shell environment configuration.
 
-## Setup
+## setup
 
 ```bash
 ln -sf ~/.dotfiles/fish ~/.config/fish
 ```
 
-## Files
+## files
 
 - `conf.d/prek.env.fish` → Sources `~/.local/share/../bin/env.fish` for environment setup

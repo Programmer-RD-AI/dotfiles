@@ -1,44 +1,44 @@
-# Bash
+# bash
 
-Linux shell config.
+my linux shell config.
 
-## Setup
+## setup
 
 ```bash
 ln -sf ~/.dotfiles/bash/bashrc ~/.bashrc
 source ~/.bashrc
 ```
 
-## Aliases
+## aliases
 
-**Safety & Enhanced Defaults**
+**safety & enhanced defaults**
 - `cp` → `cp -iv` (interactive + verbose)
 - `mv` → `mv -iv`
 - `rm` → `rm -i`
 - `mkdir` → `mkdir -pv`
 
-**Navigation**
+**navigation**
 - `..`, `...`, `....` → Go up directories
 
-**Files**
+**files**
 - `ls`, `ll`, `la` → exa with colors and git status
 - `tree`, `treeb` → exa tree (2-level / 1-level)
 - `mkd` → `mkdir -p`
 - `rmf` → `rm -rf`
 
-**Git**
+**git**
 - `g` → git
 - `gs`, `ga`, `gc`, `gd` → status, add, commit, diff
 - `gca`, `gcb`, `gb`, `gl` → amend, checkout branch, branch, log
 - `gpl`, `gpr`, `gf` → pull, push origin, fetch
 
-**Python**
+**python**
 - `py` → python
 - `py3` → python3
 - `pipi` → pip install
 - `rc`, `rcf`, `rf` → ruff check / check+fix / format
 
-**System**
+**system**
 - `c` → clear
 - `cl` → clear + ls
 - `e` → exit
@@ -46,14 +46,14 @@ source ~/.bashrc
 - `update` → apt update + upgrade
 - `df`, `free`, `top` → disk/mem/process via htop
 
-**Config Shortcuts**
+**config shortcuts**
 - `cvc` → open nvim config
 - `cbc` → open bash config
 
-**Apps**
+**apps**
 - `openapps` → open Chrome, Spotify, GitHub Desktop, VS Code
 
-## Functions
+## functions
 
 - `show_system_info` → Ubuntu ASCII logo + system info (runs on shell start)
 - `load_env [file]` → Load .env vars (default `.env`)
@@ -61,18 +61,17 @@ source ~/.bashrc
 - `transcribe [file]` → Audio to text using FFmpeg + Whisper (`-m`, `-l`, `-t`, `-f` flags)
 - `extract <archive>` → Extract any archive format automatically
 
-## Git Prompt
+## git prompt
 
 - `?` → Untracked files
 - `*` → Modified files
 - `+` → Staged files
 - `-` → Deleted files
 
-## Features
+## features
 
 - Vi mode (`set -o vi`)
 - Auto-cd, cdspell, dirspell, globstar, checkwinsize
 - Shared history with dedup (100k/200k)
 - Conda and NVM integrations
 - Local overrides via `~/.bash_local` and `~/.bash_private`
-

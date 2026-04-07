@@ -1,44 +1,44 @@
-# AeroSpace
+# aerospace
 
-Tiling window manager for macOS.
+tiling window manager for macos.
 
-## Setup
+## setup
 
-Get the app bundle ID for window rules:
+get the app bundle id for window rules:
 ```bash
 cd /Applications && mdls -name kMDItemCFBundleIdentifier "AppName.app"
 ```
 
-## Key Bindings
+## key bindings
 
-**Windows**
+**windows**
 - `Alt+Arrow` → Focus window left/down/up/right
 - `Alt+Shift+Arrow` → Move window left/down/up/right
 - `Alt+f` → Fullscreen toggle
 - `Alt+Shift+minus/equal` → Resize smart -50/+50
 
-**Layout**
+**layout**
 - `Alt+/` → Toggle tiles (horizontal/vertical)
 - `Alt+,` → Toggle accordion (horizontal/vertical)
 
-**Workspaces**
+**workspaces**
 - `Alt+1-9` → Switch to workspace 1-9
 - `Alt+Shift+1-9` → Move window to workspace 1-9
 - `Alt+Tab` → Toggle last workspace
 - `Alt+Shift+Tab` → Focus next window (DFS)
 
-**Service Mode** (`Alt+Shift+;`)
+**service mode** (`Alt+Shift+;`)
 - `Esc` → Reload config and exit service mode
 - `r` → Flatten/reset layout
 - `f` → Toggle floating/tiling
 - `Backspace` → Close all windows except current
 - `Alt+Shift+Arrow` → Join container left/down/up/right
 
-**Other**
+**other**
 - `Alt+t` → Open new Ghostty terminal
 - `Alt+Shift+c` → Reload config
 
-## Workspace Assignments
+## workspace assignments
 
 | Workspace | App |
 |-----------|-----|
@@ -52,7 +52,7 @@ cd /Applications && mdls -name kMDItemCFBundleIdentifier "AppName.app"
 Workspaces 1-5 → secondary monitor  
 Workspaces 6-9 → main monitor
 
-## Features
+## features
 
 - Window borders via `borders` (active: white, inactive: dark)
 - Gaps: 10px inner + 10px outer

@@ -1,44 +1,44 @@
-# Zsh
+# zsh
 
-macOS shell config. Mirror of the bash config adapted for zsh + macOS.
+my macos shell config. mirror of the bash config adapted for zsh + macos.
 
-## Setup
+## setup
 
 ```bash
 ln -sf ~/.dotfiles/zshrc/.zshrc ~/.zshrc
 source ~/.zshrc
 ```
 
-## Aliases
+## aliases
 
-**Safety & Enhanced Defaults**
+**safety & enhanced defaults**
 - `cp` → `cp -iv` (interactive + verbose)
 - `mv` → `mv -iv`
 - `rm` → `rm -i`
 - `mkdir` → `mkdir -pv`
 
-**Navigation**
+**navigation**
 - `..`, `...`, `....` → Go up directories
 
-**Files**
+**files**
 - `ls`, `ll`, `la`, `l` → exa with colors and git status (falls back to `ls -G` if exa unavailable)
 - `tree`, `treeb` → exa tree (2-level / 1-level)
 - `mkd` → `mkdir -p`
 - `rmf` → `rm -rf`
 
-**Git**
+**git**
 - `g` → git
 - `gs`, `ga`, `gc`, `gd` → status, add, commit, diff
 - `gca`, `gcb`, `gb`, `gl` → amend, checkout branch, branch, log
 - `gpl`, `gpr`, `gf` → pull, push origin, fetch
 
-**Python**
+**python**
 - `py` → python
 - `py3` → python3
 - `pipi` → pip install
 - `rc`, `rcf`, `rf` → ruff check / check+fix / format
 
-**System**
+**system**
 - `c` → clear
 - `cl` → clear + ls
 - `e` → exit
@@ -46,32 +46,32 @@ source ~/.zshrc
 - `update` → brew update + upgrade
 - `df`, `free` (vm_stat), `top` → disk/mem/process
 
-**macOS Specific**
+**macos specific**
 - `showfiles` / `hidefiles` → Toggle Finder hidden files
 - `flushdns` → Flush DNS cache
 
-**Config Shortcuts**
+**config shortcuts**
 - `cvc` → open nvim config
 - `czc` → open .zshrc
 
-**Apps**
+**apps**
 - `openapps` → open Chrome, Spotify, GitHub Desktop, VS Code
 
-## Functions
+## functions
 
 - `load_env [file]` → Load .env vars (default `.env`)
 - `run_mongo_container` → Start a fresh MongoDB Docker container on port 27017
 - `transcribe [file]` → Audio to text using FFmpeg + Whisper (`-m`, `-l`, `-t`, `-f` flags)
 - `extract <archive>` → Extract any archive format automatically
 
-## Git Prompt
+## git prompt
 
 - `?` → Untracked files
 - `*` → Modified files
 - `+` → Staged files
 - `-` → Deleted files
 
-## Features
+## features
 
 - Vi mode (`setopt VI`)
 - Auto-cd, auto-pushd, dir stack

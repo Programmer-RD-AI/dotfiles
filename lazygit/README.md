@@ -1,21 +1,20 @@
-# Lazygit
+# lazygit
 
-Git UI with nvim integration.
+git ui with nvim integration.
 
-## Setup
+## setup
 
 ```bash
 ln -sf ~/.dotfiles/lazygit ~/.config/lazygit
 ```
 
-## Config
+## config
 
 - **Editor**: nvim
 - **Pager**: delta
 - **Theme**: Green borders
 - **Icons**: Nerd Fonts v3
 
-## Custom Keys
+## custom keys
 
 - `C` (files view) → Commit with message prompt
-

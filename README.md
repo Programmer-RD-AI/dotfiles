@@ -1,8 +1,8 @@
-# Dotfiles
+# dotfiles
 
-Personal dev configs.
+my personal dev configs.
 
-## Install
+## setup
 
 ```bash
 git clone https://github.com/prdai/dotfiles.git ~/.dotfiles
@@ -38,7 +38,7 @@ ln -sf ~/.dotfiles/fish ~/.config/
 source ~/.bashrc   # or: source ~/.zshrc
 ```
 
-## What's Inside
+## what's inside
 
 | Config | Description |
 |--------|-------------|
@@ -55,8 +55,8 @@ source ~/.bashrc   # or: source ~/.zshrc
 | **.idea** | IdeaVim config for JetBrains IDEs |
 | **.vscode** | VSCode Vim keybindings and editor settings |
 
-> **Note:** WezTerm config is no longer maintained. Using Ghostty now.
+> **note:** wezterm config is no longer maintained. using ghostty now.
 
-Check `*/README.md` for details.
+check `*/README.md` for details.
 
-For contribution workflow and docs tone, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+for contribution workflow and docs tone, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
