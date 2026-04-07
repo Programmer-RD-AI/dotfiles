@@ -2,6 +2,12 @@
 
 Git UI with nvim integration.
 
+## Setup
+
+```bash
+ln -sf ~/.dotfiles/lazygit ~/.config/lazygit
+```
+
 ## Config
 
 - **Editor**: nvim

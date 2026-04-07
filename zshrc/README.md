@@ -11,12 +11,20 @@ source ~/.zshrc
 
 ## Aliases
 
+**Safety & Enhanced Defaults**
+- `cp` → `cp -iv` (interactive + verbose)
+- `mv` → `mv -iv`
+- `rm` → `rm -i`
+- `mkdir` → `mkdir -pv`
+
 **Navigation**
 - `..`, `...`, `....` → Go up directories
 
 **Files**
 - `ls`, `ll`, `la`, `l` → exa with colors and git status (falls back to `ls -G` if exa unavailable)
 - `tree`, `treeb` → exa tree (2-level / 1-level)
+- `mkd` → `mkdir -p`
+- `rmf` → `rm -rf`
 
 **Git**
 - `g` → git
@@ -32,6 +40,8 @@ source ~/.zshrc
 
 **System**
 - `c` → clear
+- `cl` → clear + ls
+- `e` → exit
 - `reload` → source ~/.zshrc
 - `update` → brew update + upgrade
 - `df`, `free` (vm_stat), `top` → disk/mem/process
@@ -43,6 +53,9 @@ source ~/.zshrc
 **Config Shortcuts**
 - `cvc` → open nvim config
 - `czc` → open .zshrc
+
+**Apps**
+- `openapps` → open Chrome, Spotify, GitHub Desktop, VS Code
 
 ## Functions
 

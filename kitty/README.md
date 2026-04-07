@@ -20,5 +20,5 @@ Alternative terminal emulator.
 - `Ctrl+Shift+C/V` → Copy/paste
 - `Ctrl+Shift+=/-` → Font size
 
-> Not the main terminal. See `config/ghostty/` for the primary terminal.
+> Not the main terminal. See `ghostty/` for the primary terminal.
 

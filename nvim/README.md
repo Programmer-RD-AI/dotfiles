@@ -2,65 +2,130 @@
 
 Leader: `<space>`
 
-## Essential Bindings
+## File Operations
 
-**File Operations**
 - `<leader>w` → Save
-- `<leader>?` → Show keymaps
-- `<Esc>` → Clear search
+- `<leader>?` → Show buffer keymaps (which-key)
+- `<Esc>` → Clear search highlight
 
-**File Explorer**
+## File Explorer
+
 - `<leader>ee` → Toggle explorer
-- `<leader>ef` → Focus current file
+- `<leader>ef` → Focus current file in explorer
 
-**Search**
+## Search (Telescope)
+
 - `<leader>ff` → Find files
-- `<leader>fg` → Grep
+- `<leader>fg` → Live grep
 - `<leader>fb` → Buffers
-- `<leader>/` → Search file
+- `<leader>fh` → Help tags
+- `<leader>/` → Fuzzy search in current buffer
 
-**Splits**
-- `<leader>sv` → Vertical split
-- `<leader>sh` → Horizontal split
-- `<leader>sx` → Close split
-- `<C-Space>` → Next tmux pane
+## LSP Telescope
 
-**Tabs**
-- `<leader>to` → New tab
-- `<leader>tx` → Close tab
-- `<leader>tn/tp` → Next/prev tab
+- `<leader>fd` → Go to definition
+- `<leader>fr` → Find references
+- `<leader>fi` → Find implementations
+- `<leader>fs` → Document symbols
+- `<leader>fS` → Workspace symbols
 
-**Terminal**
-- `<C-\>` → Toggle terminal
+## LSP
 
-**Git**
-- `<leader>lg` → LazyGit
-
-**Harpoon**
-- `<leader>ha` → Add file
-- `<leader>hh` → Menu
-- `<leader>h1-4` → Jump to file 1-4
-
-**LSP**
-- `gd` → Go to definition
-- `gr` → Find references
-- `gi` → Go to implementation
+- `gd` → Definition (Telescope)
+- `gD` → Declaration
+- `gi` → Implementation (Telescope)
+- `gr` → References (Telescope)
 - `K` → Hover docs
-- `<leader>ca` → Code actions
+- `<C-k>` → Signature help
 - `<space>rn` → Rename
+- `<space>D` → Type definition
+- `<space>ca` / `<leader>ca` → Code actions
 - `<space>fo` → Format
 
-**Diagnostics**
-- `<leader>xx` → Toggle diagnostics
-- `<leader>of` → Floating diagnostic
-- `[d` / `]d` → Prev/next diagnostic
+## LSP Languages
 
-**Python (Ruff)**
+| Language | Server |
+|----------|--------|
+| Python | `basedpyright` + `ruff` (type checking off; pyright diagnostics hidden) |
+| TypeScript / JS | `ts_ls` |
+| Go | `gopls` (gofumpt, staticcheck) |
+| Rust | `rust_analyzer` |
+| Lua | `lua_ls` |
+| Java | `jdtls` |
+| Terraform | `terraformls` + `tflint` |
+| C / C++ | `clangd` |
+| LaTeX | `texlab` |
+
+## Format on Save (null-ls)
+
+- Lua → stylua
+- JS / TS / HTML / CSS → prettier
+- Go → gofumpt + goimports
+- Python → ruff (via LSP)
+
+## Diagnostics
+
+- `<leader>xx` → Toggle diagnostics (Trouble)
+- `<leader>xX` → Buffer diagnostics (Trouble)
+- `<leader>cs` → Symbols (Trouble)
+- `<leader>cl` → LSP defs / refs (Trouble)
+- `<leader>xL` → Location list
+- `<leader>xQ` → Quickfix list
+- `<leader>of` → Open floating diagnostic
+- `[d` / `]d` → Prev / next diagnostic
+
+## Python (Ruff)
+
 - `<leader>rf` → Ruff fix current file (check + fix + format)
 
-**Surround**
-- `ys/cs/ds` → Add/change/delete surround
+## Rulebook
+
+- `<leader>ri` → Ignore diagnostic rule
+- `<leader>rl` → Look up rule docs
+- `<leader>ry` → Yank diagnostic code
+- `<leader>rs` → Suppress formatter
+
+## Harpoon
+
+- `<leader>ha` → Add file
+- `<leader>hh` → Toggle menu
+- `<leader>h1-4` → Jump to file 1-4
+- `<leader>hp` / `<leader>hn` → Prev / next
+
+## Git
+
+- `<leader>lg` → LazyGit
+
+## Terminal
+
+- `<C-\>` → Toggle floating terminal
+
+## Splits
+
+- `<leader>sv` → Vertical split
+- `<leader>sh` → Horizontal split
+- `<leader>se` → Equalize splits
+- `<leader>sx` → Close split
+- `<leader>+` / `<leader>-` → Increase / decrease height
+- `<leader>>` / `<leader><` → Increase / decrease width
+- `<C-h/j/k/l>` → Navigate splits (works from terminal mode too)
+
+## File Management (Eunuch)
+
+- `<leader>rm` → Remove current file
+- `<leader>rn` → Rename current file
+- `<leader>md` → Create directory
+- `<leader>ww` → SudoWrite
+
+## Surround
+
+- `ys/cs/ds` → Add / change / delete surround
 - `S` → Surround selection (visual)
+
+## Paste
+
+- `,p` → Paste last yanked (not deleted)
+- `p` (visual) → Paste over selection without saving to register
 
 > Tip: Use caps lock as escape. Run: `setxkbmap -option caps:swapescape`
 
