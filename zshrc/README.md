@@ -1,12 +1,12 @@
-# bash
+# zsh
 
-my linux shell config.
+my macos shell config. mirror of the bash config adapted for zsh + macos.
 
 ## setup
 
 ```bash
-ln -sf ~/.dotfiles/bash/bashrc ~/.bashrc
-source ~/.bashrc
+ln -sf ~/.dotfiles/zshrc/.zshrc ~/.zshrc
+source ~/.zshrc
 ```
 
 ## aliases
@@ -21,7 +21,7 @@ source ~/.bashrc
 - `..`, `...`, `....` → Go up directories
 
 **files**
-- `ls`, `ll`, `la` → exa with colors and git status
+- `ls`, `ll`, `la`, `l` → exa with colors and git status (falls back to `ls -G` if exa unavailable)
 - `tree`, `treeb` → exa tree (2-level / 1-level)
 - `mkd` → `mkdir -p`
 - `rmf` → `rm -rf`
@@ -42,20 +42,23 @@ source ~/.bashrc
 - `c` → clear
 - `cl` → clear + ls
 - `e` → exit
-- `reload` → source ~/.bashrc
-- `update` → apt update + upgrade
-- `df`, `free`, `top` → disk/mem/process via htop
+- `reload` → source ~/.zshrc
+- `update` → brew update + upgrade
+- `df`, `free` (vm_stat), `top` → disk/mem/process
+
+**macos specific**
+- `showfiles` / `hidefiles` → Toggle Finder hidden files
+- `flushdns` → Flush DNS cache
 
 **config shortcuts**
 - `cvc` → open nvim config
-- `cbc` → open bash config
+- `czc` → open .zshrc
 
 **apps**
 - `openapps` → open Chrome, Spotify, GitHub Desktop, VS Code
 
 ## functions
 
-- `show_system_info` → Ubuntu ASCII logo + system info (runs on shell start)
 - `load_env [file]` → Load .env vars (default `.env`)
 - `run_mongo_container` → Start a fresh MongoDB Docker container on port 27017
 - `transcribe [file]` → Audio to text using FFmpeg + Whisper (`-m`, `-l`, `-t`, `-f` flags)
@@ -70,8 +73,9 @@ source ~/.bashrc
 
 ## features
 
-- Vi mode (`set -o vi`)
-- Auto-cd, cdspell, dirspell, globstar, checkwinsize
+- Vi mode (`setopt VI`)
+- Auto-cd, auto-pushd, dir stack
 - Shared history with dedup (100k/200k)
-- Conda and NVM integrations
-- Local overrides via `~/.bash_local` and `~/.bash_private`
+- Zsh completion with menu select and fuzzy matching
+- Homebrew, conda, nvm, bun, pnpm, gcloud, cargo integrations
+- neofetch on shell start (once per session)

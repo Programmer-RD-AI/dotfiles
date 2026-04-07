@@ -1,16 +1,17 @@
-# Kitty
+# kitty
 
-Alternative terminal emulator.
+my alternate terminal emulator.
 
-## Config
+## config
 
-- **Font**: JetBrains Mono 12pt
+- **Font**: JetBrains Mono, 12pt
 - **Opacity**: 95%
 - **Padding**: 4px
 - **Tab Bar**: Powerline style
+- **URL detection**: Enabled (curly underline)
 - **Bell**: Disabled
 
-## Key Bindings
+## key bindings
 
 - `Ctrl+Shift+Enter` → New window
 - `Ctrl+Shift+T` → New tab
@@ -19,3 +20,4 @@ Alternative terminal emulator.
 - `Ctrl+Shift+C/V` → Copy/paste
 - `Ctrl+Shift+=/-` → Font size
 
+> not the main terminal. see `ghostty/` for the primary terminal.

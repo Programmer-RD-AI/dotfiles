@@ -1,27 +1,36 @@
-# Tmux
+# tmux
 
-Prefix: `Ctrl+a`
+prefix: `Ctrl+Space`
 
-## Key Bindings
+## key bindings
 
-**Panes**
-- `Ctrl+a |` → Split vertical
-- `Ctrl+a -` → Split horizontal
+**panes**
+- `Ctrl+Space |` → Split vertical
+- `Ctrl+Space -` → Split horizontal
 - `Alt+Arrow` → Navigate (no prefix)
-- `Ctrl+a Arrow` → Resize
+- `Ctrl+Space Arrow` → Resize
 
-**Copy Mode**
-- `Ctrl+a [` → Enter copy mode
+**copy mode**
+- `Ctrl+Space [` → Enter copy mode
 - `v` → Begin selection
 - `y` → Copy and exit
 
-**Config**
-- `Ctrl+a r` → Reload config
+**config**
+- `Ctrl+Space r` → Reload config
 
-## Features
+## features
 
 - Vi keys
 - Mouse support
 - 50k scrollback
 - Windows start at 1
+- Auto-renumber windows
 
+## plugins
+
+- `tmux-sensible` → Sensible defaults
+- `tmux-mem-cpu-load` → Resource display
+- `tmux-resurrect` → Save/restore sessions
+- `tmux-named-snapshot` → Named session snapshots
+- `tmux-continuum` → Auto-save sessions
+- `tmux-git-autofetch` → Auto-fetch git repos
