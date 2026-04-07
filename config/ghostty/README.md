@@ -4,11 +4,14 @@ Main terminal emulator.
 
 ## Config
 
-- **Font**: JetBrains Mono Nerd Font, 17.5pt
+- **Font**: JetBrainsMonoNL Nerd Font Propo, 17.5pt
 - **Theme**: Spacegray Eighties Dull
 - **Opacity**: 50% background, 50% cursor
+- **Cursor**: Block, blinking
 - **Background blur**: Enabled
 - **Titlebar**: Transparent (macOS)
+- **Shell integration**: zsh
+- **Auto-update**: Enabled
 
 ## Key Bindings
 
@@ -25,6 +28,6 @@ Main terminal emulator.
 
 ## Notes
 
-- Fullscreen by default
-- Shell integration with bash
-- Auto-updates enabled
+- Fullscreen + maximized by default
+- Quick terminal centered
+- GTK titlebar disabled (Linux)

@@ -53,6 +53,10 @@ Leader: `<space>`
 **Diagnostics**
 - `<leader>xx` → Toggle diagnostics
 - `<leader>of` → Floating diagnostic
+- `[d` / `]d` → Prev/next diagnostic
+
+**Python (Ruff)**
+- `<leader>rf` → Ruff fix current file (check + fix + format)
 
 **Surround**
 - `ys/cs/ds` → Add/change/delete surround

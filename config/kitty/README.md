@@ -4,10 +4,11 @@ Alternative terminal emulator.
 
 ## Config
 
-- **Font**: JetBrains Mono 12pt
+- **Font**: JetBrains Mono, 12pt
 - **Opacity**: 95%
 - **Padding**: 4px
 - **Tab Bar**: Powerline style
+- **URL detection**: Enabled (curly underline)
 - **Bell**: Disabled
 
 ## Key Bindings
@@ -18,4 +19,6 @@ Alternative terminal emulator.
 - `Ctrl+Shift+Left/Right` → Switch tabs
 - `Ctrl+Shift+C/V` → Copy/paste
 - `Ctrl+Shift+=/-` → Font size
+
+> Not the main terminal. See `config/ghostty/` for the primary terminal.
 
