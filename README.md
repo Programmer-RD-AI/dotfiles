@@ -58,3 +58,5 @@ source ~/.bashrc   # or: source ~/.zshrc
 > **Note:** WezTerm config is no longer maintained. Using Ghostty now.
 
 Check `*/README.md` for details.
+
+For contribution workflow and docs tone, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
