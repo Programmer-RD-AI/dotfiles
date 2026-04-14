@@ -62,12 +62,4 @@ return {
 			require("crates").setup()
 		end,
 	},
-	{
-		"alexghergh/nvim-tmux-navigation",
-		config = function()
-			local nav = require("nvim-tmux-navigation")
-			nav.setup({ disable_when_zoomed = true })
-			vim.keymap.set("n", "<C-Space>", nav.NvimTmuxNavigateNext, { noremap = true, silent = true })
-		end,
-	},
 }
