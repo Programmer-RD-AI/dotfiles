@@ -19,17 +19,7 @@ return {
 			vim.cmd("colorscheme gruvbox")
 		end,
 	},
-	{
-		"xiyaowong/transparent.nvim",
-		lazy = false,
-		config = function()
-			require("transparent").setup({ exclude_groups = {} })
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-		end,
-	},
-	{
+{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
