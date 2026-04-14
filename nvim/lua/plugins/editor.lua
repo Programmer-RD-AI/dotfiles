@@ -54,7 +54,6 @@ return {
 			require("guess-indent").setup({})
 		end,
 	},
-	{ "github/copilot.vim" },
 	{
 		"saecki/crates.nvim",
 		tag = "stable",
