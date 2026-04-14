@@ -17,34 +17,28 @@ require("mason-lspconfig").setup({
 		"gopls",
 		"terraformls",
 		"ruff",
-		"tflint",
-		"texlab",
 		"clangd",
 	},
 	automatic_installation = true,
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
+local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local capabilities = ok and cmp_nvim_lsp.default_capabilities() or vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 
-local signs = {
-	Error = " ",
-	Warn = " ",
-	Hint = " ",
-	Info = " ",
-}
-
+-- Diagnostics (single source of truth — merged from former diagnostics.lua)
 vim.diagnostic.config({
 	signs = {
 		text = {
-			[vim.diagnostic.severity.ERROR] = signs.Error,
-			[vim.diagnostic.severity.WARN] = signs.Warn,
-			[vim.diagnostic.severity.HINT] = signs.Hint,
-			[vim.diagnostic.severity.INFO] = signs.Info,
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.HINT] = " ",
+			[vim.diagnostic.severity.INFO] = " ",
 		},
 	},
 	virtual_text = {
+		prefix = "●",
+		spacing = 2,
 		source = "if_many",
 		format = function(diagnostic)
 			if diagnostic.source == "pyright" or diagnostic.source == "basedpyright" then
@@ -59,100 +53,68 @@ vim.diagnostic.config({
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
-})
-
--- Filter out all basedpyright/pyright diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = {
-		source = "if_many",
+	float = {
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
 	},
-	underline = true,
-	signs = true,
-	update_in_insert = false,
 })
 
-local original_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
+-- Suppress basedpyright/pyright diagnostics — ruff handles linting
+local orig_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
-	-- Filter out pyright/basedpyright diagnostics
 	if result and result.diagnostics then
 		local client = vim.lsp.get_client_by_id(ctx.client_id)
 		if client and (client.name == "basedpyright" or client.name == "pyright") then
 			result.diagnostics = {}
 		end
 	end
-	original_handler(err, result, ctx, config)
+	orig_handler(err, result, ctx, config)
 end
 
-local on_attach = function(client, bufnr)
+local function center() vim.schedule(function() vim.cmd("normal! zz") end) end
+
+local on_attach = function(_, bufnr)
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+	local ext = function(desc) return vim.tbl_extend("force", opts, { desc = desc }) end
 
-	local bufopts = {
-		noremap = true,
-		silent = true,
-		buffer = bufnr,
-	}
+	-- Navigation (go-to via built-in LSP, no telescope dependency)
+	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition(); center() end, ext("LSP: Definition"))
+	vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration(); center() end, ext("LSP: Declaration"))
+	vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, ext("LSP: Implementation"))
+	vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, ext("LSP: References"))
 
-	local function center_after()
-		vim.schedule(function()
-			vim.cmd("normal! zz")
-		end)
-	end
+	-- Actions
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, ext("LSP: Code action"))
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, ext("LSP: Rename"))
+	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, ext("LSP: Type definition"))
 
-	vim.keymap.set("n", "gd", function()
-		require("telescope.builtin").lsp_definitions()
-		center_after()
-	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to definition" }))
-
-	vim.keymap.set("n", "gD", function()
-		vim.lsp.buf.declaration()
-		center_after()
-	end, bufopts)
-
-	vim.keymap.set("n", "gi", function()
-		require("telescope.builtin").lsp_implementations()
-		center_after()
-	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to implementation" }))
-
-	vim.keymap.set("n", "gr", function()
-		require("telescope.builtin").lsp_references()
-		center_after()
-	end, vim.tbl_extend("force", bufopts, { desc = "LSP: Go to references" }))
-
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, bufopts)
+	-- Hover / diagnostics
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
 		vim.cmd("wincmd p")
 	end, { silent = true })
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, ext("LSP: Signature help"))
+	vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, ext("LSP: Open diagnostic float"))
 
-	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "<space>fo", function()
-		vim.lsp.buf.format({
-			async = true,
-		})
-	end, bufopts)
-
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		buffer = bufnr,
-		callback = function()
-			vim.lsp.buf.format({ async = false, bufnr = bufnr })
-		end,
-	})
+	-- Manual format: Ruff on Python, LSP elsewhere
+	vim.keymap.set("n", "<leader>fo", function()
+		if vim.bo[bufnr].filetype == "python" then
+			vim.cmd("RuffFixFile")
+		else
+			vim.lsp.buf.format({ async = true })
+		end
+	end, ext("Format buffer"))
 end
+
+-- ─── Server configs ──────────────────────────────────────────────────────────
 
 vim.lsp.config.ruff = {
 	cmd = { "ruff", "server" },
 	filetypes = { "python" },
-	root_markers = {
-		"ruff.toml",
-		".ruff.toml",
-		"pyproject.toml",
-		"setup.py",
-		".git",
-	},
+	root_markers = { "ruff.toml", ".ruff.toml", "pyproject.toml", "setup.py", ".git" },
 	capabilities = capabilities,
 	on_attach = on_attach,
 }
@@ -161,12 +123,7 @@ vim.lsp.enable("ruff")
 vim.lsp.config.basedpyright = {
 	cmd = { "basedpyright-langserver", "--stdio" },
 	filetypes = { "python" },
-	root_markers = {
-		"pyrightconfig.json",
-		"pyproject.toml",
-		"setup.py",
-		".git",
-	},
+	root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py", ".git" },
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
@@ -190,53 +147,42 @@ vim.lsp.enable("basedpyright")
 
 vim.lsp.config.ts_ls = {
 	cmd = { "typescript-language-server", "--stdio" },
-	filetypes = {
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-	},
+	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
-	on_attach = on_attach,
 	capabilities = capabilities,
+	on_attach = on_attach,
 }
 vim.lsp.enable("ts_ls")
-local home = os.getenv("HOME")
 
+local home = os.getenv("HOME")
 vim.lsp.config.gopls = {
 	cmd = { home .. "/.local/bin/gopls-wrapper" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_markers = { "go.mod", "go.work", ".git" },
-	on_attach = on_attach,
 	capabilities = capabilities,
-	init_options = {
-		usePlaceholders = true,
-		completeUnimported = true,
-	},
+	on_attach = on_attach,
+	init_options = { usePlaceholders = true, completeUnimported = true },
 	settings = {
 		gopls = {
 			gofumpt = true,
-			analyses = {
-				unusedparams = true,
-			},
+			analyses = { unusedparams = true },
 			staticcheck = true,
 			["build.directoryFilters"] = { "-node_modules" },
 		},
 	},
 }
 vim.lsp.enable("gopls")
+
 vim.lsp.config.rust_analyzer = {
 	cmd = { "rust-analyzer" },
 	filetypes = { "rust" },
 	root_markers = { "Cargo.toml", ".git" },
-	on_attach = on_attach,
 	capabilities = capabilities,
+	on_attach = on_attach,
 	settings = {
 		["rust-analyzer"] = {
 			checkOnSave = true,
-			cargo = {
-				features = { "server" },
-			},
+			cargo = { features = { "server" } },
 		},
 	},
 }
@@ -245,75 +191,35 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.config.lua_ls = {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
-	root_markers = {
-		".luarc.json",
-		".luarc.jsonc",
-		".luacheckrc",
-		".stylua.toml",
-		"stylua.toml",
-		"selene.toml",
-		".git",
-	},
-	on_attach = on_attach,
+	root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", ".git" },
 	capabilities = capabilities,
+	on_attach = on_attach,
 	settings = {
 		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-			telemetry = {
-				enable = false,
-			},
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim" } },
+			workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+			telemetry = { enable = false },
 		},
 	},
 }
 vim.lsp.enable("lua_ls")
 
-vim.lsp.config.jdtls = {
-	cmd = { "jdtls" },
-	filetypes = { "java" },
-	root_markers = { "pom.xml", "build.gradle", ".git" },
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-vim.lsp.enable("jdtls")
-
 vim.lsp.config.terraformls = {
-	on_attach = on_attach,
-	capabilities = capabilities,
 	cmd = { "terraform-ls", "serve" },
 	filetypes = { "terraform", "tf", "hcl" },
+	capabilities = capabilities,
+	on_attach = on_attach,
 }
 vim.lsp.enable("terraformls")
-
-vim.lsp.config.texlab = {
-	settings = {
-		texlab = {
-			build = { onSave = true },
-			chktex = { onEdit = true },
-			latexFormatter = { command = "latexiindnent" },
-		},
-	},
-}
-vim.lsp.enable("texlab")
 
 vim.lsp.config.clangd = {
 	cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed" },
 	filetypes = { "c", "cpp", "objc", "objcpp" },
-	root_markers = {
-		"compile_commands.json",
-		"compile_flags.txt",
-		"CMakeLists.txt",
-		"Makefile",
-		".git",
-	},
-	on_attach = on_attach,
+	root_markers = { "compile_commands.json", "compile_flags.txt", "CMakeLists.txt", "Makefile", ".git" },
 	capabilities = capabilities,
+	on_attach = on_attach,
 }
 vim.lsp.enable("clangd")
+
+vim.lsp.enable("bashls")

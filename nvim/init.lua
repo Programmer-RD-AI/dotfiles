@@ -1,8 +1,10 @@
 require("options")
 require("keymaps")
-require("plugins")
-require("utils")
-require("formatting")
+
+vim.opt.rtp:prepend(vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
+require("lazy").setup({ import = "plugins" }, {
+	checker = { enabled = false },
+	change_detection = { enabled = false },
+})
+
 require("lsp")
-require("diagnostics")
-require("cmp_config")
