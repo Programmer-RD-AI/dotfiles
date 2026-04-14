@@ -13,7 +13,6 @@ return {
 					null_ls.builtins.formatting.prettier,
 					null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.formatting.goimports,
-					null_ls.builtins.formatting.rustfmt,
 				},
 				-- No on_attach/BufWritePre — formatting is manual via <leader>fo
 			})

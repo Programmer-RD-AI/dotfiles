@@ -1,7 +1,7 @@
 return {
 	{
 		"dmtrKovalenko/fff.nvim",
-		build = ":lua require('fff.download').download_or_build_binary()",
+		build = "cargo build --release",
 		config = function()
 			local fff = require("fff")
 			fff.setup({})
