@@ -3,17 +3,28 @@ return {
 	{ "hrsh7th/cmp-buffer" },
 	{ "hrsh7th/cmp-path" },
 	{
+		"garymjr/nvim-snippets",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		opts = { friendly_snippets = true },
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"garymjr/nvim-snippets",
 		},
 		config = function()
 			local cmp = require("cmp")
 
 			cmp.setup({
+				snippet = {
+					expand = function(args)
+						vim.snippet.expand(args.body)
+					end,
+				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -23,6 +34,8 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
+						elseif vim.snippet.active({ direction = 1 }) then
+							vim.snippet.jump(1)
 						else
 							fallback()
 						end
@@ -30,6 +43,8 @@ return {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
+						elseif vim.snippet.active({ direction = -1 }) then
+							vim.snippet.jump(-1)
 						else
 							fallback()
 						end
@@ -37,6 +52,7 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "snippets" },
 				}, {
 					{ name = "buffer" },
 					{ name = "path" },
@@ -49,6 +65,7 @@ return {
 					format = function(entry, item)
 						local icons = {
 							nvim_lsp = "λ",
+							snippets = "⋗",
 							buffer = "Ω",
 							path = "🖫",
 						}
