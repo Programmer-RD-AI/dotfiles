@@ -26,7 +26,6 @@ return {
 				vim.fn.jobstart({ "ruff", "format", file }, { stdout_buffered = true, stderr_buffered = true })
 				vim.cmd("edit")
 			end, {})
-			vim.keymap.set("n", "<leader>rf", ":RuffFixFile<CR>", { desc = "Ruff fix current file" })
 		end,
 	},
 	{

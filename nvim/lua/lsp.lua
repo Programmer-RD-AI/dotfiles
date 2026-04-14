@@ -99,10 +99,14 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, ext("LSP: Signature help"))
 	vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, ext("LSP: Open diagnostic float"))
 
-	-- Manual format (no format-on-save)
+	-- Manual format: Ruff on Python, LSP elsewhere
 	vim.keymap.set("n", "<leader>fo", function()
-		vim.lsp.buf.format({ async = true })
-	end, ext("LSP: Format buffer"))
+		if vim.bo[bufnr].filetype == "python" then
+			vim.cmd("RuffFixFile")
+		else
+			vim.lsp.buf.format({ async = true })
+		end
+	end, ext("Format buffer"))
 end
 
 -- ─── Server configs ──────────────────────────────────────────────────────────
