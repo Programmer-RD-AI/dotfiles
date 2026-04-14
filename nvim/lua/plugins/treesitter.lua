@@ -1,15 +1,15 @@
 local languages = {
-	"bash", "c", "cpp", "css", "html", "javascript", "json", "lua",
-	"markdown", "markdown_inline", "python", "query", "typescript",
-	"vim", "vimdoc", "yaml",
+	"bash", "c", "cpp", "css", "go", "gomod", "gosum", "gowork",
+	"html", "javascript", "json", "lua", "markdown", "markdown_inline",
+	"python", "query", "typescript", "vim", "vimdoc", "yaml",
 }
 
 local install_dir = vim.fn.stdpath("data") .. "/site"
 
 local indent_langs = {
-	bash = true, c = true, cpp = true, css = true, html = true,
-	javascript = true, json = true, lua = true, python = true,
-	query = true, typescript = true, vim = true, yaml = true,
+	bash = true, c = true, cpp = true, css = true, go = true,
+	html = true, javascript = true, json = true, lua = true,
+	python = true, query = true, typescript = true, vim = true, yaml = true,
 }
 
 local function configure()
