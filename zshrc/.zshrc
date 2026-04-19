@@ -515,3 +515,5 @@ if command -v neofetch >/dev/null 2>&1 && [[ -z "$NEOFETCH_RAN" ]]; then
   export NEOFETCH_RAN=1
   neofetch
 fi
+
+eval "$(zoxide init zsh)"
