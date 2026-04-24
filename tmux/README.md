@@ -2,6 +2,48 @@
 
 prefix: `Ctrl+Space`
 
+## setup
+
+**1. symlink the config**
+
+```bash
+ln -sf ~/.dotfiles/tmux ~/.config/
+```
+
+**2. clone tpm (plugin manager)**
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.dotfiles/tmux/plugins/tpm
+```
+
+**3. start tmux and install plugins**
+
+```bash
+tmux
+```
+
+Then inside tmux:
+
+```
+Ctrl+Space I
+```
+
+That fetches and installs all plugins listed in `tmux.conf`. You should see each plugin clone into `~/.dotfiles/tmux/plugins/`.
+
+**4. install `entr` (required for tmux-autoreload)**
+
+```bash
+# macOS
+brew install entr
+
+# Ubuntu / Debian
+sudo apt install entr
+```
+
+`tmux-autoreload` uses `entr` to watch `tmux.conf` and reload it on save. Without it, the plugin won't fire but everything else still works.
+
+
+
 ## key bindings
 
 **panes**
