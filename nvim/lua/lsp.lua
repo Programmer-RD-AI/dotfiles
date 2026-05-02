@@ -156,7 +156,7 @@ vim.lsp.enable("ts_ls")
 
 local home = os.getenv("HOME")
 vim.lsp.config.gopls = {
-	cmd = { home .. "/.local/bin/gopls-wrapper" },
+	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_markers = { "go.mod", "go.work", ".git" },
 	capabilities = capabilities,
