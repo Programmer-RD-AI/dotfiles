@@ -18,6 +18,7 @@ require("mason-lspconfig").setup({
 		"terraformls",
 		"ruff",
 		"clangd",
+		"protols"
 	},
 	automatic_installation = true,
 })
@@ -223,3 +224,5 @@ vim.lsp.config.clangd = {
 vim.lsp.enable("clangd")
 
 vim.lsp.enable("bashls")
+
+vim.lsp.enable("protols")
