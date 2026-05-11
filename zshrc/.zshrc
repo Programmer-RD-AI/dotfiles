@@ -511,9 +511,9 @@ compinit
 [[ $- != *i* ]] && return
 
 # Only run once even if you start a subshell (zsh inside zsh)
-if command -v neofetch >/dev/null 2>&1 && [[ -z "$NEOFETCH_RAN" ]]; then
-  export NEOFETCH_RAN=1
-  neofetch
+if command -v fastfetch >/dev/null 2>&1 && [[ -z "$FASTFETCH_RAN" ]]; then
+  export FASTFETCH_RAN=1
+  fastfetch 
 fi
 
 eval "$(zoxide init zsh)"
