@@ -49,9 +49,9 @@ prefix: `Ctrl+Space`
 | plugin | description |
 |--------|-------------|
 | `tmux-sensible` | Sensible defaults |
-| `tmux-mem-cpu-load` | CPU/memory in status bar |
-| `tmux-resurrect` | Save/restore sessions — `Prefix+Ctrl-s` / `Prefix+Ctrl-r` |
-| `tmux-continuum` | Auto-saves session every 15 min |
+| `tmux-cpu` | CPU/RAM icons + percentages in status bar (Nerd Font glyphs) |
+| `tmux-resurrect` | Save/restore sessions — `Prefix+Ctrl-s` / `Prefix+Ctrl-r`. Auto-restore on tmux start. Captures pane contents and nvim sessions |
+| `tmux-continuum` | Auto-saves session every 10 min |
 | `tmux-git-autofetch` | Auto-fetches git repos every 3 min |
 | `tmux-autoreload` | Auto-reloads tmux.conf on file change (requires `entr`) |
 | `tmux-cowboy` | Kill pane process — `Prefix+*` |
