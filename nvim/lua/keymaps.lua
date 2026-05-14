@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 
 -- File operations
 vim.keymap.set("n", "<leader>w", "<cmd>write<cr>", { desc = "Save" })
+vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Alternate file" })
 
 -- File explorer
 vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })

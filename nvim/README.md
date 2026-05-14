@@ -17,6 +17,7 @@
 | Key | Action |
 |-----|--------|
 | `<leader>w` | Save file |
+| `<leader><leader>` | Toggle to alternate (last) file |
 | `<leader>ee` | Toggle file explorer (nvim-tree) |
 | `<leader>ef` | Reveal current file in explorer |
 | `<leader>rm` | Delete current file from disk |
@@ -172,7 +173,10 @@ Works in both **normal** and **terminal** mode.
 | Key | Action |
 |-----|--------|
 | `<leader>lg` | Open LazyGit |
-| `<leader>gb` | Toggle git blame panel (blame.nvim) |
+| `<leader>gb` | Toggle git blame window (blame.nvim) |
+| `<leader>gB` | Toggle inline virtual-text blame |
+
+Inline virtual-text blame is enabled by default on startup.
 
 ---
 

@@ -1,22 +1,16 @@
 return {
 	{
-		"ellisonleao/gruvbox.nvim",
+		"shaunsingh/nord.nvim",
+		lazy = false,
 		priority = 1000,
 		config = function()
-			require("gruvbox").setup({
-				terminal_colors = true,
-				undercurl = true,
-				underline = true,
-				bold = true,
-				italic = {
-					strings = false,
-					comments = true,
-					operators = false,
-					folds = true,
-				},
-			})
-			vim.o.background = "dark"
-			vim.cmd("colorscheme gruvbox")
+			vim.g.nord_contrast = true
+			vim.g.nord_borders = true
+			vim.g.nord_disable_background = false
+			vim.g.nord_italic = true
+			vim.g.nord_uniform_diff_background = true
+			vim.g.nord_bold = true
+			require("nord").set()
 		end,
 	},
 {
