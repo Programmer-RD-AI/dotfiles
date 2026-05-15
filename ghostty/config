@@ -30,4 +30,4 @@ keybind = ctrl+six=goto_tab:6
 keybind = ctrl+seven=goto_tab:7
 keybind = ctrl+eight=goto_tab:8
 keybind = ctrl+nine=goto_tab:9
-
+custom-shader = ./ghostty-shaders/cursor_sweep.glsl

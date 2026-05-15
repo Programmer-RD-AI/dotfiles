@@ -517,3 +517,10 @@ if command -v fastfetch >/dev/null 2>&1 && [[ -z "$FASTFETCH_RAN" ]]; then
 fi
 
 eval "$(zoxide init zsh)"
+
+# Vim motions on the command line
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk          # `jk` exits insert mode
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT       # start each prompt in insert mode
+ZVM_VI_HIGHLIGHT_BACKGROUND=cyan          # visible visual-mode highlight
+[[ -f ~/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]] && \
+  source ~/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
