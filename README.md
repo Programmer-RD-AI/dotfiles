@@ -1,6 +1,6 @@
 # dotfiles
 
-my personal dev configs.
+my personal dev configs for Arch + macOS.
 
 ## setup
 
@@ -8,7 +8,8 @@ my personal dev configs.
 git clone https://github.com/prdai/dotfiles.git
 
 # Shell
-ln -sf ~/dotfiles/bash/bashrc ~/.bashrc                  # Linux / bash
+ln -sf ~/dotfiles/bash/bashrc ~/.bashrc                  # Arch Linux / bash
+ln -sf ~/dotfiles/fish ~/.config/fish                    # Fish shell
 ln -sf ~/dotfiles/zshrc/.zshrc ~/.zshrc                  # macOS / zsh
 
 # Editors & tools
@@ -24,6 +25,10 @@ ln -sf ~/dotfiles/kitty ~/.config/
 # Multiplexer
 ln -sf ~/dotfiles/tmux ~/.config/
 
+# Window manager + bar (Arch)
+ln -sf ~/dotfiles/hypr ~/.config/
+ln -sf ~/dotfiles/waybar ~/.config/
+
 # Window manager (macOS)
 ln -sf ~/dotfiles/aerospace ~/.config/
 
@@ -31,15 +36,8 @@ ln -sf ~/dotfiles/aerospace ~/.config/
 ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/git/ignore ~/.config/git/ignore
 
-# Fish shell
-ln -sf ~/dotfiles/fish ~/.config/
-
 # Activity Monitor
 ln -sf ~/dotfiles/btop ~/.config/
-
-# Arch Config
-ln -sf ~/dotfiles/waybar ~/.config/
-ln -sf ~/dotfiles/hypr ~/.config/
 
 # Reload
 source ~/.bashrc   # or: source ~/.zshrc
@@ -50,14 +48,16 @@ source ~/.bashrc   # or: source ~/.zshrc
 | Config | Description |
 |--------|-------------|
 | **bash** | Shell aliases, functions, custom prompt (Linux) |
-| **zshrc** | Shell aliases, functions, custom prompt (macOS) |
 | **fish** | Fish shell env variables |
+| **zshrc** | Shell aliases, functions, custom prompt (macOS) |
 | **nvim** | Neovim with LSP, Telescope, Harpoon, LazyGit |
 | **ghostty** | Main terminal emulator |
 | **kitty** | Alternative terminal emulator |
 | **tmux** | Terminal multiplexer |
 | **lazygit** | Git TUI with nvim integration |
 | **git** | Global gitconfig and global gitignore |
+| **hypr** | Hyprland compositor config (Arch) |
+| **waybar** | Waybar status bar config (Arch) |
 | **aerospace** | Tiling window manager (macOS) |
 | **.idea** | IdeaVim config for JetBrains IDEs |
 | **.vscode** | VSCode Vim keybindings and editor settings |
