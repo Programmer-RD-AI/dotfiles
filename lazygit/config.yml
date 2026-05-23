@@ -9,16 +9,13 @@ gui:
       - "#ffffff"
     optionsTextColor:
       - "#00ff00"
-
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
 os:
   edit: "nvim"
   open: "xdg-open"
-
 customCommands:
   - key: "C"
     context: "files"

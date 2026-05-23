@@ -5,34 +5,41 @@ my personal dev configs.
 ## setup
 
 ```bash
-git clone https://github.com/prdai/dotfiles.git ~/.dotfiles
+git clone https://github.com/prdai/dotfiles.git
 
 # Shell
-ln -sf ~/.dotfiles/bash/bashrc ~/.bashrc                  # Linux / bash
-ln -sf ~/.dotfiles/zshrc/.zshrc ~/.zshrc                  # macOS / zsh
+ln -sf ~/dotfiles/bash/bashrc ~/.bashrc                  # Linux / bash
+ln -sf ~/dotfiles/zshrc/.zshrc ~/.zshrc                  # macOS / zsh
 
 # Editors & tools
-ln -sf ~/.dotfiles/nvim ~/.config/
-ln -sf ~/.dotfiles/lazygit ~/.config/
-ln -sf ~/.dotfiles/.idea/.ideavimrc ~/.ideavimrc
-ln -sf ~/.dotfiles/.idea/.editorconfig ~/.editorconfig
+ln -sf ~/dotfiles/nvim ~/.config/
+ln -sf ~/dotfiles/lazygit ~/.config/
+ln -sf ~/dotfiles/.idea/.ideavimrc ~/.ideavimrc
+ln -sf ~/dotfiles/.idea/.editorconfig ~/.editorconfig
 
 # Terminals
-ln -sf ~/.dotfiles/ghostty ~/.config/
-ln -sf ~/.dotfiles/kitty ~/.config/
+ln -sf ~/dotfiles/ghostty ~/.config/
+ln -sf ~/dotfiles/kitty ~/.config/
 
 # Multiplexer
-ln -sf ~/.dotfiles/tmux ~/.config/
+ln -sf ~/dotfiles/tmux ~/.config/
 
 # Window manager (macOS)
-ln -sf ~/.dotfiles/aerospace ~/.config/
+ln -sf ~/dotfiles/aerospace ~/.config/
 
 # Git
-ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
-ln -sf ~/.dotfiles/git/ignore ~/.config/git/ignore
+ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/git/ignore ~/.config/git/ignore
 
 # Fish shell
-ln -sf ~/.dotfiles/fish ~/.config/
+ln -sf ~/dotfiles/fish ~/.config/
+
+# Activity Monitor
+ln -sf ~/dotfiles/btop ~/.config/
+
+# Arch Config
+ln -sf ~/dotfiles/waybar ~/.config/
+ln -sf ~/dotfiles/hypr ~/.config/
 
 # Reload
 source ~/.bashrc   # or: source ~/.zshrc
