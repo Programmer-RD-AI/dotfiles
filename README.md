@@ -1,6 +1,6 @@
 # dotfiles
 
-my personal dev configs for arch + macos.
+my personal dev configs for Arch + macOS.
 
 ## setup
 
