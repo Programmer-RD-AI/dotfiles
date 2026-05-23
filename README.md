@@ -1,6 +1,6 @@
 # dotfiles
 
-my personal dev configs (now arch-first).
+my personal dev configs for arch + macos.
 
 ## setup
 
@@ -10,7 +10,7 @@ git clone https://github.com/prdai/dotfiles.git
 # Shell
 ln -sf ~/dotfiles/bash/bashrc ~/.bashrc                  # Arch Linux / bash
 ln -sf ~/dotfiles/fish ~/.config/fish                    # Fish shell
-ln -sf ~/dotfiles/zshrc/.zshrc ~/.zshrc                  # optional: macOS / zsh
+ln -sf ~/dotfiles/zshrc/.zshrc ~/.zshrc                  # macOS / zsh
 
 # Editors & tools
 ln -sf ~/dotfiles/nvim ~/.config/
@@ -29,7 +29,7 @@ ln -sf ~/dotfiles/tmux ~/.config/
 ln -sf ~/dotfiles/hypr ~/.config/
 ln -sf ~/dotfiles/waybar ~/.config/
 
-# Window manager (optional macOS)
+# Window manager (macOS)
 ln -sf ~/dotfiles/aerospace ~/.config/
 
 # Git
@@ -49,7 +49,7 @@ source ~/.bashrc   # or: source ~/.zshrc
 |--------|-------------|
 | **bash** | Shell aliases, functions, custom prompt (Linux) |
 | **fish** | Fish shell env variables |
-| **zshrc** | Shell aliases, functions, custom prompt (macOS, optional) |
+| **zshrc** | Shell aliases, functions, custom prompt (macOS) |
 | **nvim** | Neovim with LSP, Telescope, Harpoon, LazyGit |
 | **ghostty** | Main terminal emulator |
 | **kitty** | Alternative terminal emulator |
