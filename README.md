@@ -59,6 +59,9 @@ source ~/.bashrc   # or: source ~/.zshrc
 | **hypr** | Hyprland compositor config (Arch) |
 | **waybar** | Waybar status bar config (Arch) |
 | **aerospace** | Tiling window manager (macOS) |
+| **hypr** | Hyprland compositor config (Arch / Omarchy) — gaps, rounding, workspace anims, SUPER+TAB last-active |
+| **waybar** | Status bar config — black pill theme, workspace window icons |
+| **wallpapers** | Desktop wallpapers (applied via `swww` on Omarchy) |
 | **.idea** | IdeaVim config for JetBrains IDEs |
 | **.vscode** | VSCode Vim keybindings and editor settings |
 

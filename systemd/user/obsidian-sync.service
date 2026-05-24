@@ -1,0 +1,16 @@
+[Unit]
+Description=Auto-sync obsidian-vault with git (login + logout)
+After=graphical-session.target network-online.target
+Wants=network-online.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/prdai/dotfiles/scripts/obsidian-sync.sh login
+ExecStop=/home/prdai/dotfiles/scripts/obsidian-sync.sh logout
+TimeoutStartSec=120
+TimeoutStopSec=120
+
+[Install]
+WantedBy=graphical-session.target
