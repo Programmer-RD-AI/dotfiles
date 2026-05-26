@@ -1,0 +1,5 @@
+/* swaync main stylesheet — adapted from binnewbs/arch-hyprland */
+
+@import 'colors.css';
+@import 'themes/control_center.css';
+@import 'themes/notifications.css';

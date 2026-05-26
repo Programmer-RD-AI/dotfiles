@@ -25,9 +25,10 @@ ln -sf ~/dotfiles/kitty ~/.config/
 # Multiplexer
 ln -sf ~/dotfiles/tmux ~/.config/
 
-# Window manager + bar (Arch)
+# Window manager + bar + notifications (Arch)
 ln -sf ~/dotfiles/hypr ~/.config/
 ln -sf ~/dotfiles/waybar ~/.config/
+ln -sf ~/dotfiles/swaync ~/.config/
 
 # Window manager (macOS)
 ln -sf ~/dotfiles/aerospace ~/.config/
@@ -61,6 +62,7 @@ source ~/.bashrc   # or: source ~/.zshrc
 | **aerospace** | Tiling window manager (macOS) |
 | **hypr** | Hyprland compositor config (Arch / Omarchy) — gaps, rounding, workspace anims, SUPER+TAB last-active |
 | **waybar** | Status bar config — black pill theme, workspace window icons |
+| **swaync** | Sway Notification Center — catppuccin theme, control center widgets |
 | **wallpapers** | Desktop wallpapers (applied via `swww` on Omarchy) |
 | **.idea** | IdeaVim config for JetBrains IDEs |
 | **.vscode** | VSCode Vim keybindings and editor settings |
