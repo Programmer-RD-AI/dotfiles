@@ -10,6 +10,7 @@ window-title-font-family="JetBrainsMonoNL Nerd Font Propo"
 window-theme="dark"
 quick-terminal-position="center"
 shell-integration="zsh"
+command = "tmux new-session -A -s main"
 macos-titlebar-style="transparent"
 auto-update="download"
 gtk-titlebar = false

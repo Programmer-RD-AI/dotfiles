@@ -530,5 +530,16 @@ tmux-git-autofetch() {
 (/home/prdai/dotfiles/tmux/plugins/tmux-git-autofetch/git-autofetch.tmux --current &)
 
 }
+autoload -Uz add-zsh-hook
 add-zsh-hook chpwd tmux-git-autofetch
     
+
+# pnpm
+export PNPM_HOME="/home/prdai/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+. "$HOME/.local/share/../bin/env"
