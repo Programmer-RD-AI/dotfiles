@@ -524,3 +524,22 @@ ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT       # start each prompt in insert mode
 ZVM_VI_HIGHLIGHT_BACKGROUND=cyan          # visible visual-mode highlight
 [[ -f ~/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]] && \
   source ~/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+tmux-git-autofetch() {
+
+(/home/prdai/dotfiles/tmux/plugins/tmux-git-autofetch/git-autofetch.tmux --current &)
+
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd tmux-git-autofetch
+    
+
+# pnpm
+export PNPM_HOME="/home/prdai/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+. "$HOME/.local/share/../bin/env"

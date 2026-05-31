@@ -20,3 +20,6 @@ tiling-assistant/
 user-dirs.dirs
 user-dirs.locale
 
+# Vicinae: GUI-mutable runtime state, per-machine
+vicinae/settings.json
+
