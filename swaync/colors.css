@@ -1,0 +1,23 @@
+/* swaync colors — derived from omarchy catppuccin mocha theme */
+@define-color foreground    #cdd6f4;
+@define-color background    #1e1e2e;
+@define-color accent        #89b4fa;  /* blue */
+@define-color error         #f38ba8;  /* red */
+@define-color green         #a6e3a1;
+@define-color yellow        #f9e2af;
+@define-color mauve         #f5c2e7;
+@define-color teal          #94e2d5;
+@define-color surface0      #313244;
+@define-color surface1      #45475a;
+@define-color overlay0      #6c7086;
+@define-color overlay1      #7f849c;
+@define-color subtext0      #a6adc8;
+@define-color subtext1      #bac2de;
+
+/* These aliases satisfy the upstream theme imports */
+@define-color text            @foreground;
+@define-color background-alt  alpha(@accent, .25);
+@define-color selected        @accent;
+@define-color hover           alpha(@accent, .45);
+@define-color urgent          @error;
+@define-color text-selected   @background;
