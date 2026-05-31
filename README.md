@@ -29,6 +29,9 @@ ln -sf ~/dotfiles/tmux ~/.config/
 ln -sf ~/dotfiles/hypr ~/.config/
 ln -sf ~/dotfiles/waybar ~/.config/
 
+# App launcher (Arch) — vicinae replaces walker on SUPER+SPACE
+ln -sf ~/dotfiles/vicinae ~/.config/
+
 # Window manager (macOS)
 ln -sf ~/dotfiles/aerospace ~/.config/
 
@@ -61,6 +64,7 @@ source ~/.bashrc   # or: source ~/.zshrc
 | **aerospace** | Tiling window manager (macOS) |
 | **hypr** | Hyprland compositor config (Arch / Omarchy) — gaps, rounding, workspace anims, SUPER+TAB last-active |
 | **waybar** | Status bar config — black pill theme, workspace window icons |
+| **vicinae** | Vicinae launcher (Arch) — Raycast-like, bound to SUPER+SPACE via AUR `vicinae-bin` |
 | **wallpapers** | Desktop wallpapers (applied via `swww` on Omarchy) |
 | **.idea** | IdeaVim config for JetBrains IDEs |
 | **.vscode** | VSCode Vim keybindings and editor settings |
