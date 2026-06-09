@@ -14,13 +14,17 @@
   // Normal Mode Keybindings
   // ═══════════════════════════════════════════════════════════════════════════
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Basic file operations
+    // File operations
     {
       "before": ["<leader>", "w"],
       "commands": ["workbench.action.files.save"]
     },
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.quickSwitchWindow"]
+    },
 
-    // File explorer (matching nvim-tree keybinds)
+    // File explorer
     {
       "before": ["<leader>", "e", "e"],
       "commands": ["workbench.view.explorer"]
@@ -30,10 +34,10 @@
       "commands": ["workbench.files.action.showActiveFileInExplorer"]
     },
 
-    // Split window management
+    // Split management
     {
       "before": ["<leader>", "s", "v"],
-      "commands": ["workbench.action.splitEditor"]
+      "commands": ["workbench.action.splitEditorRight"]
     },
     {
       "before": ["<leader>", "s", "h"],
@@ -48,7 +52,10 @@
       "commands": ["workbench.action.evenEditorWidths"]
     },
 
-    // Harpoon-style file marking (using VS Code's pinned tabs)
+    // Git
+    { "before": ["<leader>", "l", "g"], "commands": ["workbench.view.scm"] },
+
+    // Harpoon-style
     {
       "before": ["<leader>", "h", "a"],
       "commands": ["workbench.action.pinEditor"]
@@ -82,6 +89,32 @@
       "commands": ["workbench.action.nextEditor"]
     },
 
+    // Finder
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "g"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+
+    // LSP navigation
+    { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"] },
+    { "before": ["g", "D"], "commands": ["editor.action.revealDeclaration"] },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
+    { "before": ["K"], "commands": ["editor.action.showHover"] },
+
+    // LSP actions
+    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.codeAction"] },
+    { "before": ["<leader>", "r", "n"], "commands": ["editor.action.rename"] },
+    { "before": ["<leader>", "D"], "commands": ["editor.action.goToTypeDefinition"] },
+    { "before": ["<leader>", "k"], "commands": ["editor.action.triggerParameterHints"] },
+    { "before": ["<leader>", "o", "f"], "commands": ["editor.action.showHover"] },
+    { "before": ["<leader>", "f", "o"], "commands": ["editor.action.formatDocument"] },
+    { "before": ["<leader>", "x", "x"], "commands": ["workbench.actions.view.problems"] },
+
     // Tab management
     {
       "before": ["<leader>", "t", "o"],
@@ -100,90 +133,7 @@
       "commands": ["workbench.action.previousEditor"]
     },
 
-    // System clipboard
-    { "before": ["<leader>", "p"], "after": ["\"", "*", "p"] },
-    { "before": ["<leader>", "P"], "after": ["\"", "+", "p"] },
-    { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
-    { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
-
-    // Search within file (like <leader>/ in Neovim)
-    { "before": ["<leader>", "/"], "commands": ["actions.find"] },
-
-    // Comments (using <leader>gc to match Comment.nvim)
-    {
-      "before": ["<leader>", "g", "c"],
-      "commands": ["editor.action.commentLine"]
-    },
-
-    // Git integration
-    { "before": ["<leader>", "l", "g"], "commands": ["workbench.view.scm"] },
-
-    // Telescope-style searching
-    {
-      "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
-    },
-    {
-      "before": ["<leader>", "f", "g"],
-      "commands": ["workbench.action.findInFiles"]
-    },
-    {
-      "before": ["<leader>", "f", "b"],
-      "commands": ["workbench.action.showAllEditors"]
-    },
-    {
-      "before": ["<leader>", "f", "h"],
-      "commands": ["workbench.action.showCommands"]
-    },
-
-    // LSP-style navigation
-    {
-      "before": ["<leader>", "f", "d"],
-      "commands": ["editor.action.revealDefinition"]
-    },
-    {
-      "before": ["<leader>", "f", "r"],
-      "commands": ["editor.action.goToReferences"]
-    },
-    {
-      "before": ["<leader>", "f", "i"],
-      "commands": ["editor.action.goToImplementation"]
-    },
-    {
-      "before": ["<leader>", "f", "s"],
-      "commands": ["workbench.action.gotoSymbol"]
-    },
-    {
-      "before": ["<leader>", "f", "S"],
-      "commands": ["workbench.action.showAllSymbols"]
-    },
-
-    // LSP actions (matching Neovim)
-    { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"] },
-    { "before": ["g", "D"], "commands": ["editor.action.revealDeclaration"] },
-    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
-    { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
-    { "before": ["K"], "commands": ["editor.action.showHover"] },
-
-    // Diagnostics navigation (matching Neovim)
-    {
-      "before": ["<space>", "e"],
-      "commands": ["editor.action.showHover"]
-    },
-    {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prevInFiles"]
-    },
-    {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.nextInFiles"]
-    },
-    {
-      "before": ["<space>", "q"],
-      "commands": ["workbench.actions.view.problems"]
-    },
-
-    // Terminal integration
+    // Terminal
     {
       "before": ["<C-\\>"],
       "commands": ["workbench.action.terminal.toggleTerminal"]
@@ -193,64 +143,26 @@
       "commands": ["workbench.action.terminal.toggleTerminal"]
     },
 
-    // Which-key style helper
-    {
-      "before": ["<leader>", "?"],
-      "commands": ["workbench.action.showCommands"]
-    },
-
-    // Improved Harpoon-style navigation
-    {
-      "before": ["<leader>", "h", "x"],
-      "commands": ["workbench.action.unpinEditor"]
-    },
-
-    // Additional LSP features
-    {
-      "before": ["<space>", "D"],
-      "commands": ["editor.action.goToTypeDefinition"]
-    },
-    {
-      "before": ["<C-k>"],
-      "commands": ["editor.action.triggerParameterHints"]
-    },
-
-    // Workspace management
-    {
-      "before": ["<space>", "w", "a"],
-      "commands": ["workbench.action.addRootFolder"]
-    },
-
-    // Additional split window resize bindings
-    {
-      "before": ["<leader>", "+"],
-      "commands": ["workbench.action.increaseViewHeight"]
-    },
-    {
-      "before": ["<leader>", "-"],
-      "commands": ["workbench.action.decreaseViewHeight"]
-    },
-    {
-      "before": ["<leader>", ">"],
-      "commands": ["workbench.action.increaseViewWidth"]
-    },
-    {
-      "before": ["<leader>", "<"],
-      "commands": ["workbench.action.decreaseViewWidth"]
-    },
-
-    // vim-eunuch style file operations
+    // File management
     {
       "before": ["<leader>", "r", "m"],
       "commands": ["fileutils.removeFile"]
     },
     {
-      "before": ["<leader>", "r", "n"],
-      "commands": ["fileutils.renameFile"]
-    },
-    {
       "before": ["<leader>", "m", "d"],
       "commands": ["fileutils.newFolder"]
+    },
+
+    // Window navigation
+    { "before": ["<C-h>"], "commands": ["workbench.action.focusLeftGroup"] },
+    { "before": ["<C-l>"], "commands": ["workbench.action.focusRightGroup"] },
+    { "before": ["<C-j>"], "commands": ["workbench.action.focusBelowGroup"] },
+    { "before": ["<C-k>"], "commands": ["workbench.action.focusAboveGroup"] },
+
+    // Which-key helper
+    {
+      "before": ["<leader>", "?"],
+      "commands": ["workbench.action.showCommands"]
     }
   ],
 
@@ -258,23 +170,7 @@
   // Visual Mode Keybindings
   // ═══════════════════════════════════════════════════════════════════════════
   "vim.visualModeKeyBindingsNonRecursive": [
-    // System clipboard
-    { "before": ["<leader>", "p"], "after": ["\"", "*", "p"] },
-    { "before": ["<leader>", "P"], "after": ["\"", "+", "p"] },
-    { "before": ["<leader>", "y"], "after": ["\"", "*", "y"] },
-    { "before": ["<leader>", "Y"], "after": ["\"", "+", "y"] },
-
-    // Comments (using <leader>gc to match Comment.nvim)
-    {
-      "before": ["<leader>", "g", "c"],
-      "commands": ["editor.action.commentLine"]
-    },
-
-    // Formatting
-    {
-      "before": ["<space>", "f"],
-      "commands": ["editor.action.formatSelection"]
-    }
+    { "before": ["p"], "after": ["\"", "_", "d", "P"] }
   ],
 
   // ═══════════════════════════════════════════════════════════════════════════

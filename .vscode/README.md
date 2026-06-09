@@ -22,10 +22,10 @@ leader: `<space>`
 **search**
 - `<leader>ff` → Find files
 - `<leader>fg` → Find in files
-- `<leader>fb` → Show buffers
 
 **splits**
 - `<leader>sv/sh` → Split vertical/horizontal
+- `<leader>se` → Equalize split sizes
 - `<leader>sx` → Close split
 - `<C-h/j/k/l>` → Navigate splits
 
@@ -35,20 +35,25 @@ leader: `<space>`
 
 **harpoon-style**
 - `<leader>ha` → Pin editor
+- `<leader>hh` → Show marked editors
 - `<leader>h1-4` → Jump to editor 1-4
-
-**clipboard**
-- `<leader>y/p` → Copy/paste system clipboard
+- `<leader>hp/hn` → Previous/next marked editor
 
 **lsp**
 - `gd/gr/gi` → Definition/references/implementation
+- `gD` → Declaration
 - `K` → Hover docs
-- `<space>rn` → Rename
-- `<space>ca` → Code actions
-- `<space>f` → Format
+- `<leader>rn` → Rename symbol
+- `<leader>ca` → Code actions
+- `<leader>D` → Type definition
+- `<leader>k` → Signature help
+- `<leader>fo` → Format buffer
+- `<leader>of` → Show diagnostic float
+- `<leader>xx` → Problems list
 
-**comments**
-- `<leader>/` → Toggle comment
+**file management**
+- `<leader>rm` → Remove file
+- `<leader>md` → New folder
 
 **git**
 - `<leader>lg` → Source control view
