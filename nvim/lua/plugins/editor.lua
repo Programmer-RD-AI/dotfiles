@@ -55,6 +55,10 @@ return {
 		end,
 	},
 	{
+		"lankavitharana/ballerina-vim",
+		ft = "ballerina",
+	},
+	{
 		"saecki/crates.nvim",
 		tag = "stable",
 		config = function()

@@ -11,3 +11,5 @@ vim.opt.termguicolors = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.clipboard = "unnamedplus"
 vim.opt.autoread = true
+
+vim.filetype.add({ extension = { bal = "ballerina" } })

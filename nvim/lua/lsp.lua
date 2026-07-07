@@ -223,6 +223,16 @@ vim.lsp.config.clangd = {
 }
 vim.lsp.enable("clangd")
 
+-- Ballerina LS ships with the local `bal` distribution (not managed by mason)
+vim.lsp.config.ballerina = {
+	cmd = { "bal", "start-language-server" },
+	filetypes = { "ballerina" },
+	root_markers = { "Ballerina.toml", ".git" },
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+vim.lsp.enable("ballerina")
+
 vim.lsp.enable("bashls")
 
 vim.lsp.enable("protols")
