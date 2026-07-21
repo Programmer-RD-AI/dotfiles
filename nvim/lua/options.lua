@@ -12,4 +12,11 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.clipboard = "unnamedplus"
 vim.opt.autoread = true
 
-vim.filetype.add({ extension = { bal = "ballerina" } })
+vim.filetype.add({
+	extension = {
+		bal = "ballerina",
+		j2 = "jinja",
+		jinja = "jinja",
+		jinja2 = "jinja",
+	},
+})
