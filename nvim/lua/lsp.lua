@@ -18,7 +18,9 @@ require("mason-lspconfig").setup({
 		"terraformls",
 		"ruff",
 		"clangd",
-		"protols"
+		"protols",
+		"dockerls",
+		"docker_compose_language_service",
 	},
 	automatic_installation = true,
 })
@@ -232,6 +234,34 @@ vim.lsp.config.ballerina = {
 	on_attach = on_attach,
 }
 vim.lsp.enable("ballerina")
+
+-- Dockerfile LSP (dockerfile-language-server-nodejs)
+vim.lsp.config.dockerls = {
+	cmd = { "docker-langserver", "--stdio" },
+	filetypes = { "dockerfile" },
+	root_markers = { "Dockerfile", ".git" },
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+vim.lsp.enable("dockerls")
+
+-- Docker Compose LSP (attaches to compose files detected as yaml.docker-compose)
+vim.lsp.config.docker_compose_language_service = {
+	cmd = { "docker-compose-langserver", "--stdio" },
+	filetypes = { "yaml.docker-compose" },
+	root_markers = { "docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml", ".git" },
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+vim.lsp.enable("docker_compose_language_service")
+
+-- Detect docker-compose files so the compose LSP attaches (yaml LSP would otherwise grab them)
+vim.filetype.add({
+	pattern = {
+		["[Dd]ocker%-?[Cc]ompose.*%.ya?ml"] = "yaml.docker-compose",
+		["[Cc]ompose.*%.ya?ml"] = "yaml.docker-compose",
+	},
+})
 
 vim.lsp.enable("bashls")
 
