@@ -1,78 +1,77 @@
 # dotfiles
 
-my personal dev configs for Arch + macOS.
+my personal dev configs for arch + macos.
 
 ## setup
 
 ```bash
-git clone https://github.com/prdai/dotfiles.git
+git clone https://github.com/prdai/dotfiles.git ~/.dotfiles
 
-# Shell
-ln -sf ~/dotfiles/bash/bashrc ~/.bashrc                  # Arch Linux / bash
-ln -sf ~/dotfiles/fish ~/.config/fish                    # Fish shell
-ln -sf ~/dotfiles/zshrc/.zshrc ~/.zshrc                  # macOS / zsh
+# shell
+ln -sf ~/.dotfiles/bash/bashrc ~/.bashrc                  # arch linux / bash
+ln -sf ~/.dotfiles/fish ~/.config/fish                    # fish shell
+ln -sf ~/.dotfiles/zshrc/.zshrc ~/.zshrc                  # macos / zsh
 
-# Editors & tools
-ln -sf ~/dotfiles/nvim ~/.config/
-ln -sf ~/dotfiles/lazygit ~/.config/
-ln -sf ~/dotfiles/.idea/.ideavimrc ~/.ideavimrc
-ln -sf ~/dotfiles/.idea/.editorconfig ~/.editorconfig
+# editors + tools
+ln -sf ~/.dotfiles/nvim ~/.config/
+ln -sf ~/.dotfiles/lazygit ~/.config/
+ln -sf ~/.dotfiles/.idea/.ideavimrc ~/.ideavimrc
+ln -sf ~/.dotfiles/.idea/.editorconfig ~/.editorconfig
 
-# Terminals
-ln -sf ~/dotfiles/ghostty ~/.config/
-ln -sf ~/dotfiles/kitty ~/.config/
+# terminals
+ln -sf ~/.dotfiles/ghostty ~/.config/
+ln -sf ~/.dotfiles/kitty ~/.config/
 
-# Multiplexer
-ln -sf ~/dotfiles/tmux ~/.config/
+# multiplexer
+ln -sf ~/.dotfiles/tmux ~/.config/
 
-# Window manager + bar + notifications (Arch)
-ln -sf ~/dotfiles/hypr ~/.config/
-ln -sf ~/dotfiles/waybar ~/.config/
-ln -sf ~/dotfiles/swaync ~/.config/
+# linux desktop stack (hyprland / omarchy)
+ln -sf ~/.dotfiles/hypr ~/.config/
+ln -sf ~/.dotfiles/waybar ~/.config/
+ln -sf ~/.dotfiles/swaync ~/.config/
+ln -sf ~/.dotfiles/vicinae ~/.config/
+ln -sf ~/.dotfiles/btop ~/.config/
 
-# App launcher (Arch) — vicinae replaces walker on SUPER+SPACE
-ln -sf ~/dotfiles/vicinae ~/.config/
+# macos window manager
+ln -sf ~/.dotfiles/aerospace ~/.config/
 
-# Window manager (macOS)
-ln -sf ~/dotfiles/aerospace ~/.config/
+# git
+ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/git/ignore ~/.config/git/ignore
 
-# Git
-ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/git/ignore ~/.config/git/ignore
-
-# Activity Monitor
-ln -sf ~/dotfiles/btop ~/.config/
-
-# Reload
+# reload shell
 source ~/.bashrc   # or: source ~/.zshrc
 ```
 
 ## what's inside
 
-| Config | Description |
-|--------|-------------|
-| **bash** | Shell aliases, functions, custom prompt (Linux) |
-| **fish** | Fish shell env variables |
-| **zshrc** | Shell aliases, functions, custom prompt (macOS) |
-| **nvim** | Neovim with LSP, Telescope, Harpoon, LazyGit |
-| **ghostty** | Main terminal emulator |
-| **kitty** | Alternative terminal emulator |
-| **tmux** | Terminal multiplexer |
-| **lazygit** | Git TUI with nvim integration |
-| **git** | Global gitconfig and global gitignore |
-| **hypr** | Hyprland compositor config (Arch) |
-| **waybar** | Waybar status bar config (Arch) |
-| **aerospace** | Tiling window manager (macOS) |
-| **hypr** | Hyprland compositor config (Arch / Omarchy) — gaps, rounding, workspace anims, SUPER+TAB last-active |
-| **waybar** | Status bar config — black pill theme, workspace window icons |
-| **swaync** | Sway Notification Center — catppuccin theme, control center widgets |
-| **vicinae** | Vicinae launcher (Arch) — Raycast-like, bound to SUPER+SPACE via AUR `vicinae-bin` |
-| **wallpapers** | Desktop wallpapers (applied via `swww` on Omarchy) |
-| **.idea** | IdeaVim config for JetBrains IDEs |
-| **.vscode** | VSCode Vim keybindings and editor settings |
+| path | purpose |
+|------|---------|
+| `aerospace/` | aerospace tiling window manager config for macos |
+| `bash/` | bash config, aliases, prompt, helper functions |
+| `btop/` | btop system monitor config |
+| `fish/` | fish environment setup snippets |
+| `ghostty/` | primary terminal emulator config |
+| `git/` | global git config + global ignore |
+| `hypr/` | hyprland overrides layered on omarchy defaults |
+| `kitty/` | alternate terminal emulator config |
+| `lazygit/` | lazygit config + custom commit keybinding |
+| `nvim/` | neovim config (lsp, keymaps, plugins) |
+| `obsidian/` | obsidian vimrc settings |
+| `scripts/` | utility scripts (currently obsidian vault sync) |
+| `swaync/` | sway notification center config/theme/icons |
+| `systemd/` | user services (currently obsidian sync service) |
+| `tmux/` | tmux config + plugin setup |
+| `vicinae/` | vicinae launcher config |
+| `wallpapers/` | wallpaper assets |
+| `waybar/` | waybar modules + styling |
+| `wezterm/` | archived terminal config (kept for reference) |
+| `zshrc/` | zsh config, aliases, prompt, helper functions |
+| `.idea/` | ideavim/editorconfig for jetbrains |
+| `.vscode/` | vscode settings + vim-aligned keybinding notes |
 
-> **note:** wezterm config is no longer maintained. using ghostty now.
+> **note:** wezterm config is no longer maintained. ghostty is the active terminal setup.
 
-check `*/README.md` for details.
+check each `*/README.md` for directory-specific notes.
 
 for contribution workflow and docs tone, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
