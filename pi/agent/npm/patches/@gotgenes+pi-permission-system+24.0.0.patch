@@ -1,0 +1,53 @@
+diff --git a/node_modules/@gotgenes/pi-permission-system/src/extension-config.ts b/node_modules/@gotgenes/pi-permission-system/src/extension-config.ts
+index 50365ba..2a24c34 100644
+--- a/node_modules/@gotgenes/pi-permission-system/src/extension-config.ts
++++ b/node_modules/@gotgenes/pi-permission-system/src/extension-config.ts
+@@ -88,9 +88,15 @@ export function normalizePermissionSystemConfig(
+ 
+ export function isYoloModeEnabled(
+   config: PermissionSystemExtensionConfig,
++  argv: readonly string[] = process.argv,
+ ): boolean {
+   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- typed as boolean but may be undefined at runtime (untyped callers); Boolean() guards against that
+-  return Boolean(config.yoloMode);
++  let enabled = Boolean(config.yoloMode);
++  for (const arg of argv) {
++    if (arg === "--approve" || arg === "-a") enabled = true;
++    else if (arg === "--no-approve" || arg === "-na") enabled = false;
++  }
++  return enabled;
+ }
+ 
+ export function ensurePermissionSystemLogsDirectory(
+diff --git a/node_modules/@gotgenes/pi-permission-system/test/approve-mode.test.ts b/node_modules/@gotgenes/pi-permission-system/test/approve-mode.test.ts
+new file mode 100644
+index 0000000..05a9c84
+--- /dev/null
++++ b/node_modules/@gotgenes/pi-permission-system/test/approve-mode.test.ts
+@@ -0,0 +1,26 @@
++import assert from "node:assert/strict";
++import test from "node:test";
++
++import {
++  DEFAULT_EXTENSION_CONFIG,
++  isYoloModeEnabled,
++} from "../src/extension-config.ts";
++
++test("--approve enables yolo mode", () => {
++  assert.equal(
++    isYoloModeEnabled(DEFAULT_EXTENSION_CONFIG, ["node", "pi", "--approve"]),
++    true,
++  );
++});
++
++test("the last approval flag wins", () => {
++  assert.equal(
++    isYoloModeEnabled(DEFAULT_EXTENSION_CONFIG, [
++      "node",
++      "pi",
++      "--approve",
++      "--no-approve",
++    ]),
++    false,
++  );
++});
