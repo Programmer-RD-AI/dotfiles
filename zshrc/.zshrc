@@ -167,6 +167,7 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
+alias pi='command pi --approve'
 
 # Navigation
 alias ..='cd ..'
