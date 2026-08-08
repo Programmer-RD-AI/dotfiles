@@ -5,7 +5,10 @@ Personal [pi](https://pi.dev) coding agent configuration — extensions, skills,
 ## Setup
 
 ```bash
-git clone https://github.com/prdai-archive/pi-config.git ~/.pi
+# from this dotfiles repo:
+ln -sfn ~/.dotfiles/pi ~/.pi
+
+# install local extension deps
 cd ~/.pi/agent/npm && npm install
 ln -s npm/node_modules ~/.pi/agent/node_modules  # extensions resolve deps via this symlink
 export ANTHROPIC_API_KEY=sk-ant-...  # or run /login inside pi
@@ -39,7 +42,7 @@ pi
 
 | Skill | Description |
 |---|---|
-| **omarchy** | Linux desktop / Hyprland / Waybar / system config management |
+| **karpathy-guidelines** | Coding guardrails to keep changes simple, explicit, and surgical |
 | **orchestrator** | Multi-agent task orchestration |
 | **pdf-reader** | PDF extraction, search, and rendering |
 | **reddit** | Reddit browsing and interaction |
@@ -47,7 +50,7 @@ pi
 
 ### Theme
 
-**ghostty-sync** — dark theme synced with your Ghostty terminal palette.
+**ghostty-sync-4cf8eda3** — dark theme synced with your Ghostty terminal palette.
 
 ### Packages
 
@@ -60,6 +63,18 @@ pi
 "npm:@ogulcancelik/pi-spar"
 "npm:@ogulcancelik/pi-web-browse"
 "npm:@ogulcancelik/pi-ghostty-theme-sync"
+"npm:@tmustier/pi-agent-guidance"
+"npm:@tmustier/pi-usage-extension"
+"https://github.com/ayghri/i-have-adhd"
+"git:github.com/obra/superpowers"
+"npm:pi-mcp-adapter"
+"npm:pi-web-access"
+"npm:pi-lens"
+"npm:pi-subagents"
+"npm:@juicesharp/rpiv-todo"
+"npm:@gotgenes/pi-permission-system"
+"npm:pi-agent-browser-native"
+"npm:pi-hermes-memory"
 ```
 
 ### Defaults

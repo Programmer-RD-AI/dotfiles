@@ -58,6 +58,7 @@ source ~/.bashrc   # or: source ~/.zshrc
 | `lazygit/` | lazygit config + custom commit keybinding |
 | `nvim/` | neovim config (lsp, keymaps, plugins) |
 | `obsidian/` | obsidian vimrc settings |
+| `pi/` | pi coding agent config (extensions, skills, themes, settings) |
 | `scripts/` | utility scripts (currently obsidian vault sync) |
 | `swaync/` | sway notification center config/theme/icons |
 | `systemd/` | user services (currently obsidian sync service) |
