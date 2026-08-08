@@ -1,0 +1,29 @@
+{
+  "lastChangelogVersion": "0.84.1",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "deepseek-v4-flash",
+  "defaultThinkingLevel": "high",
+  "theme": "ghostty-sync-4cf8eda3",
+  "packages": [
+    "npm:pi-opencode-bridge",
+    "npm:@ogulcancelik/pi-goal",
+    "npm:@ogulcancelik/pi-minimal-footer",
+    "npm:@ogulcancelik/pi-model-agents",
+    "npm:@ogulcancelik/pi-model-thinking",
+    "npm:@ogulcancelik/pi-spar",
+    "npm:@ogulcancelik/pi-web-browse",
+    "npm:@ogulcancelik/pi-ghostty-theme-sync",
+    "npm:@tmustier/pi-agent-guidance",
+    "npm:@tmustier/pi-usage-extension",
+    "https://github.com/ayghri/i-have-adhd",
+    "git:github.com/obra/superpowers",
+    "npm:pi-mcp-adapter",
+    "npm:pi-web-access",
+    "npm:pi-lens",
+    "npm:pi-subagents",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@gotgenes/pi-permission-system",
+    "npm:pi-agent-browser-native",
+    "npm:pi-hermes-memory"
+  ]
+}
