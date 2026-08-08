@@ -22,6 +22,7 @@
     "npm:@juicesharp/rpiv-todo",
     "npm:@gotgenes/pi-permission-system",
     "npm:pi-agent-browser-native",
-    "npm:pi-hermes-memory"
+    "npm:pi-hermes-memory",
+    "npm:@shiina18/pi-ask-user-question"
   ]
 }

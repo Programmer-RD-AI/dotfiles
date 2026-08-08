@@ -10,11 +10,9 @@
  * Notes:
  * - Hard-enforces a tiny tool allowlist: read, grep, find, ls
  * - Blocks every other tool call while enabled
- * - Re-registers the allowed tools with the built-in read-only implementations
  * - State is in-memory only and resets when pi restarts/reloads
  */
 import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-agent";
-import { createFindTool, createGrepTool, createLsTool, createReadTool } from "@mariozechner/pi-coding-agent";
 
 const COMMAND_NAME = "read-only";
 const STATUS_KEY = "read-only-mode";
@@ -57,38 +55,6 @@ function restoreTools(pi: ExtensionAPI, toolsBeforeReadOnly?: string[]): void {
 export default function readOnlyModeExtension(pi: ExtensionAPI) {
 	let enabled = false;
 	let toolsBeforeReadOnly: string[] | undefined;
-
-	const readTool = createReadTool(process.cwd());
-	pi.registerTool({
-		...readTool,
-		async execute(toolCallId, params, signal, onUpdate, ctx) {
-			return createReadTool(ctx.cwd).execute(toolCallId, params, signal, onUpdate);
-		},
-	});
-
-	const grepTool = createGrepTool(process.cwd());
-	pi.registerTool({
-		...grepTool,
-		async execute(toolCallId, params, signal, onUpdate, ctx) {
-			return createGrepTool(ctx.cwd).execute(toolCallId, params, signal, onUpdate);
-		},
-	});
-
-	const findTool = createFindTool(process.cwd());
-	pi.registerTool({
-		...findTool,
-		async execute(toolCallId, params, signal, onUpdate, ctx) {
-			return createFindTool(ctx.cwd).execute(toolCallId, params, signal, onUpdate);
-		},
-	});
-
-	const lsTool = createLsTool(process.cwd());
-	pi.registerTool({
-		...lsTool,
-		async execute(toolCallId, params, signal, onUpdate, ctx) {
-			return createLsTool(ctx.cwd).execute(toolCallId, params, signal, onUpdate);
-		},
-	});
 
 	function enableReadOnlyMode(ctx: ExtensionContext): void {
 		if (enabled) {
