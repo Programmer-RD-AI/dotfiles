@@ -1,0 +1,16 @@
+# Sensitive credentials
+**/auth.json
+
+# Session history (large, not needed across devices)
+agent/sessions/
+
+# Spar conversation history
+agent/spar/
+
+# Dependencies
+**/node_modules/
+agent/node_modules
+**/package-lock.json
+
+# OS files
+.DS_Store

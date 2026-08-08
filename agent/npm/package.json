@@ -1,0 +1,29 @@
+{
+  "name": "pi-extensions",
+  "private": true,
+  "dependencies": {
+    "@gotgenes/pi-permission-system": "^24.0.0",
+    "@juicesharp/rpiv-todo": "^2.4.0",
+    "@mozilla/readability": "^0.6.0",
+    "@ogulcancelik/pi-ghostty-theme-sync": "^0.1.2",
+    "@ogulcancelik/pi-goal": "^0.1.3",
+    "@ogulcancelik/pi-minimal-footer": "^0.1.10",
+    "@ogulcancelik/pi-model-agents": "^0.1.0",
+    "@ogulcancelik/pi-model-thinking": "^0.1.0",
+    "@ogulcancelik/pi-spar": "^0.1.13",
+    "@ogulcancelik/pi-web-browse": "^1.0.6",
+    "@tmustier/pi-agent-guidance": "^0.1.5",
+    "@tmustier/pi-usage-extension": "^0.9.4",
+    "diff": "^9.0.0",
+    "linkedom": "^0.16.0",
+    "pi-agent-browser-native": "^0.3.0",
+    "pi-hermes-memory": "^0.9.3",
+    "pi-lens": "^3.8.74",
+    "pi-mcp-adapter": "^2.21.0",
+    "pi-opencode-bridge": "^0.2.1",
+    "pi-subagents": "^0.28.0",
+    "pi-web-access": "^0.18.0",
+    "shell-quote": "^1.8.4",
+    "unpdf": "^1.4.0"
+  }
+}
