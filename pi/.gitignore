@@ -3,6 +3,8 @@
 
 # Session history (large, not needed across devices)
 agent/sessions/
+.pi-lens/*
+!.pi-lens/config.json
 
 # Spar conversation history
 agent/spar/
