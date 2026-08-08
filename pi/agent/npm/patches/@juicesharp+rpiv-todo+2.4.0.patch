@@ -1,0 +1,59 @@
+diff --git a/node_modules/@juicesharp/rpiv-todo/state/selectors.ts b/node_modules/@juicesharp/rpiv-todo/state/selectors.ts
+index 7635a75..0c83b5b 100644
+--- a/node_modules/@juicesharp/rpiv-todo/state/selectors.ts
++++ b/node_modules/@juicesharp/rpiv-todo/state/selectors.ts
+@@ -61,39 +61,27 @@ export function selectTaskSubjectById(state: TaskState, id: number): string | un
+ }
+ 
+ /**
+- * Overlay layout decision. Encapsulates the "drop completed first, then
+- * truncate non-completed tail" rule pre-refactor lived in
+- * `todo-overlay.ts:144-188`. `budget` is the body-slot count (caller passes
+- * `getMaxWidgetLines() - 1` to reserve the heading row); on overflow the
+- * selector reserves one more slot internally for the summary row. Returns
+- * the visible task slice plus the overflow summary parts.
++ * Keep the overlay focused around the current task: two most recently
++ * completed tasks, one in-progress task, and the next two pending tasks.
++ * Missing categories are intentionally not backfilled.
+  */
+ export interface OverlayLayout {
+ 	visible: readonly Task[];
+ 	hiddenCompleted: number;
+ 	truncatedTail: number;
+ }
+-export function selectOverlayLayout(state: TaskState, budget: number): OverlayLayout {
+-	const all = selectVisibleTasks(state);
+-	if (all.length <= budget) {
+-		return { visible: all, hiddenCompleted: 0, truncatedTail: 0 };
+-	}
+-	const innerBudget = budget - 1;
+-	const nonCompleted = all.filter((t) => t.status !== "completed");
+-	const totalCompleted = all.length - nonCompleted.length;
+-	if (nonCompleted.length <= innerBudget) {
+-		const kept = new Set<Task>(nonCompleted);
+-		for (const t of all) {
+-			if (kept.size >= innerBudget) break;
+-			if (t.status === "completed") kept.add(t);
+-		}
+-		const visible = all.filter((t) => kept.has(t));
+-		const shownCompleted = visible.filter((t) => t.status === "completed").length;
+-		return { visible, hiddenCompleted: totalCompleted - shownCompleted, truncatedTail: 0 };
+-	}
+-	const visible = nonCompleted.slice(0, innerBudget);
+-	const truncatedTail = nonCompleted.length - innerBudget;
+-	return { visible, hiddenCompleted: totalCompleted, truncatedTail };
++export function selectOverlayLayout(state: TaskState, _budget: number): OverlayLayout {
++	const groups = selectTasksByStatus(state);
++	const completed = groups.completed.slice(-2);
++	const inProgress = groups.inProgress.slice(0, 1);
++	const pending = groups.pending.slice(0, 2);
++
++	return {
++		visible: [...completed, ...inProgress, ...pending],
++		hiddenCompleted: groups.completed.length - completed.length,
++		truncatedTail:
++			groups.inProgress.length - inProgress.length + groups.pending.length - pending.length,
++	};
+ }
+ 
+ /**
