@@ -274,6 +274,17 @@ vim.lsp.config.r_language_server = {
 }
 vim.lsp.enable("r_language_server")
 
+-- Julia LSP (LanguageServer.jl; not Mason-managed — installed via Julia's package manager)
+vim.lsp.config.julials = {
+	cmd = { "julia", "--startup-file=no", "--history-file=no", "-e",
+		[[using LanguageServer; runserver()]] },
+	filetypes = { "julia" },
+	root_markers = { "Project.toml", "JuliaProject.toml", ".git" },
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+vim.lsp.enable("julials")
+
 vim.lsp.enable("bashls")
 
 vim.lsp.enable("protols")

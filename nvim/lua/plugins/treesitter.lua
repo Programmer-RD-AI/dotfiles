@@ -1,6 +1,6 @@
 local languages = {
 	"bash", "c", "cpp", "css", "dockerfile", "go", "gomod", "gosum", "gowork",
-	"html", "javascript", "jinja", "jinja_inline", "json", "lua", "markdown",
+	"html", "javascript", "jinja", "jinja_inline", "json", "julia", "lua", "markdown",
 	"markdown_inline", "python", "query", "r", "rust", "typescript", "vim", "vimdoc",
 	"xml", "yaml",
 }
