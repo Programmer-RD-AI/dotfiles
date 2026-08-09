@@ -1,7 +1,7 @@
 local languages = {
 	"bash", "c", "cpp", "css", "dockerfile", "go", "gomod", "gosum", "gowork",
 	"html", "javascript", "jinja", "jinja_inline", "json", "lua", "markdown",
-	"markdown_inline", "python", "query", "rust", "typescript", "vim", "vimdoc",
+	"markdown_inline", "python", "query", "r", "rust", "typescript", "vim", "vimdoc",
 	"xml", "yaml",
 }
 
@@ -10,7 +10,7 @@ local install_dir = vim.fn.stdpath("data") .. "/site"
 local indent_langs = {
 	bash = true, c = true, cpp = true, css = true, go = true,
 	html = true, javascript = true, json = true, lua = true,
-	python = true, query = true, rust = true, typescript = true, vim = true,
+	python = true, query = true, r = true, rust = true, typescript = true, vim = true,
 	xml = true, yaml = true,
 }
 

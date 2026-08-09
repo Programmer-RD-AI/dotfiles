@@ -21,6 +21,7 @@ require("mason-lspconfig").setup({
 		"protols",
 		"dockerls",
 		"docker_compose_language_service",
+		"r_language_server",
 	},
 	automatic_installation = true,
 })
@@ -262,6 +263,16 @@ vim.filetype.add({
 		["[Cc]ompose.*%.ya?ml"] = "yaml.docker-compose",
 	},
 })
+
+-- R LSP (r_language_server, installed via Mason; requires the R `languageserver` package)
+vim.lsp.config.r_language_server = {
+	cmd = { "R", "--no-echo", "-e", "languageserver::run()" },
+	filetypes = { "r", "rmd" },
+	root_markers = { ".Rproj", "DESCRIPTION", ".git" },
+	capabilities = capabilities,
+	on_attach = on_attach,
+}
+vim.lsp.enable("r_language_server")
 
 vim.lsp.enable("bashls")
 
