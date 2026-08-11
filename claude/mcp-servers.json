@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "youtube-transcript": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/jkawamoto/mcp-youtube-transcript",
+        "mcp-youtube-transcript"
+      ],
+      "env": {}
+    },
+    "youtube-search": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@kirbah/mcp-youtube"
+      ],
+      "env": {
+        "YOUTUBE_API_KEY": "YOUR_YOUTUBE_API_KEY_HERE"
+      }
+    },
+    "google-image-search": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@srigi/mcp-google-images-search"
+      ],
+      "env": {
+        "API_KEY": "YOUR_GOOGLE_API_KEY_HERE",
+        "SEARCH_ENGINE_ID": "YOUR_CSE_ID_HERE"
+      }
+    }
+  }
+}
