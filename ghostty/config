@@ -29,4 +29,7 @@ keybind = ctrl+six=goto_tab:6
 keybind = ctrl+seven=goto_tab:7
 keybind = ctrl+eight=goto_tab:8
 keybind = ctrl+nine=goto_tab:9
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+zero=reset_font_size
 custom-shader = ./ghostty-shaders/cursor_sweep.glsl
