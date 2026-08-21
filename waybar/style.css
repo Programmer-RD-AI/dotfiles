@@ -1,4 +1,6 @@
-@import "../omarchy/current/theme/waybar.css";
+/* Omarchy themes no longer ship a waybar.css, and on current Omarchy the theme
+   lives in ~/.local/state/omarchy/current/theme, not ~/.config/omarchy/current.
+   The import was vestigial anyway: every colour used below is defined here. */
 
 /* Force black color scheme regardless of active omarchy theme */
 @define-color bg #000000;

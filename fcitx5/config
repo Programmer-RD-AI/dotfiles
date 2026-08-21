@@ -1,0 +1,17 @@
+# fcitx5 global config.
+#
+# Omarchy runs fcitx5 for XCompose sequences (omarchy-fcitx5.service), but its
+# default input-method TriggerKeys is Ctrl+space -- the same chord as the tmux
+# prefix in tmux/tmux.conf. fcitx5 grabs the key first, so the tmux prefix only
+# worked intermittently. Both sections are left empty to unbind the hotkeys;
+# XCompose still works, since that is driven by ~/.XCompose, not these keys.
+
+[Hotkey]
+EnumerateWithTriggerKeys=False
+EnumerateSkipFirst=False
+
+# Unbound: was Control+space, which collided with the tmux prefix.
+[Hotkey/TriggerKeys]
+
+# Unbound: alternate trigger, unused here.
+[Hotkey/AltTriggerKeys]
