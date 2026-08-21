@@ -12,9 +12,9 @@ export PATH="$HOME/.nvm/versions/node/current/bin:$PATH"
 
 export GIT_COLOR='\[\e[38;5;221m\]'         # Yellow for git status
 export PROMPT_DECO_COLOR='\[\e[38;5;240m\]' # Muted gray for decorative elements
-export USER_COLOR='\[\e[38;5;109m\]'        # Soft teal for username
-export HOST_COLOR='\[\e[38;5;174m\]'        # Muted rose for hostname
-export PATH_COLOR='\[\e[38;5;143m\]'        # Soft olive green for path
+export USER_COLOR='\[\e[38;5;142m\]'        # Green for username (matches zshrc)
+export HOST_COLOR='\[\e[38;5;166m\]'        # Orange for hostname (matches zshrc)
+export PATH_COLOR='\[\e[38;5;109m\]'        # Soft teal for path (matches zshrc)
 export RESET_COLOR='\[\e[0m\]'              # Reset to default
 
 # ────────────────────────── Environment ────────────────────────────
@@ -136,7 +136,7 @@ __git_status() {
 __prompt_command() {
     local EXIT="$?"
     local LIGHTNING='\342\232\241'
-    local VENV_COLOR="\e[38;5;141m"
+    local VENV_COLOR="\[\e[38;5;141m\]"
 
     PS1="${PROMPT_DECO_COLOR}╭${RESET_COLOR} "
     PS1+="${USER_COLOR}\u${PROMPT_DECO_COLOR}@${HOST_COLOR}\h"
