@@ -15,12 +15,14 @@ o.bind("SUPER + ALT + SPACE", "Omarchy menu", "omarchy-menu toggle root")
 -- notifications, not swaync, so this opens herdr's notification history.
 o.bind("SUPER + N", "Notification center", "omarchy-shell notifications showHistory")
 
--- Window switching: SUPER+TAB toggles the last active window instead of
--- cycling workspaces, SUPER+SHIFT+TAB cycles to the previous window.
+-- Window/workspace switching, mirroring the aerospace setup on macOS:
+--   alt-tab       = workspace-back-and-forth
+--   alt-shift-tab = focus --boundaries-action wrap-around-the-workspace dfs-next
+-- Omarchy defaults these to next/previous workspace, so unbind first.
 hl.unbind("SUPER + TAB")
 hl.unbind("SUPER + SHIFT + TAB")
-o.bind("SUPER + TAB", "Toggle last active window", "hyprctl dispatch focuscurrentorlast")
-o.bind("SUPER + SHIFT + TAB", "Cycle to previous window", hl.dsp.window.cycle_next({ next = false }))
+o.bind("SUPER + TAB", "Back and forth workspace", hl.dsp.focus({ workspace = "previous" }))
+o.bind("SUPER + SHIFT + TAB", "Focus next window", hl.dsp.window.cycle_next())
 
 -- Logitech MX Keys.
 -- Omarchy binds SUPER+SHIFT+S to the Google Maps web app; reclaim it for screenshots.
