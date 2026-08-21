@@ -1,12 +1,19 @@
 -- Personal keybinding overrides, layered on top of Omarchy's defaults.
 -- See current bindings: omarchy menu keybindings --print
 
--- Launcher: replace Omarchy's default SUPER+SPACE launcher with vicinae.
+-- Launcher: replace Omarchy's default SUPER+SPACE menu with vicinae.
 hl.unbind("SUPER + SPACE")
 o.bind("SUPER + SPACE", "Vicinae launcher", "vicinae toggle")
 
--- Notification center (swaync).
-o.bind("SUPER + N", "Notification center", "swaync-client -t -sw")
+-- Omarchy's root menu (system, power/shutdown, themes, etc.) normally lives on
+-- SUPER+SPACE. Vicinae took that key, so move the menu to SUPER+ALT+SPACE
+-- (which Omarchy defaults to the narrower "Apps menu").
+hl.unbind("SUPER + ALT + SPACE")
+o.bind("SUPER + ALT + SPACE", "Omarchy menu", "omarchy-menu toggle root")
+
+-- Notification center. This machine's Omarchy uses herdr (quickshell) for
+-- notifications, not swaync, so this opens herdr's notification history.
+o.bind("SUPER + N", "Notification center", "omarchy-shell notifications showHistory")
 
 -- Window switching: SUPER+TAB toggles the last active window instead of
 -- cycling workspaces, SUPER+SHIFT+TAB cycles to the previous window.

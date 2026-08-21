@@ -7,8 +7,8 @@ PartOf=graphical-session.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/home/prdai/dotfiles/scripts/obsidian-sync.sh login
-ExecStop=/home/prdai/dotfiles/scripts/obsidian-sync.sh logout
+ExecStart=%h/.dotfiles/scripts/obsidian-sync.sh login
+ExecStop=%h/.dotfiles/scripts/obsidian-sync.sh logout
 TimeoutStartSec=120
 TimeoutStopSec=120
 
