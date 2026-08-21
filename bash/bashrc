@@ -453,3 +453,17 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 [[ -f "$HOME/.bash_completions/typer.sh" ]] && source "$HOME/.bash_completions/typer.sh"
+
+# ────────────────────────── Default Start Directory ────────────────────
+
+# Bulk data lives on the 512GB SSD mounted at ~/Storage, so start there rather
+# than in $HOME. Override by exporting DEFAULT_START_DIR before the shell runs.
+#
+# The $PWD guard matters: only redirect when the shell actually started in
+# $HOME. Without it this would yank you out of the directory tmux, an editor,
+# or `cd somewhere && bash` deliberately put you in. tmux's new-window and
+# split bindings use #{pane_current_path}, so they inherit this too.
+DEFAULT_START_DIR="${DEFAULT_START_DIR:-$HOME/Storage}"
+if [[ $PWD == "$HOME" && -d $DEFAULT_START_DIR ]]; then
+    cd "$DEFAULT_START_DIR" || true
+fi
