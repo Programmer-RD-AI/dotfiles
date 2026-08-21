@@ -33,3 +33,9 @@ keybind = ctrl+minus=decrease_font_size:1
 keybind = ctrl+equal=increase_font_size:1
 keybind = ctrl+zero=reset_font_size
 custom-shader = ./ghostty-shaders/cursor_sweep.glsl
+
+# New tabs/windows start in $HOME instead of inheriting the current tab's
+# directory, so each one is a fresh shell. bashrc then redirects $HOME to
+# ~/Storage (see DEFAULT_START_DIR there), keeping that choice in one place
+# rather than hardcoding the path here too.
+working-directory = home
