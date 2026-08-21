@@ -7,7 +7,6 @@
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.nvm/versions/node/current/bin:$PATH"
-export PATH="/home/ranuga/snap/code/183/.local/share/../bin:$PATH"
 
 # ────────────────────────── Color palette ────────────────────────────
 
@@ -20,7 +19,7 @@ export RESET_COLOR='\[\e[0m\]'              # Reset to default
 
 # ────────────────────────── Environment ────────────────────────────
 export EDITOR='nvim'
-export TERMINAL='wezterm'
+export TERMINAL='ghostty'
 export BROWSER='zen-browser'
 export LANG='en_US.UTF-8'
 export TERM='xterm-256color'
@@ -41,49 +40,26 @@ fi
 
 # ────────────────────────── System Info Function ────────────────────────────
 function show_system_info() {
-    # Colors
-    local RED='\e[38;5;202m'  # Ubuntu orange
-    local WHITE='\e[97m'      # Bright white
-    local INFO='\e[38;5;251m' # Info text color
-    local RESET='\e[0m'       # Reset color
-
-    # System information with proper error handling
-    local USER=$(whoami)
-    local HOSTNAME=$(hostname)
-    local OS=$(lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || echo "Unknown")
-    local KERNEL=$(uname -r)
-    local UPTIME=$(uptime -p | sed 's/up //')
-    local PACKAGES=$(dpkg -l 2>/dev/null | grep -c '^ii' || echo "Unknown")
-    local SHELL=$(basename "$SHELL")
-    local MEMORY=$(free -h | awk '/^Mem:/ {printf "%s/%s", $3, $2}')
-    local CPU=$(lscpu | grep "Model name" | sed 's/Model name:[[:space:]]*//g')
-
-    # Calculate padding for alignment (longest label + 2 spaces)
-    local padding=11 # Length of "Hostname: " as base padding
-
-    # Print Ubuntu logo with system information
-    echo -e "
-${RED}              .-/+oossssoo+/-.               ${WHITE}User:${RESET}     ${INFO}${USER}${RESET}
-${RED}          \`:+ssssssssssssssssss+:\`           ${WHITE}Hostname:${RESET} ${INFO}${HOSTNAME}${RESET}
-${RED}        -+ssssssssssssssssssyyssss+-         ${WHITE}OS:${RESET}       ${INFO}${OS}${RESET}
-${RED}      .ossssssssssssssssss${WHITE}dMMMNy${RED}sssso.       ${WHITE}Kernel:${RESET}   ${INFO}${KERNEL}${RESET}
-${RED}     /sssssssssss${WHITE}hdmmNNmmyNMMMMh${RED}ssssss\      ${WHITE}Uptime:${RESET}   ${INFO}${UPTIME}${RESET}
-${RED}    +sssssssss${WHITE}hm${RED}yd${WHITE}MMMMMMMNddddy${RED}ssssssss+     ${WHITE}Packages:${RESET} ${INFO}${PACKAGES}${RESET}
-${RED}   /ssssssss${WHITE}hNMMM${RED}yh${WHITE}hyyyyhmNMMMNh${RED}ssssssss\    ${WHITE}Shell:${RESET}    ${INFO}${SHELL}${RESET}
-${RED}  .ssssssss${WHITE}dMMMNh${RED}ssssssssss${WHITE}hNMMMd${RED}ssssssss.   ${WHITE}Memory:${RESET}   ${INFO}${MEMORY}${RESET}
-${RED}  +ssss${WHITE}hhhyNMMNy${RED}ssssssssssss${WHITE}yNMMMy${RED}ssssssss+  ${WHITE}CPU:${RESET}      ${INFO}${CPU}${RESET}
-${RED}  oss${WHITE}yNMMMNyMMh${RED}ssssssssssssss${WHITE}hmmmh${RED}ssssssso
-${RED}  oss${WHITE}yNMMMNyMMh${RED}sssssssssssssshmmmh${RED}ssssssso
-${RED}  +ssss${WHITE}hhhyNMMNy${RED}ssssssssssss${WHITE}yNMMMy${RED}ssssssss+
-${RED}  .ssssssss${WHITE}dMMMNh${RED}ssssssssss${WHITE}hNMMMd${RED}ssssssss.
-${RED}   \ssssssss${WHITE}hNMMM${RED}yh${WHITE}hyyyyhdNMMMNh${RED}ssssssss/
-${RED}    +sssssssss${WHITE}dm${RED}yd${WHITE}MMMMMMMMddddy${RED}ssssssss+
-${RED}     \sssssssssss${WHITE}hdmNNNNmyNMMMMh${RED}ssssss/
-${RED}      .ossssssssssssssssss${WHITE}dMMMNy${RED}sssso.
-${RED}        -+sssssssssssssssss${WHITE}yyy${RED}ssss+-
-${RED}          \`:+ssssssssssssssssss+:\`
-${RED}              .-/+oossssoo+/-.${RESET}
-"
+    # Prefer a real fetch tool; each detects distro, packages and hardware
+    # correctly instead of hardcoding one distribution's logo and package
+    # manager. Ordered by preference, falling back to a minimal summary.
+    if command -v fastfetch >/dev/null 2>&1; then
+        fastfetch
+    elif command -v hyfetch >/dev/null 2>&1; then
+        hyfetch
+    elif command -v neofetch >/dev/null 2>&1; then
+        neofetch
+    elif command -v macchina >/dev/null 2>&1; then
+        macchina
+    else
+        # Portable fallback: no lsb_release, no dpkg, no lscpu.
+        local os
+        os=$(. /etc/os-release 2>/dev/null && printf '%s' "$PRETTY_NAME")
+        printf '\n  %s@%s\n' "$(id -un)" "$(uname -n)"
+        printf '  OS      %s\n' "${os:-$(uname -s)}"
+        printf '  Kernel  %s\n' "$(uname -r)"
+        printf '  Shell   %s\n\n' "$(basename "${SHELL:-sh}")"
+    fi
 }
 
 # ────────────────────────── Load Environment Variables ────────────────────────────
@@ -455,20 +431,20 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ -f ~/.bash_local ]] && source ~/.bash_local
 [[ -f ~/.bash_private ]] && source ~/.bash_private
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 # ────────────────────────── Launchers ──────────────────────────────
 
 show_system_info
 
 # pnpm
-export PNPM_HOME="/home/ranuga/snap/code/194/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
 *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-export PATH="$(go env GOPATH)/bin:$PATH"
+command -v go >/dev/null 2>&1 && export PATH="$(go env GOPATH)/bin:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -476,4 +452,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-source '/home/ranuga/.bash_completions/typer.sh'
+[[ -f "$HOME/.bash_completions/typer.sh" ]] && source "$HOME/.bash_completions/typer.sh"
