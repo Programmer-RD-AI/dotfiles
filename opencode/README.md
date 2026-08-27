@@ -8,6 +8,7 @@ config for the [opencode](https://opencode.ai) agentic CLI/TUI, symlinked into `
 |---|---|
 | `opencode.json` | server/runtime config: default models, permissions, compaction, tool output |
 | `tui.json` | terminal UI: theme, cursor, scroll, attention notifications |
+| `AGENTS.md` | global agentic engineering rules (applied to all opencode sessions) |
 | `themes/codex.json` | custom dark theme matching the Codex desktop app (`#181818` surfaces, light-blue accent, one-dark syntax) |
 
 ## setup
