@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "codex",
+  "leader_timeout": 2000,
+  "scroll_speed": 3,
+  "diff_style": "auto",
+  "cursor": {
+    "style": "block",
+    "blinking": true
+  },
+  "mouse": true,
+  "attention": {
+    "enabled": true,
+    "notifications": true,
+    "sound": true,
+    "volume": 0.4
+  }
+}
