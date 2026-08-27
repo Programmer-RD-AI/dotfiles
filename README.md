@@ -15,6 +15,7 @@ ln -sf ~/.dotfiles/zshrc/.zshrc ~/.zshrc                  # macos / zsh
 # editors + tools
 ln -sf ~/.dotfiles/nvim ~/.config/
 ln -sf ~/.dotfiles/lazygit ~/.config/
+ln -sf ~/.dotfiles/opencode ~/.config/
 ln -sf ~/.dotfiles/.idea/.ideavimrc ~/.ideavimrc
 ln -sf ~/.dotfiles/.idea/.editorconfig ~/.editorconfig
 
@@ -58,6 +59,7 @@ source ~/.bashrc   # or: source ~/.zshrc
 | `lazygit/` | lazygit config + custom commit keybinding |
 | `nvim/` | neovim config (lsp, keymaps, plugins) |
 | `obsidian/` | obsidian vimrc settings |
+| `opencode/` | opencode agentic CLI/TUI config + codex desktop theme |
 | `scripts/` | utility scripts (currently obsidian vault sync) |
 | `swaync/` | sway notification center config/theme/icons |
 | `systemd/` | user services (currently obsidian sync service) |
