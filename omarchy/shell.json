@@ -25,7 +25,7 @@
           "id": "omarchy.clock",
           "format": "dddd hh:mm A",
           "formatAlt": "d MMMM 'W'ww yyyy",
-          "verticalFormat": "hh\n\u2014\nmm"
+          "verticalFormat": "hh\n—\nmm"
         },
         {
           "id": "omarchy.keyboard-layout"

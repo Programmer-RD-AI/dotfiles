@@ -10,9 +10,9 @@ gui:
     optionsTextColor:
       - "#00ff00"
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never
+      command: delta --dark --paging=never
 os:
   edit: "nvim"
   open: "xdg-open"
