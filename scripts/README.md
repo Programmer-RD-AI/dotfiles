@@ -22,8 +22,9 @@ Opens the standard app-per-workspace layout at login:
 | 1 | ghostty |
 | 2 | zen-browser |
 | 3 | obsidian |
-| 4 | spotify |
-| 5 | slack |
+| 4 | opencode desktop |
+| 5 | spotify |
+| 6 | slack |
 
 Wired up from `hypr/autostart.lua` via `o.exec_on_start()`, so it runs on every
 Hyprland start. Safe to run by hand too:

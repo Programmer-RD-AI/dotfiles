@@ -14,8 +14,9 @@ LAYOUT=(
   "1:ghostty:ghostty"
   "2:zen-browser:zen-browser"
   "3:obsidian:obsidian"
-  "4:spotify:spotify"
-  "5:slack:slack"
+  "4:/opt/OpenCode/ai.opencode.desktop:/opt/OpenCode/ai.opencode.desktop"
+  "5:spotify:spotify"
+  "6:slack:slack"
 )
 
 log() { printf '[workspace-autostart] %s\n' "$*" >&2; }
@@ -34,12 +35,14 @@ done
 launch() {
   local ws=$1 bin=$2 cmd=$3
 
-  if ! command -v "$bin" >/dev/null 2>&1; then
+  local proc=${bin##*/}
+
+  if ! command -v "$bin" >/dev/null 2>&1 && [[ ! -x "$bin" ]]; then
     log "skip workspace $ws: '$bin' is not installed"
     return
   fi
 
-  if pgrep -x "$bin" >/dev/null 2>&1; then
+  if pgrep -x "$proc" >/dev/null 2>&1; then
     log "skip workspace $ws: '$bin' is already running"
     return
   fi
