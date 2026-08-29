@@ -14,7 +14,7 @@ LAYOUT=(
   "1:ghostty:ghostty"
   "2:/opt/zen-browser-bin/zen-bin:/opt/zen-browser-bin/zen-bin"
   "3:obsidian:obsidian"
-  "4:ai.opencode.desktop:/opt/OpenCode/ai.opencode.desktop"
+  "4:/opt/OpenCode/ai.opencode.desktop:/opt/OpenCode/ai.opencode.desktop"
   "5:spotify:spotify"
   "6:slack:slack"
 )
@@ -31,6 +31,11 @@ for _ in {1..30}; do
   hyprctl monitors >/dev/null 2>&1 && break
   sleep 0.5
 done
+
+if ! hyprctl monitors >/dev/null 2>&1; then
+  log "Hyprland is not ready after 15 seconds, aborting"
+  exit 1
+fi
 
 launch() {
   local ws=$1 bin=$2 cmd=$3
