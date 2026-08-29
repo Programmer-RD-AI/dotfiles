@@ -13,23 +13,5 @@
     "max_lines": 200,
     "max_bytes": 8192
   },
-  "permission": {
-    "edit": "allow",
-    "bash": {
-      "*": "ask",
-      "git *": "allow",
-      "git status *": "allow",
-      "git log *": "allow",
-      "git diff *": "allow",
-      "git fetch *": "allow",
-      "git pull *": "allow",
-      "ls *": "allow",
-      "cat *": "allow",
-      "env": "allow"
-    },
-    "external_directory": {
-      "*": "ask",
-      "~/Storage/**": "allow"
-    }
-  }
+  "permission": "allow"
 }
