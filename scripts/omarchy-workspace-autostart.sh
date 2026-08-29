@@ -12,9 +12,9 @@ set -uo pipefail
 # workspace : binary to check : command to launch
 LAYOUT=(
   "1:ghostty:ghostty"
-  "2:zen-browser:zen-browser"
+  "2:/opt/zen-browser-bin/zen-bin:/opt/zen-browser-bin/zen-bin"
   "3:obsidian:obsidian"
-  "4:/opt/OpenCode/ai.opencode.desktop:/opt/OpenCode/ai.opencode.desktop"
+  "4:ai.opencode.desktop:/opt/OpenCode/ai.opencode.desktop"
   "5:spotify:spotify"
   "6:slack:slack"
 )
