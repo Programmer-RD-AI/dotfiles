@@ -10,4 +10,4 @@
 
 -- Open the standard app-per-workspace layout at login.
 -- Edit the layout in ~/.dotfiles/scripts/omarchy-workspace-autostart.sh
-o.exec_on_start("$HOME/.dotfiles/scripts/omarchy-workspace-autostart.sh")
+o.launch_on_start("$HOME/.dotfiles/scripts/omarchy-workspace-autostart.sh")
