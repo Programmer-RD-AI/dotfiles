@@ -18,6 +18,10 @@ Project-specific context (domain, architecture, requirements) lives in the proje
 - When reporting work, connect each meaningful change to the reason it was needed and the effect it has on the project.
 - **IMPORTANT: Never assume. If anything is not explicitly specified by the user, ask — do not guess, default, or decide on the user's behalf.** Put the choice to the user directly and clearly, with concrete options. Every decision is the user's, never the agent's. This includes scope, naming, design, tradeoffs, and tooling choices.
 
+## Code Style
+
+My personal coding patterns live in the shared `coding-style` skill (repo: `agents/skills/coding-style/SKILL.md`, deployed to `~/.agents/skills/`). REQUIRED: load and follow it when writing, editing, or reviewing any code, and when writing commits or PRs.
+
 ## Branch and PR Workflow
 
 Work should happen through normal feature branches and pull requests.
