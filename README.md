@@ -40,6 +40,9 @@ ln -sf ~/.dotfiles/aerospace ~/.config/
 ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/git/ignore ~/.config/git/ignore
 
+# agent rules + skills (opencode, pi)
+ln -sf ~/.dotfiles/agents/skills/coding-style ~/.agents/skills/coding-style
+
 # reload shell
 source ~/.bashrc   # or: source ~/.zshrc
 ```
@@ -49,6 +52,7 @@ source ~/.bashrc   # or: source ~/.zshrc
 | path | purpose |
 |------|---------|
 | `aerospace/` | aerospace tiling window manager config for macos |
+| `agents/` | shared agent rules (AGENTS.md) + skills (coding-style), referenced by opencode and pi |
 | `bash/` | bash config, aliases, prompt, helper functions |
 | `btop/` | btop system monitor config |
 | `fish/` | fish environment setup snippets |
