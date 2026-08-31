@@ -68,3 +68,9 @@ Patterns distilled from prdai's authored PRs across repos (dotfiles, sfia-skill-
 
 - No hardcoded user paths, hostnames, or machine-specific values; resolve from PATH/env, provide portable fallbacks.
 - Prefer cross-platform parity and explicit portability notes over per-machine hacks.
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

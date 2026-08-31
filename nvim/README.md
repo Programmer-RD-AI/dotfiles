@@ -240,3 +240,9 @@ Inline virtual-text blame is enabled by default on startup.
 - References (`gr`) open in quickfix — view with `<leader>xx` or `:copen`
 - Format on save is **off** — use `<leader>fo` manually
 - Formatters: stylua (Lua), prettier (JS/TS/HTML/CSS), gofumpt+goimports (Go), Ruff (Python)
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

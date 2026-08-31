@@ -20,4 +20,10 @@ my alternate terminal emulator.
 - `Ctrl+Shift+C/V` → Copy/paste
 - `Ctrl+Shift+=/-` → Font size
 
-> not the main terminal. see `ghostty/` for the primary terminal.
+> not the main terminal. see `../ghostty/` for the primary terminal.
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

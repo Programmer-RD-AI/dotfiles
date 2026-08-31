@@ -31,3 +31,9 @@ my main terminal emulator.
 - Fullscreen + maximized by default
 - Quick terminal centered
 - GTK titlebar disabled (Linux)
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

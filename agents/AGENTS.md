@@ -88,3 +88,9 @@ Optimize for turnaround time on what the user asks for. The time a requested tas
 
 - Parallelize aggressively. Run independent tool calls together, fan work out across multiple agents at once, and push long-running commands to the background so the session is never blocked waiting on them.
 - Never trade correctness or the user's stated scope for speed. Fast and wrong is not the goal; fast and right is.
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

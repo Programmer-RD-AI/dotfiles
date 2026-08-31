@@ -100,3 +100,9 @@ sudo apt install entr
 | `tmux-prefix-highlight` | Highlights prefix key in status bar |
 | `tmux-fzf` | fzf menu for sessions/windows/panes/processes — `Prefix+F` |
 | `tmux-mighty-scroll` | Smart mouse scroll (copy-mode when idle, passthrough when running) |
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

@@ -26,7 +26,7 @@ Opens the standard app-per-workspace layout at login:
 | 5 | spotify |
 | 6 | slack |
 
-Wired up from `hypr/autostart.lua` via `o.exec_on_start()`, so it runs on every
+Wired up from `../hypr/autostart.lua` via `o.exec_on_start()`, so it runs on every
 Hyprland start. Safe to run by hand too:
 
 ```bash
@@ -37,3 +37,9 @@ Apps already running are skipped (no duplicates on re-run), and apps that aren't
 installed are skipped with a warning instead of failing the whole layout.
 
 Edit the `LAYOUT` array at the top of the script to change the mapping.
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

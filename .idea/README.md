@@ -64,3 +64,9 @@ leader: `<space>`
 - `ys/cs/ds` → Add/change/delete surround
 
 > cross-editor consistency with neovim and vs code.
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

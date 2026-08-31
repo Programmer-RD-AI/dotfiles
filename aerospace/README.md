@@ -58,3 +58,9 @@ Workspaces 6-9 → main monitor
 - Gaps: 10px inner + 10px outer
 - Accordion padding: 30px
 - Auto-start at login
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

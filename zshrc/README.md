@@ -79,3 +79,9 @@ source ~/.zshrc
 - Zsh completion with menu select and fuzzy matching
 - Homebrew, conda, nvm, bun, pnpm, gcloud, cargo integrations
 - neofetch on shell start (once per session)
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

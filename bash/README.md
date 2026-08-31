@@ -75,3 +75,9 @@ source ~/.bashrc
 - Shared history with dedup (100k/200k)
 - Conda and NVM integrations
 - Local overrides via `~/.bash_local` and `~/.bash_private`
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

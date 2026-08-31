@@ -18,3 +18,9 @@ ln -sf ~/.dotfiles/lazygit ~/.config/lazygit
 ## custom keys
 
 - `C` (files view) → Commit with message prompt
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

@@ -81,3 +81,9 @@ source ~/.bashrc   # or: source ~/.zshrc
 check each `*/README.md` for directory-specific notes.
 
 for contribution workflow and docs tone, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

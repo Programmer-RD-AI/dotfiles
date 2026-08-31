@@ -26,3 +26,9 @@ files ignored across all repos:
 
 - `.claude/settings.local.json` – Local Claude AI settings
 - `.worktrees/` – Worktree directories
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+

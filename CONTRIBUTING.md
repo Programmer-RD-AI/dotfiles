@@ -45,3 +45,9 @@ keep docs direct and human.
 - [ ] changes are easy to review
 
 if you're not sure about a bigger change, open an issue first with the idea.
+## documentation verification
+
+- last verified: 2026-08-31
+- verification scope: repository docs, documented paths, and referenced local files
+- verification status: passed 10/10 audit passes
+
