@@ -8,6 +8,24 @@
 -- (quickshell) for the bar AND notifications, and herdr already owns the
 -- org.freedesktop.Notifications DBus name, so swaync cannot acquire it.
 
--- Open the standard app-per-workspace layout at login.
--- Edit the layout in ~/.dotfiles/scripts/omarchy-workspace-autostart.sh
-o.launch_on_start("$HOME/.dotfiles/scripts/omarchy-workspace-autostart.sh")
+-- Login app layout, one app per workspace. Native hl.exec_cmd: hyprctl dispatch
+-- exec stopped parsing on Hyprland 0.56, and hyprland.start fires when the
+-- compositor is ready, so no wait loop or shell wrapper is needed.
+local layout = {
+  { ws = "1 silent", cmd = "ghostty" },
+  { ws = "2 silent", cmd = "/opt/zen-browser-bin/zen-bin" },
+  { ws = "3 silent", cmd = "obsidian" },
+  { ws = "4 silent", cmd = "/opt/OpenCode/ai.opencode.desktop" },
+  { ws = "5 silent", cmd = "spotify" },
+  { ws = "6 silent", cmd = "slack" },
+}
+
+hl.on("hyprland.start", function()
+  for _, app in ipairs(layout) do
+    if o.cmd_present(app.cmd) then
+      hl.exec_cmd(o.launch(app.cmd), { workspace = app.ws })
+    else
+      print("[autostart] skip workspace " .. app.ws .. ": '" .. app.cmd .. "' is not installed")
+    end
+  end
+end)
