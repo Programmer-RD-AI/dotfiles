@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
+# SUPERSEDED by hypr/autostart.lua (native hl.exec_cmd with workspace rules):
+# hyprctl dispatch exec stopped parsing on Hyprland 0.56, so this script can no
+# longer launch apps. Kept for reference only.
+#
 # Open the standard app-per-workspace layout at login.
-#
-# Wired up from hypr/autostart.lua via o.exec_on_start(). Safe to run by hand:
-#   ~/.dotfiles/scripts/omarchy-workspace-autostart.sh
-#
 # Apps already running are skipped, so re-running won't open duplicates.
 # Missing apps are skipped with a warning instead of failing the whole layout.
 

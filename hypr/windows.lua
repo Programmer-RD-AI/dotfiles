@@ -13,7 +13,7 @@
 
 o.window("com.mitchellh.ghostty", { workspace = "1" })
 o.window("^zen$",                 { workspace = "2" })
-o.window("md.Obsidian",           { workspace = "3" })
+o.window("md.obsidian.Obsidian",  { workspace = "3" })
 o.window("ai.opencode.desktop",   { workspace = "4" })
-o.window("^spotify$",             { workspace = "5" })
-o.window("^Slack$",               { workspace = "6" })
+o.window("^Spotify$",             { workspace = "5" })
+o.window("^slack$",               { workspace = "6" })
